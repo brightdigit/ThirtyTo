@@ -6,8 +6,6 @@ extension UUID {
     _ = bytes.withUnsafeMutableBufferPointer {
       data.copyBytes(to: $0)
     }
-    
-    //data.getBytes(&bytes, length: data.length * sizeof(UInt8))
     self =  NSUUID(uuidBytes: bytes) as UUID
   }
 }

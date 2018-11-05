@@ -7,6 +7,24 @@ struct Base32Crockford {
   struct ChecksumError : Error {
     
   }
+
+  func generate(withCharacterLength length: Int) -> String {
+  	return (1...length).map{_ in String(Base32Crockford.characters.randomElement()!)}.joined(separator: "")
+  }
+
+  func generate(forMinimumUniqueCount count: Int) -> String {
+    guard count > 0 else {
+      if count == 0 {
+        return ""
+      } else {
+        fatalError("Cannot construct String identifier for unique count less than 0.")
+      }
+    }
+  	let numberOfBytes = Int(ceil(log(Double(count))/log(256.0)))
+    let bytes = (1...numberOfBytes).map{_ in UInt8.random(in: (UInt8.min...UInt8.max))}
+    let data = Data(bytes: bytes)
+  	return self.encode(data: data)
+  }
   
   func encode (data : Data) -> String {
     let dataBitCount = data.count * 8
