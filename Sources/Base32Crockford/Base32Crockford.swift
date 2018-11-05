@@ -17,7 +17,6 @@ struct Base32Crockford {
     var encodedString = ""
     var index : Int?
     
-    
     repeat {
       index = binary.next(bits: 5)
       guard let index = index else {
@@ -25,10 +24,9 @@ struct Base32Crockford {
       }
       encodedString.append(Base32Crockford.characters[Base32Crockford.characters.index(Base32Crockford.characters.startIndex, offsetBy: index)])
       
-    }
-      while (index != nil)
+    } while (index != nil)
+
     if lastSegment > 0 {
-      
       let lastIndex = (binary.next(bits: lastSegment)! << difference) + Base32Crockford.checksum[difference - 1]
       encodedString.append(Base32Crockford.characters[Base32Crockford.characters.index(Base32Crockford.characters.startIndex, offsetBy: lastIndex)])
     }
@@ -44,22 +42,19 @@ struct Base32Crockford {
     if let lastValue = lastValue {
       let checksumValue = (lastValue << (8 - checksumSize)) >> (8 - checksumSize)
       guard checksumValue == Base32Crockford.checksum[checksumSize-1] else {
-        print(checksumValue)
-        print(checksumSize)
         print(Base32Crockford.checksum[checksumSize-1])
         throw ChecksumError()
       }
     }
     
-    
     let values = string.map{
       Base32Crockford.characters.distance(from: Base32Crockford.characters.startIndex, to: Base32Crockford.characters.index(of: $0)!)
     }
+
     let bitString = values.map{String($0, radix: 2).pad(toSize: 5)}.joined(separator: "")
     
     let bitStringWithoutChecksum  = String(bitString[bitString.startIndex...bitString.index(bitString.endIndex, offsetBy: -checksumSize-1)])
     let dataBytes = bitStringWithoutChecksum.split(by: 8).compactMap{UInt8($0, radix: 2)}
-    
     return Data(dataBytes)
   }
 }
