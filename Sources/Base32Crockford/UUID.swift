@@ -1,7 +1,7 @@
 import Foundation
 
 extension UUID {
-  init(data: Data) {
+  public init(data: Data) {
     var bytes = [UInt8](repeating: 0, count: data.count)
     _ = bytes.withUnsafeMutableBufferPointer {
       data.copyBytes(to: $0)

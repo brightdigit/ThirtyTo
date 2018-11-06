@@ -1,6 +1,6 @@
 
 extension String {
-  func pad(toSize: Int) -> String {
+  public func pad(toSize: Int) -> String {
     var padded = self
     for _ in 0..<(toSize - self.count) {
       padded = "0" + padded
