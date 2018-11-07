@@ -3,8 +3,11 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
+      addons:
+        apt:
+          sources:
+          - ubuntu-toolchain-r-test
       install:
-        - sudo add-apt-repository ppa:ubuntu-toolchain-r/test
         - sudo apt-get update
         - sudo apt-get install gcc-4.9 clang
         - sudo apt-get upgrade libstdc++6
