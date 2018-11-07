@@ -1,5 +1,6 @@
-global:
-    - SWIFT_BRANCH=swift-4.2.1-RELEASE
+env:
+    global:
+        - SWIFT_BRANCH=swift-4.2.1-RELEASE
 matrix:
   include:
     - os: linux
