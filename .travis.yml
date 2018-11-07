@@ -1,0 +1,21 @@
+language: objective-c
+global:
+    - SWIFT_BRANCH=swift-4.2.1-RELEASE
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      sudo: required
+      install:
+        - sudo apt-get install clang libicu-dev
+        - mkdir swift
+        - curl https://swift.org/builds/$SWIFT_BRANCH/ubuntu1804/$SWIFT_BRANCH/$SWIFT_BRANCH-ubuntu18.04.tar.gz -s | tar xz -C swift &> /dev/null
+        - export PATH="$(pwd)/swift/$SWIFT_BRANCH-ubuntu18.04/usr/bin:$PATH"
+      script:
+        - swift package update
+        - swift test
+    - os: osx
+      osx_image: xcode10.1
+      script:
+        - swift package update
+        - swift test
