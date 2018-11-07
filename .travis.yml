@@ -1,4 +1,3 @@
-language: objective-c
 global:
     - SWIFT_BRANCH=swift-4.2.1-RELEASE
 matrix:
@@ -15,6 +14,7 @@ matrix:
         - swift package update
         - swift test
     - os: osx
+      language: objective-c
       osx_image: xcode10.1
       script:
         - swift package update
