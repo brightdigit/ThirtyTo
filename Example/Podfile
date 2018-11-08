@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'Base32Crockford_Example' do
+  pod 'Base32Crockford', :path => '../'
+
+  target 'Base32Crockford_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
