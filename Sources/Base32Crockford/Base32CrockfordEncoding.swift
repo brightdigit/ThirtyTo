@@ -1,6 +1,9 @@
 import Foundation
 
-struct Base32CrockfordEncoding {
+public struct Base32CrockfordEncoding : Base32CrockfordEncodingProtocol {
+
+  public static let encoding : Base32CrockfordEncodingProtocol = Base32CrockfordEncoding()
+  
   static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
   static let checksum = [1,1,2,4]
   
@@ -8,49 +11,9 @@ struct Base32CrockfordEncoding {
     
   }
   
-  func generateFromUUID () -> String {
-    let uuid = UUID()
-    let bytes = ByteCollection(uuid: uuid)
-    let data = Data(bytes: bytes)
-    return self.encode(data: data)
-  }
-  
-  func generateArray(withCount count: Int) -> [String] {
-    guard count >= 0 else {
-      fatalError("Array count cannot be less than 0.")
-    }
-    guard count > 0 else {
-      return [String]()
-    }
-    return (1...count).map{
-      _ in
-      self.generateSingle()
-    }
-  }
-  
-  func generateSingle() -> String {
-    return self.generate(withByteSize: 5)
-  }
 
-  func generate(withByteSize size: Int) -> String {
-    let data = Data.random(withNumberOfBytes: size)
-    return self.encode(data: data)
-  }
-
-  func generate(forMinimumUniqueCount count: Int) -> String {
-    guard count > 0 else {
-      if count == 0 {
-        return ""
-      } else {
-        fatalError("Cannot construct String identifier for unique count less than 0.")
-      }
-    }
-    
-  	let data = Data.uniqueIdentifier(forMinimumCount: count)
-  	return self.encode(data: data)
-  }
   
-  func encode (data : Data) -> String {
+  public func encode (data : Data) -> String {
     let dataBitCount = data.count * 8
     let resBitCount = Int(ceil(Double(dataBitCount) / 5) * 5.0)
     let difference = resBitCount - dataBitCount
@@ -75,7 +38,7 @@ struct Base32CrockfordEncoding {
     return encodedString
   }
   
-  func decode (string: String) throws -> Data {
+  public func decode (base32Encoded string: String) throws -> Data {
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
     let checksumSize = strBitCount - dataBitCount
@@ -84,7 +47,6 @@ struct Base32CrockfordEncoding {
     if let lastValue = lastValue {
       let checksumValue = (lastValue << (8 - checksumSize)) >> (8 - checksumSize)
       guard checksumValue == Base32CrockfordEncoding.checksum[checksumSize-1] else {
-        print(Base32CrockfordEncoding.checksum[checksumSize-1])
         throw ChecksumError()
       }
     }

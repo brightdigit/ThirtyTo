@@ -13,6 +13,9 @@ matrix:
     - os: osx
       language: objective-c
       osx_image: xcode10.1
+      before_install:
+        - gem install cocoapods --pre
       script:
         - swift package update
         - swift test
+        - pod lib lint 
