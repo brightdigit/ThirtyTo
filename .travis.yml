@@ -18,4 +18,4 @@ matrix:
       script:
         - swift package update
         - swift test
-        - pod lib lint 
+        - pod lib lint --allow-warnings
