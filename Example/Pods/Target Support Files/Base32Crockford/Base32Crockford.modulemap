@@ -1,0 +1,6 @@
+framework module Base32Crockford {
+  umbrella header "Base32Crockford-umbrella.h"
+
+  export *
+  module * { export * }
+}

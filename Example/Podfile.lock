@@ -1,0 +1,16 @@
+PODS:
+  - Base32Crockford (0.1.0)
+
+DEPENDENCIES:
+  - Base32Crockford (from `../`)
+
+EXTERNAL SOURCES:
+  Base32Crockford:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  Base32Crockford: 5eb6fc067100a3dd2170891bc16c92f548cb7655
+
+PODFILE CHECKSUM: 4ddee475fed89fed79fa2c98dd71a9538f0f7a3f
+
+COCOAPODS: 1.5.3

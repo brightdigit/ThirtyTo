@@ -10,10 +10,15 @@ let package = Package(
         .library(
             name: "Base32Crockford",
             targets: ["Base32Crockford"]),
+
+        .executable(
+            name: "base32dc",
+            targets: ["base32dc"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
+      .package(url: "https://github.com/elegantchaos/docopt.swift.git", from: "0.6.8"),
     ],
     targets: [
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
@@ -21,6 +26,9 @@ let package = Package(
         .target(
             name: "Base32Crockford",
             dependencies: []),
+        .target(
+            name: "base32dc",
+            dependencies: ["Base32Crockford", "Docopt"]),
         .testTarget(
             name: "Base32CrockfordTests",
             dependencies: ["Base32Crockford"]),

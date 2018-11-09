@@ -1,0 +1,22 @@
+{
+  "name": "Base32Crockford",
+  "version": "0.1.0",
+  "summary": "A short description of Base32Crockford.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/leogdion@brightdigit.com/Base32Crockford",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "leogdion@brightdigit.com": "leogdion@brightdigit.com"
+  },
+  "source": {
+    "git": "https://github.com/leogdion@brightdigit.com/Base32Crockford.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "Base32Crockford/Classes/**/*"
+}
