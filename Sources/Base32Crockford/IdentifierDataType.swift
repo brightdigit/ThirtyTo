@@ -54,16 +54,7 @@ extension IdentifierDataType : Codable {
       }
       
     }
-    
-    let isDefault = try? decoder.singleValueContainer().decodeNil()
-    
-    if isDefault == true {
-      self = .default
-      return
-    } else {
-      throw InvalidIdentifierDataTypeError()
-    }
-    
+    throw InvalidIdentifierDataTypeError()
   }
   
   public func encode(to encoder: Encoder) throws {

@@ -12,7 +12,7 @@ extension Array where Element : FixedWidthInteger {
   }
   
   #if DEBUG
-  public static func debugRandom(withCount count: Int, in range: ClosedRange<Element>? = nil, fatalError: ((String?) -> Void)? = nil) -> Array? {
+  internal static func debugRandom(withCount count: Int, in range: ClosedRange<Element>? = nil, fatalError: ((String?) -> Void)? = nil) -> Array? {
     return self.random(withCount: count, in: range, fatalError: fatalError)
   }
   #endif
