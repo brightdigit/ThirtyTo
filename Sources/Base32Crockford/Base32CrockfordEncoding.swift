@@ -42,7 +42,7 @@ public struct Base32CrockfordEncoding : Base32CrockfordEncodingProtocol {
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
     let checksumSize = strBitCount - dataBitCount
-    let lastValue : UInt8? = checksumSize == 0 ? nil : UInt8(Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: Base32CrockfordEncoding.characters.index(of: string.last!)!))
+    let lastValue : UInt8? = checksumSize == 0 ? nil : UInt8(Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: Base32CrockfordEncoding.characters.firstIndex(of: string.last!)!))
     
     if let lastValue = lastValue {
       let checksumValue = (lastValue << (8 - checksumSize)) >> (8 - checksumSize)
@@ -52,7 +52,7 @@ public struct Base32CrockfordEncoding : Base32CrockfordEncodingProtocol {
     }
     
     let values = string.map{
-      Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: Base32CrockfordEncoding.characters.index(of: $0)!)
+      Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: Base32CrockfordEncoding.characters.firstIndex(of: $0)!)
     }
 
     let bitString = values.map{String($0, radix: 2).pad(toSize: 5)}.joined(separator: "")

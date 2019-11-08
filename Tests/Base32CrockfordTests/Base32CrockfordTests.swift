@@ -39,7 +39,7 @@ final class Base32CrockfordTests: XCTestCase {
       let bytes = (0...length-1).map{_ in
         UInt8.random(in: 0...UInt8.max)
       }
-      let expectedData = Data(bytes: bytes)
+      let expectedData = Data(bytes)
       let encodedString = b32cf.encode(data: expectedData)
       let actualData = try! b32cf.decode(base32Encoded: encodedString)
       XCTAssertEqual(expectedData, actualData)
