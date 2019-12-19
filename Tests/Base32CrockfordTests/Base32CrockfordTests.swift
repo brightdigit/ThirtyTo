@@ -39,7 +39,7 @@ final class Base32CrockfordTests: XCTestCase {
       let bytes = (0...length-1).map{_ in
         UInt8.random(in: 0...UInt8.max)
       }
-      let expectedData = Data(bytes: bytes)
+      let expectedData = Data(bytes)
       let encodedString = b32cf.encode(data: expectedData)
       let actualData = try! b32cf.decode(base32Encoded: encodedString)
       XCTAssertEqual(expectedData, actualData)
@@ -146,6 +146,48 @@ final class Base32CrockfordTests: XCTestCase {
       XCTAssertEqual(actualMessage, expectedMessage)
     }
     
+  }
+  
+  func identifierDataType(_ identifierDataType: IdentifierDataType, isCodableWith string: String) {
+    let decoder = JSONDecoder()
+    let encoder = JSONEncoder()
+    
+    let expectedString = string.components(separatedBy: .whitespacesAndNewlines).joined(separator: "")
+    let actualIdentifierDataType = try? decoder.decode(IdentifierDataType.self, from:
+      string.data(using: .utf8)!)
+    XCTAssertEqual(actualIdentifierDataType, identifierDataType)
+    let actualString : String?
+    let actualData = try! encoder.encode(identifierDataType)
+      actualString = String(data: actualData, encoding: .utf8)
+    
+    XCTAssertEqual(actualString, expectedString)
+  }
+  
+  func testIdentifierDataTypeCodable() {
+    
+    identifierDataType(.minimumCount(10000), isCodableWith: """
+    {
+    "minimumCount" : 10000
+    }
+    """)
+
+    identifierDataType(.bytes(size: 5), isCodableWith: """
+    {
+    "bytes" : 5
+    }
+    """)
+    
+    
+    identifierDataType(.uuid, isCodableWith: """
+    {
+    "type" : "uuid"
+    }
+    """)
+    identifierDataType(.default, isCodableWith: """
+    {
+    "type" : null
+    }
+    """)
   }
   
   

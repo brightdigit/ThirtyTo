@@ -40,14 +40,6 @@ public struct Binary {
     return Int(self.bytes[position])
   }
   
-//  public func bytes(_ start: Int, _ length: Int) -> [UInt8] {
-//    return Array(self.bytes[start..<start+length])
-//  }
-//  
-//  public func bytes(_ start: Int, _ length: Int) -> Int {
-//    return bits(start*self.byteSize, length*self.byteSize)
-//  }
-  
   public func bitsWithInternalOffsetAvailable(_ length: Int) -> Bool {
     return (self.bytes.count * self.byteSize) >= (self.readingOffset + length)
   }
@@ -61,21 +53,4 @@ public struct Binary {
       return nil
     }
   }
-//
-//  public func bytesWithInternalOffsetAvailable(_ length: Int) -> Bool {
-//    let availableBits = self.bytes.count * self.byteSize
-//    let requestedBits = readingOffset + (length * self.byteSize)
-//    let possible      = availableBits >= requestedBits
-//    return possible
-//  }
-  
-//  public mutating func next(bytes length: Int) -> [UInt8] {
-//    if bytesWithInternalOffsetAvailable(length) {
-//      let returnValue = self.bytes[(self.readingOffset / self.byteSize)..<((self.readingOffset / self.byteSize) + length)]
-//      self.readingOffset = self.readingOffset + (length * self.byteSize)
-//      return Array(returnValue)
-//    } else {
-//      fatalError("Couldn't extract Bytes.")
-//    }
-//  }
 }

@@ -87,11 +87,11 @@ extension Base32CrockfordEncodingProtocol {
   }
   
   #if DEBUG
-  public func debugGenerate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
+  internal func debugGenerate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
     return self.generate(count, from: identifierDataType, fatalError: fatalError)
   }
   
-  public func debugGenerateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
+  internal func debugGenerateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
     return self.generateIdentifier(from: identifierDataType, fatalError: fatalError)
   }
   #endif
