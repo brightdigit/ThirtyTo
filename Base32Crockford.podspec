@@ -32,6 +32,8 @@ Using Douglas Crockford's Base32 encoding (https://www.crockford.com/wrmg/base32
   s.source_files = 'Sources/Base32Crockford/**/*'
   s.ios.deployment_target = '8'
   s.osx.deployment_target = '10.9'
+  s.tvos.deployment_target = '9.0'
+  s.watchos.deployment_target = '2.0'
   # s.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
   # s.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
   # s.build_settings['CODE_SIGNING_ALLOWED'] = "NO"

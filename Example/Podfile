@@ -1,11 +1,65 @@
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
-target 'Base32Crockford_Example' do
+target 'B32CFiOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
   pod 'Base32Crockford', :path => '../'
 
-  target 'Base32Crockford_Tests' do
-    inherit! :search_paths
+  # Pods for B32CFiOS
 
-    
+  target 'B32CFiOSTests' do
+    inherit! :search_paths
+    # Pods for testing
   end
+
+  target 'B32CFiOSUITests' do
+    # Pods for testing
+  end
+
+end
+
+target 'B32CFmacOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Base32Crockford', :path => '../'
+
+  # Pods for B32CFmacOS
+
+end
+
+target 'B32CFtvOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Base32Crockford', :path => '../'
+
+  # Pods for B32CFtvOS
+
+  target 'B32CFtvOSTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'B32CFtvOSUITests' do
+    # Pods for testing
+  end
+
+end
+
+target 'B32CFwatchOS' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for B32CFwatchOS
+  pod 'Base32Crockford', :path => '../'
+
+end
+
+target 'B32CFwatchOS Extension' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Base32Crockford', :path => '../'
+
+  # Pods for B32CFwatchOS Extension
+
 end
