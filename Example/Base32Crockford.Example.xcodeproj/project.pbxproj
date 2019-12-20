@@ -13,7 +13,7 @@
 		732F854FCF17AA251DC229A8 /* Pods_B32CFtvOS_B32CFtvOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90762A747C73FC53C704E411 /* Pods_B32CFtvOS_B32CFtvOSUITests.framework */; };
 		7F3A85D7453081D725C7A831 /* Pods_B32CFiOS_B32CFiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C93F3CC1445951B9F232CD /* Pods_B32CFiOS_B32CFiOSUITests.framework */; };
 		B3471F1823AC2866002232CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F1723AC2866002232CB /* AppDelegate.swift */; };
-		B3471F1C23AC2866002232CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F1B23AC2866002232CB /* ViewController.swift */; };
+		B3471F1C23AC2866002232CB /* IntegerCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F1B23AC2866002232CB /* IntegerCountViewController.swift */; };
 		B3471F2123AC2867002232CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3471F2023AC2867002232CB /* Assets.xcassets */; };
 		B3471F2423AC2867002232CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3471F2223AC2867002232CB /* LaunchScreen.storyboard */; };
 		B3471F2F23AC2867002232CB /* B32CFiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F2E23AC2867002232CB /* B32CFiOSTests.swift */; };
@@ -33,7 +33,7 @@
 		B3471F9823AC2986002232CB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F9723AC2986002232CB /* ExtensionDelegate.swift */; };
 		B3471F9A23AC2986002232CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3471F9923AC2986002232CB /* Assets.xcassets */; };
 		B3471F9E23AC2986002232CB /* B32CFwatchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B3471F8423AC2985002232CB /* B32CFwatchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		B37C882923AC478D0059163C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37C882823AC478D0059163C /* ViewController.xib */; };
+		B37C882923AC478D0059163C /* IntegerCountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37C882823AC478D0059163C /* IntegerCountViewController.xib */; };
 		B37C882B23AC572F0059163C /* IdentifierDataTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */; };
 		B7F481D1ADD0A68795DF9E49 /* Pods_B32CFtvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC24B3843DA358303F0402 /* Pods_B32CFtvOSTests.framework */; };
 		C7488EC88317429B4AA99055 /* Pods_B32CFiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EC70E30B0F8C5213145537 /* Pods_B32CFiOSTests.framework */; };
@@ -141,7 +141,7 @@
 		AF251D9372ADBBFA8C722E3A /* Pods-B32CFiOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B32CFiOS.debug.xcconfig"; path = "Target Support Files/Pods-B32CFiOS/Pods-B32CFiOS.debug.xcconfig"; sourceTree = "<group>"; };
 		B3471F1423AC2866002232CB /* B32CFiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B32CFiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3471F1723AC2866002232CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B3471F1B23AC2866002232CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B3471F1B23AC2866002232CB /* IntegerCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegerCountViewController.swift; sourceTree = "<group>"; };
 		B3471F2023AC2867002232CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3471F2323AC2867002232CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3471F2523AC2867002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -175,7 +175,7 @@
 		B3471F9723AC2986002232CB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		B3471F9923AC2986002232CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3471F9B23AC2986002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B37C882823AC478D0059163C /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		B37C882823AC478D0059163C /* IntegerCountViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IntegerCountViewController.xib; sourceTree = "<group>"; };
 		B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierDataTypeTableViewController.swift; sourceTree = "<group>"; };
 		B47BCC2112F5B8E95CF75933 /* Pods-B32CFiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B32CFiOS.release.xcconfig"; path = "Target Support Files/Pods-B32CFiOS/Pods-B32CFiOS.release.xcconfig"; sourceTree = "<group>"; };
 		C2C93F3CC1445951B9F232CD /* Pods_B32CFiOS_B32CFiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B32CFiOS_B32CFiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,11 +343,11 @@
 			isa = PBXGroup;
 			children = (
 				B3471F1723AC2866002232CB /* AppDelegate.swift */,
-				B3471F1B23AC2866002232CB /* ViewController.swift */,
+				B3471F1B23AC2866002232CB /* IntegerCountViewController.swift */,
 				B3471F2023AC2867002232CB /* Assets.xcassets */,
 				B3471F2223AC2867002232CB /* LaunchScreen.storyboard */,
 				B3471F2523AC2867002232CB /* Info.plist */,
-				B37C882823AC478D0059163C /* ViewController.xib */,
+				B37C882823AC478D0059163C /* IntegerCountViewController.xib */,
 				B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */,
 			);
 			path = B32CFiOS;
@@ -682,7 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3471F2423AC2867002232CB /* LaunchScreen.storyboard in Resources */,
-				B37C882923AC478D0059163C /* ViewController.xib in Resources */,
+				B37C882923AC478D0059163C /* IntegerCountViewController.xib in Resources */,
 				B3471F2123AC2867002232CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1035,7 +1035,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B3471F1C23AC2866002232CB /* ViewController.swift in Sources */,
+				B3471F1C23AC2866002232CB /* IntegerCountViewController.swift in Sources */,
 				B3471F1823AC2866002232CB /* AppDelegate.swift in Sources */,
 				B37C882B23AC572F0059163C /* IdentifierDataTypeTableViewController.swift in Sources */,
 			);

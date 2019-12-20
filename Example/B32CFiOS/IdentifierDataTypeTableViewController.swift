@@ -8,17 +8,30 @@
 import UIKit
 import Base32Crockford
 
-enum IdentifierDataTypeName {
+enum IdentifierDataTypeName : CustomStringConvertible {
   case `default`
   case uuid
   case bytes
   case minimumCount
+  
+  var description: String {
+    switch self {
+    case .bytes:
+      return "Bytes"
+    case .uuid:
+      return "UUID"
+    case .minimumCount:
+      return "Minimum Count"
+    default:
+      return "Default"
+    }
+  }
 }
 enum IdentifierDataIntName {
   case bytes
   case minimumCount
 }
-struct IdentifierDataTypeParameter : CaseIterable {
+struct IdentifierDataTypeParameter : CaseIterable, CustomStringConvertible {
   static let allCases = [
     IdentifierDataTypeParameter(type: .bytes, integerName: .bytes),
     IdentifierDataTypeParameter(type: .default, integerName: nil),
@@ -29,6 +42,10 @@ struct IdentifierDataTypeParameter : CaseIterable {
   
   let type : IdentifierDataTypeName
   let integerName : IdentifierDataIntName?
+  
+  var description: String {
+    return type.description
+  }
 }
 class IdentifierDataTypeTableViewController: UITableViewController {
 
@@ -40,29 +57,35 @@ class IdentifierDataTypeTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+      
+      tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+      return IdentifierDataTypeParameter.allCases.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
+      cell.textLabel?.text = IdentifierDataTypeParameter.allCases[indexPath.row].description
 
         return cell
     }
-    */
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let navViewController = self.navigationController ,let integerName = IdentifierDataTypeParameter.allCases[indexPath.row].integerName {
+      let viewController = IntegerCountViewController()
+      viewController.integerName = integerName
+      navViewController.pushViewController(viewController, animated: true)
+    } else {
+      
+    }
+  }
 
     /*
     // Override to support conditional editing of the table view.
