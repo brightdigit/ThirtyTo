@@ -33,6 +33,8 @@
 		B3471F9823AC2986002232CB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F9723AC2986002232CB /* ExtensionDelegate.swift */; };
 		B3471F9A23AC2986002232CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3471F9923AC2986002232CB /* Assets.xcassets */; };
 		B3471F9E23AC2986002232CB /* B32CFwatchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B3471F8423AC2985002232CB /* B32CFwatchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		B37C882923AC478D0059163C /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37C882823AC478D0059163C /* ViewController.xib */; };
+		B37C882B23AC572F0059163C /* IdentifierDataTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */; };
 		B7F481D1ADD0A68795DF9E49 /* Pods_B32CFtvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC24B3843DA358303F0402 /* Pods_B32CFtvOSTests.framework */; };
 		C7488EC88317429B4AA99055 /* Pods_B32CFiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EC70E30B0F8C5213145537 /* Pods_B32CFiOSTests.framework */; };
 		D65D7983116A6018384BFFEC /* Pods_B32CFiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E176E9E56B8795261FF7D6 /* Pods_B32CFiOS.framework */; };
@@ -173,6 +175,8 @@
 		B3471F9723AC2986002232CB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		B3471F9923AC2986002232CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3471F9B23AC2986002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B37C882823AC478D0059163C /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdentifierDataTypeTableViewController.swift; sourceTree = "<group>"; };
 		B47BCC2112F5B8E95CF75933 /* Pods-B32CFiOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-B32CFiOS.release.xcconfig"; path = "Target Support Files/Pods-B32CFiOS/Pods-B32CFiOS.release.xcconfig"; sourceTree = "<group>"; };
 		C2C93F3CC1445951B9F232CD /* Pods_B32CFiOS_B32CFiOSUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B32CFiOS_B32CFiOSUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C5002ACBB45EC2A3DB77708D /* Pods_B32CFwatchOS_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_B32CFwatchOS_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -343,6 +347,8 @@
 				B3471F2023AC2867002232CB /* Assets.xcassets */,
 				B3471F2223AC2867002232CB /* LaunchScreen.storyboard */,
 				B3471F2523AC2867002232CB /* Info.plist */,
+				B37C882823AC478D0059163C /* ViewController.xib */,
+				B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */,
 			);
 			path = B32CFiOS;
 			sourceTree = "<group>";
@@ -676,6 +682,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B3471F2423AC2867002232CB /* LaunchScreen.storyboard in Resources */,
+				B37C882923AC478D0059163C /* ViewController.xib in Resources */,
 				B3471F2123AC2867002232CB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1030,6 +1037,7 @@
 			files = (
 				B3471F1C23AC2866002232CB /* ViewController.swift in Sources */,
 				B3471F1823AC2866002232CB /* AppDelegate.swift in Sources */,
+				B37C882B23AC572F0059163C /* IdentifierDataTypeTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
