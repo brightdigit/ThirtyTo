@@ -48,7 +48,8 @@ struct IdentifierDataTypeParameter : CaseIterable, CustomStringConvertible {
   }
 }
 class IdentifierDataTypeTableViewController: UITableViewController {
-
+  
+  let encoding = Base32CrockfordEncoding.encoding
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -78,13 +79,31 @@ class IdentifierDataTypeTableViewController: UITableViewController {
     }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if let navViewController = self.navigationController ,let integerName = IdentifierDataTypeParameter.allCases[indexPath.row].integerName {
+    let parameter = IdentifierDataTypeParameter.allCases[indexPath.row]
+    if let navViewController = self.navigationController ,let integerName = parameter.integerName {
       let viewController = IntegerCountViewController()
       viewController.integerName = integerName
+      viewController.generate = self.generate
       navViewController.pushViewController(viewController, animated: true)
     } else {
+      let idType : IdentifierDataType?
+      switch parameter.type {
+      case .default:
+        idType = .default
+      case .uuid:
+        idType = .uuid
+      default:
+        idType = nil
+      }
       
+      if let value = idType.map({ self.generate(basedOn: $0)}) {
+        print(value)
+      }
     }
+  }
+  
+  func generate(basedOn type: IdentifierDataType) -> String {
+    return encoding.generateIdentifier(from: type)
   }
 
     /*

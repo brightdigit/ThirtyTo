@@ -10,6 +10,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="IntegerCountViewController" customModule="B32CFiOS" customModuleProvider="target">
             <connections>
                 <outlet property="label" destination="A5J-Kv-noZ" id="aCA-fq-mEc"/>
+                <outlet property="slider" destination="roO-wy-p7T" id="qq4-jl-J32"/>
                 <outlet property="textField" destination="qFt-EG-pCR" id="Jp6-KC-uGs"/>
                 <outlet property="view" destination="iN0-l3-epB" id="XGv-Dj-Hon"/>
             </connections>
