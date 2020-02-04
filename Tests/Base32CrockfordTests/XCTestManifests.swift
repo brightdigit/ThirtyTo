@@ -1,9 +1,9 @@
 import XCTest
 
 #if !os(macOS)
-public func allTests() -> [XCTestCaseEntry] {
+  public func allTests() -> [XCTestCaseEntry] {
     return [
-        testCase(Base32CrockfordTests.allTests),
+      testCase(Base32CrockfordTests.allTests)
     ]
-}
+  }
 #endif

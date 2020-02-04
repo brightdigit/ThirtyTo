@@ -10,21 +10,15 @@
 		1590BAD260F02B421852C12E /* Pods_B32CFmacOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 875C38758DA332AB5D2EB133 /* Pods_B32CFmacOS.framework */; };
 		200CD016E8CFB52399F38FF8 /* Pods_B32CFtvOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E25FE9F181C0E41C3E29B451 /* Pods_B32CFtvOS.framework */; };
 		36DDCBF56B54BEEF079104E1 /* Pods_B32CFwatchOS_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C5002ACBB45EC2A3DB77708D /* Pods_B32CFwatchOS_Extension.framework */; };
-		732F854FCF17AA251DC229A8 /* Pods_B32CFtvOS_B32CFtvOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90762A747C73FC53C704E411 /* Pods_B32CFtvOS_B32CFtvOSUITests.framework */; };
-		7F3A85D7453081D725C7A831 /* Pods_B32CFiOS_B32CFiOSUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2C93F3CC1445951B9F232CD /* Pods_B32CFiOS_B32CFiOSUITests.framework */; };
 		B3471F1823AC2866002232CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F1723AC2866002232CB /* AppDelegate.swift */; };
 		B3471F1C23AC2866002232CB /* IntegerCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F1B23AC2866002232CB /* IntegerCountViewController.swift */; };
 		B3471F2123AC2867002232CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3471F2023AC2867002232CB /* Assets.xcassets */; };
 		B3471F2423AC2867002232CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3471F2223AC2867002232CB /* LaunchScreen.storyboard */; };
-		B3471F2F23AC2867002232CB /* B32CFiOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F2E23AC2867002232CB /* B32CFiOSTests.swift */; };
-		B3471F3A23AC2867002232CB /* B32CFiOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F3923AC2867002232CB /* B32CFiOSUITests.swift */; };
 		B3471F4C23AC287A002232CB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F4B23AC287A002232CB /* AppDelegate.swift */; };
 		B3471F4E23AC287A002232CB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F4D23AC287A002232CB /* ViewController.swift */; };
 		B3471F5123AC287A002232CB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3471F4F23AC287A002232CB /* Main.storyboard */; };
 		B3471F5323AC287B002232CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3471F5223AC287B002232CB /* Assets.xcassets */; };
 		B3471F5623AC287B002232CB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3471F5423AC287B002232CB /* LaunchScreen.storyboard */; };
-		B3471F6123AC287B002232CB /* B32CFtvOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F6023AC287B002232CB /* B32CFtvOSTests.swift */; };
-		B3471F6C23AC287B002232CB /* B32CFtvOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F6B23AC287B002232CB /* B32CFtvOSUITests.swift */; };
 		B3471F7E23AC288B002232CB /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3471F7D23AC288B002232CB /* main.swift */; };
 		B3471F8823AC2985002232CB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B3471F8623AC2985002232CB /* Interface.storyboard */; };
 		B3471F8A23AC2986002232CB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B3471F8923AC2986002232CB /* Assets.xcassets */; };
@@ -35,41 +29,11 @@
 		B3471F9E23AC2986002232CB /* B32CFwatchOS.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = B3471F8423AC2985002232CB /* B32CFwatchOS.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		B37C882923AC478D0059163C /* IntegerCountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B37C882823AC478D0059163C /* IntegerCountViewController.xib */; };
 		B37C882B23AC572F0059163C /* IdentifierDataTypeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */; };
-		B7F481D1ADD0A68795DF9E49 /* Pods_B32CFtvOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 60FC24B3843DA358303F0402 /* Pods_B32CFtvOSTests.framework */; };
-		C7488EC88317429B4AA99055 /* Pods_B32CFiOSTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1EC70E30B0F8C5213145537 /* Pods_B32CFiOSTests.framework */; };
 		D65D7983116A6018384BFFEC /* Pods_B32CFiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 92E176E9E56B8795261FF7D6 /* Pods_B32CFiOS.framework */; };
 		F877321C31A6A8A84429E6A6 /* Pods_B32CFwatchOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8886CE540DA1DD5086880D88 /* Pods_B32CFwatchOS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		B3471F2B23AC2867002232CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B3471F0A23AC2823002232CB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B3471F1323AC2866002232CB;
-			remoteInfo = B32CFiOS;
-		};
-		B3471F3623AC2867002232CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B3471F0A23AC2823002232CB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B3471F1323AC2866002232CB;
-			remoteInfo = B32CFiOS;
-		};
-		B3471F5D23AC287B002232CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B3471F0A23AC2823002232CB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B3471F4823AC287A002232CB;
-			remoteInfo = B32CFtvOS;
-		};
-		B3471F6823AC287B002232CB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = B3471F0A23AC2823002232CB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B3471F4823AC287A002232CB;
-			remoteInfo = B32CFtvOS;
-		};
 		B3471F9223AC2986002232CB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = B3471F0A23AC2823002232CB /* Project object */;
@@ -145,12 +109,6 @@
 		B3471F2023AC2867002232CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3471F2323AC2867002232CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3471F2523AC2867002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3471F2A23AC2867002232CB /* B32CFiOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B32CFiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3471F2E23AC2867002232CB /* B32CFiOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B32CFiOSTests.swift; sourceTree = "<group>"; };
-		B3471F3023AC2867002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3471F3523AC2867002232CB /* B32CFiOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B32CFiOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3471F3923AC2867002232CB /* B32CFiOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B32CFiOSUITests.swift; sourceTree = "<group>"; };
-		B3471F3B23AC2867002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3471F4923AC287A002232CB /* B32CFtvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B32CFtvOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3471F4B23AC287A002232CB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B3471F4D23AC287A002232CB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -158,12 +116,8 @@
 		B3471F5223AC287B002232CB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B3471F5523AC287B002232CB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B3471F5723AC287B002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3471F5C23AC287B002232CB /* B32CFtvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B32CFtvOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3471F6023AC287B002232CB /* B32CFtvOSTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B32CFtvOSTests.swift; sourceTree = "<group>"; };
 		B3471F6223AC287B002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B3471F6723AC287B002232CB /* B32CFtvOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = B32CFtvOSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B3471F6B23AC287B002232CB /* B32CFtvOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = B32CFtvOSUITests.swift; sourceTree = "<group>"; };
-		B3471F6D23AC287B002232CB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B3471F7B23AC288B002232CB /* B32CFmacOS */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = B32CFmacOS; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3471F7D23AC288B002232CB /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		B3471F8423AC2985002232CB /* B32CFwatchOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = B32CFwatchOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -197,43 +151,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3471F2723AC2867002232CB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C7488EC88317429B4AA99055 /* Pods_B32CFiOSTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F3223AC2867002232CB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7F3A85D7453081D725C7A831 /* Pods_B32CFiOS_B32CFiOSUITests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B3471F4623AC287A002232CB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				200CD016E8CFB52399F38FF8 /* Pods_B32CFtvOS.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F5923AC287B002232CB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B7F481D1ADD0A68795DF9E49 /* Pods_B32CFtvOSTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F6423AC287B002232CB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				732F854FCF17AA251DC229A8 /* Pods_B32CFtvOS_B32CFtvOSUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,11 +231,8 @@
 			isa = PBXGroup;
 			children = (
 				B3471F1623AC2866002232CB /* B32CFiOS */,
-				B3471F2D23AC2867002232CB /* B32CFiOSTests */,
-				B3471F3823AC2867002232CB /* B32CFiOSUITests */,
 				B3471F4A23AC287A002232CB /* B32CFtvOS */,
 				B3471F5F23AC287B002232CB /* B32CFtvOSTests */,
-				B3471F6A23AC287B002232CB /* B32CFtvOSUITests */,
 				B3471F7C23AC288B002232CB /* B32CFmacOS */,
 				B3471F8523AC2985002232CB /* B32CFwatchOS */,
 				B3471F9423AC2986002232CB /* B32CFwatchOS Extension */,
@@ -327,11 +246,7 @@
 			isa = PBXGroup;
 			children = (
 				B3471F1423AC2866002232CB /* B32CFiOS.app */,
-				B3471F2A23AC2867002232CB /* B32CFiOSTests.xctest */,
-				B3471F3523AC2867002232CB /* B32CFiOSUITests.xctest */,
 				B3471F4923AC287A002232CB /* B32CFtvOS.app */,
-				B3471F5C23AC287B002232CB /* B32CFtvOSTests.xctest */,
-				B3471F6723AC287B002232CB /* B32CFtvOSUITests.xctest */,
 				B3471F7B23AC288B002232CB /* B32CFmacOS */,
 				B3471F8423AC2985002232CB /* B32CFwatchOS.app */,
 				B3471F9023AC2986002232CB /* B32CFwatchOS Extension.appex */,
@@ -351,24 +266,6 @@
 				B37C882A23AC572F0059163C /* IdentifierDataTypeTableViewController.swift */,
 			);
 			path = B32CFiOS;
-			sourceTree = "<group>";
-		};
-		B3471F2D23AC2867002232CB /* B32CFiOSTests */ = {
-			isa = PBXGroup;
-			children = (
-				B3471F2E23AC2867002232CB /* B32CFiOSTests.swift */,
-				B3471F3023AC2867002232CB /* Info.plist */,
-			);
-			path = B32CFiOSTests;
-			sourceTree = "<group>";
-		};
-		B3471F3823AC2867002232CB /* B32CFiOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B3471F3923AC2867002232CB /* B32CFiOSUITests.swift */,
-				B3471F3B23AC2867002232CB /* Info.plist */,
-			);
-			path = B32CFiOSUITests;
 			sourceTree = "<group>";
 		};
 		B3471F4A23AC287A002232CB /* B32CFtvOS */ = {
@@ -391,15 +288,6 @@
 				B3471F6223AC287B002232CB /* Info.plist */,
 			);
 			path = B32CFtvOSTests;
-			sourceTree = "<group>";
-		};
-		B3471F6A23AC287B002232CB /* B32CFtvOSUITests */ = {
-			isa = PBXGroup;
-			children = (
-				B3471F6B23AC287B002232CB /* B32CFtvOSUITests.swift */,
-				B3471F6D23AC287B002232CB /* Info.plist */,
-			);
-			path = B32CFtvOSUITests;
 			sourceTree = "<group>";
 		};
 		B3471F7C23AC288B002232CB /* B32CFmacOS */ = {
@@ -455,45 +343,6 @@
 			productReference = B3471F1423AC2866002232CB /* B32CFiOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B3471F2923AC2867002232CB /* B32CFiOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B3471F3F23AC2867002232CB /* Build configuration list for PBXNativeTarget "B32CFiOSTests" */;
-			buildPhases = (
-				CD7DF221BEEB1FB28D6D3A60 /* [CP] Check Pods Manifest.lock */,
-				B3471F2623AC2867002232CB /* Sources */,
-				B3471F2723AC2867002232CB /* Frameworks */,
-				B3471F2823AC2867002232CB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B3471F2C23AC2867002232CB /* PBXTargetDependency */,
-			);
-			name = B32CFiOSTests;
-			productName = B32CFiOSTests;
-			productReference = B3471F2A23AC2867002232CB /* B32CFiOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B3471F3423AC2867002232CB /* B32CFiOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B3471F4223AC2867002232CB /* Build configuration list for PBXNativeTarget "B32CFiOSUITests" */;
-			buildPhases = (
-				BBF66FA3C865D3E0323D88F6 /* [CP] Check Pods Manifest.lock */,
-				B3471F3123AC2867002232CB /* Sources */,
-				B3471F3223AC2867002232CB /* Frameworks */,
-				B3471F3323AC2867002232CB /* Resources */,
-				2EB9599961249D9EDD480305 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B3471F3723AC2867002232CB /* PBXTargetDependency */,
-			);
-			name = B32CFiOSUITests;
-			productName = B32CFiOSUITests;
-			productReference = B3471F3523AC2867002232CB /* B32CFiOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		B3471F4823AC287A002232CB /* B32CFtvOS */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = B3471F6E23AC287B002232CB /* Build configuration list for PBXNativeTarget "B32CFtvOS" */;
@@ -512,45 +361,6 @@
 			productName = B32CFtvOS;
 			productReference = B3471F4923AC287A002232CB /* B32CFtvOS.app */;
 			productType = "com.apple.product-type.application";
-		};
-		B3471F5B23AC287B002232CB /* B32CFtvOSTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B3471F7123AC287B002232CB /* Build configuration list for PBXNativeTarget "B32CFtvOSTests" */;
-			buildPhases = (
-				59363A7B43A954A67E6DC910 /* [CP] Check Pods Manifest.lock */,
-				B3471F5823AC287B002232CB /* Sources */,
-				B3471F5923AC287B002232CB /* Frameworks */,
-				B3471F5A23AC287B002232CB /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B3471F5E23AC287B002232CB /* PBXTargetDependency */,
-			);
-			name = B32CFtvOSTests;
-			productName = B32CFtvOSTests;
-			productReference = B3471F5C23AC287B002232CB /* B32CFtvOSTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		B3471F6623AC287B002232CB /* B32CFtvOSUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = B3471F7423AC287B002232CB /* Build configuration list for PBXNativeTarget "B32CFtvOSUITests" */;
-			buildPhases = (
-				111BCB016FF5CA904EFD994D /* [CP] Check Pods Manifest.lock */,
-				B3471F6323AC287B002232CB /* Sources */,
-				B3471F6423AC287B002232CB /* Frameworks */,
-				B3471F6523AC287B002232CB /* Resources */,
-				07CF927B15E11B7F1BB08CA7 /* [CP] Embed Pods Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				B3471F6923AC287B002232CB /* PBXTargetDependency */,
-			);
-			name = B32CFtvOSUITests;
-			productName = B32CFtvOSUITests;
-			productReference = B3471F6723AC287B002232CB /* B32CFtvOSUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 		B3471F7A23AC288B002232CB /* B32CFmacOS */ = {
 			isa = PBXNativeTarget;
@@ -620,24 +430,8 @@
 					B3471F1323AC2866002232CB = {
 						CreatedOnToolsVersion = 11.3;
 					};
-					B3471F2923AC2867002232CB = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = B3471F1323AC2866002232CB;
-					};
-					B3471F3423AC2867002232CB = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = B3471F1323AC2866002232CB;
-					};
 					B3471F4823AC287A002232CB = {
 						CreatedOnToolsVersion = 11.3;
-					};
-					B3471F5B23AC287B002232CB = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = B3471F4823AC287A002232CB;
-					};
-					B3471F6623AC287B002232CB = {
-						CreatedOnToolsVersion = 11.3;
-						TestTargetID = B3471F4823AC287A002232CB;
 					};
 					B3471F7A23AC288B002232CB = {
 						CreatedOnToolsVersion = 11.3;
@@ -664,11 +458,7 @@
 			projectRoot = "";
 			targets = (
 				B3471F1323AC2866002232CB /* B32CFiOS */,
-				B3471F2923AC2867002232CB /* B32CFiOSTests */,
-				B3471F3423AC2867002232CB /* B32CFiOSUITests */,
 				B3471F4823AC287A002232CB /* B32CFtvOS */,
-				B3471F5B23AC287B002232CB /* B32CFtvOSTests */,
-				B3471F6623AC287B002232CB /* B32CFtvOSUITests */,
 				B3471F7A23AC288B002232CB /* B32CFmacOS */,
 				B3471F8323AC2985002232CB /* B32CFwatchOS */,
 				B3471F8F23AC2986002232CB /* B32CFwatchOS Extension */,
@@ -687,20 +477,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3471F2823AC2867002232CB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F3323AC2867002232CB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B3471F4723AC287A002232CB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -708,20 +484,6 @@
 				B3471F5623AC287B002232CB /* LaunchScreen.storyboard in Resources */,
 				B3471F5323AC287B002232CB /* Assets.xcassets in Resources */,
 				B3471F5123AC287A002232CB /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F5A23AC287B002232CB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F6523AC287B002232CB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,23 +507,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		07CF927B15E11B7F1BB08CA7 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-B32CFtvOS-B32CFtvOSUITests/Pods-B32CFtvOS-B32CFtvOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-B32CFtvOS-B32CFtvOSUITests/Pods-B32CFtvOS-B32CFtvOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-B32CFtvOS-B32CFtvOSUITests/Pods-B32CFtvOS-B32CFtvOSUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		0FDB189948DC2A70D8987D2E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -784,45 +529,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		111BCB016FF5CA904EFD994D /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-B32CFtvOS-B32CFtvOSUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		2EB9599961249D9EDD480305 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-B32CFiOS-B32CFiOSUITests/Pods-B32CFiOS-B32CFiOSUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-B32CFiOS-B32CFiOSUITests/Pods-B32CFiOS-B32CFiOSUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-B32CFiOS-B32CFiOSUITests/Pods-B32CFiOS-B32CFiOSUITests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		2F31397608E190EC0C2EAB46 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -839,28 +545,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-B32CFtvOS-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59363A7B43A954A67E6DC910 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-B32CFtvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -967,28 +651,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		BBF66FA3C865D3E0323D88F6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-B32CFiOS-B32CFiOSUITests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		C286BF988C842BC21F1F60F5 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1006,28 +668,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-B32CFtvOS/Pods-B32CFtvOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CD7DF221BEEB1FB28D6D3A60 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-B32CFiOSTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1041,44 +681,12 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B3471F2623AC2867002232CB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3471F2F23AC2867002232CB /* B32CFiOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F3123AC2867002232CB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3471F3A23AC2867002232CB /* B32CFiOSUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		B3471F4523AC287A002232CB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B3471F4E23AC287A002232CB /* ViewController.swift in Sources */,
 				B3471F4C23AC287A002232CB /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F5823AC287B002232CB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3471F6123AC287B002232CB /* B32CFtvOSTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		B3471F6323AC287B002232CB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				B3471F6C23AC287B002232CB /* B32CFtvOSUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1102,26 +710,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		B3471F2C23AC2867002232CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B3471F1323AC2866002232CB /* B32CFiOS */;
-			targetProxy = B3471F2B23AC2867002232CB /* PBXContainerItemProxy */;
-		};
-		B3471F3723AC2867002232CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B3471F1323AC2866002232CB /* B32CFiOS */;
-			targetProxy = B3471F3623AC2867002232CB /* PBXContainerItemProxy */;
-		};
-		B3471F5E23AC287B002232CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B3471F4823AC287A002232CB /* B32CFtvOS */;
-			targetProxy = B3471F5D23AC287B002232CB /* PBXContainerItemProxy */;
-		};
-		B3471F6923AC287B002232CB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = B3471F4823AC287A002232CB /* B32CFtvOS */;
-			targetProxy = B3471F6823AC287B002232CB /* PBXContainerItemProxy */;
-		};
 		B3471F9323AC2986002232CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = B3471F8F23AC2986002232CB /* B32CFwatchOS Extension */;
@@ -1380,292 +968,6 @@
 			};
 			name = Release;
 		};
-		B3471F4023AC2867002232CB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 11A2BDB3BDEB8D696B69016C /* Pods-B32CFiOSTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFiOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFiOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B32CFiOS.app/B32CFiOS";
-			};
-			name = Debug;
-		};
-		B3471F4123AC2867002232CB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 986A3221D9519C4CB06B047B /* Pods-B32CFiOSTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFiOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFiOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B32CFiOS.app/B32CFiOS";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B3471F4323AC2867002232CB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = EE2F1EFE8B83DAA232065ED5 /* Pods-B32CFiOS-B32CFiOSUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFiOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = B32CFiOS;
-			};
-			name = Debug;
-		};
-		B3471F4423AC2867002232CB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3ECDC1613DC2634168EBF0F3 /* Pods-B32CFiOS-B32CFiOSUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFiOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFiOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = B32CFiOS;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
 		B3471F6F23AC287B002232CB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 10D6FCE12FD5776984584982 /* Pods-B32CFtvOS.debug.xcconfig */;
@@ -1800,292 +1102,6 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 3;
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B3471F7223AC287B002232CB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = DED88095D7DE8AC9D94BD045 /* Pods-B32CFtvOSTests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFtvOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFtvOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B32CFtvOS.app/B32CFtvOS";
-			};
-			name = Debug;
-		};
-		B3471F7323AC287B002232CB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3AAEDC8695ECAE3211E9D92B /* Pods-B32CFtvOSTests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFtvOSTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFtvOSTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/B32CFtvOS.app/B32CFtvOS";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		B3471F7523AC287B002232CB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AB65F263961D907051B1F718 /* Pods-B32CFtvOS-B32CFtvOSUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_TESTABILITY = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFtvOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFtvOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_TARGET_NAME = B32CFtvOS;
-			};
-			name = Debug;
-		};
-		B3471F7623AC287B002232CB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1AF2EEE92F7A800649AC1455 /* Pods-B32CFtvOS-B32CFtvOSUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
-				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
-				CLANG_WARN_BOOL_CONVERSION = YES;
-				CLANG_WARN_COMMA = YES;
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
-				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_EMPTY_BODY = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
-				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
-				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
-				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
-				CLANG_WARN_STRICT_PROTOTYPES = YES;
-				CLANG_WARN_SUSPICIOUS_MOVE = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CLANG_WARN_UNREACHABLE_CODE = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEVELOPMENT_TEAM = MLT7M394S7;
-				ENABLE_NS_ASSERTIONS = NO;
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
-				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
-				GCC_WARN_UNDECLARED_SELECTOR = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
-				GCC_WARN_UNUSED_FUNCTION = YES;
-				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = B32CFtvOSUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = NO;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.brightdigit.B32CFtvOSUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = appletvos;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TEST_TARGET_NAME = B32CFtvOS;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -2514,47 +1530,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B3471F3F23AC2867002232CB /* Build configuration list for PBXNativeTarget "B32CFiOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3471F4023AC2867002232CB /* Debug */,
-				B3471F4123AC2867002232CB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B3471F4223AC2867002232CB /* Build configuration list for PBXNativeTarget "B32CFiOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3471F4323AC2867002232CB /* Debug */,
-				B3471F4423AC2867002232CB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		B3471F6E23AC287B002232CB /* Build configuration list for PBXNativeTarget "B32CFtvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B3471F6F23AC287B002232CB /* Debug */,
 				B3471F7023AC287B002232CB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B3471F7123AC287B002232CB /* Build configuration list for PBXNativeTarget "B32CFtvOSTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3471F7223AC287B002232CB /* Debug */,
-				B3471F7323AC287B002232CB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		B3471F7423AC287B002232CB /* Build configuration list for PBXNativeTarget "B32CFtvOSUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				B3471F7523AC287B002232CB /* Debug */,
-				B3471F7623AC287B002232CB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

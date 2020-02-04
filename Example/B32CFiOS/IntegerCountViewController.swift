@@ -1,30 +1,22 @@
-//
-//  ViewController.swift
-//  B32CFiOS
-//
-//  Created by Leo Dion on 12/19/19.
-//
-
-import UIKit
 import Base32Crockford
+import UIKit
 
 class IntegerCountViewController: UIViewController {
-  
-  @IBOutlet weak var label : UILabel!
-  @IBOutlet weak var textField : UITextField!
-  @IBOutlet weak var slider : UISlider!
-  
-  var integerName : IdentifierDataIntName!
+  @IBOutlet var label: UILabel!
+  @IBOutlet var textField: UITextField!
+  @IBOutlet var slider: UISlider!
+
+  var integerName: IdentifierDataIntName!
   var generate: ((IdentifierDataType) -> String)?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view.
-    
-    //encoding.generate(count, from: .default)
-    //encoding.generate(1, from: .)
-    let unit : String
-    switch self.integerName {
+
+    // encoding.generate(count, from: .default)
+    // encoding.generate(1, from: .)
+    let unit: String
+    switch integerName {
     case .bytes:
       unit = "Bytes"
     case .minimumCount:
@@ -32,17 +24,16 @@ class IntegerCountViewController: UIViewController {
     default:
       unit = ""
     }
-    self.label.text = unit
+    label.text = unit
   }
 
-
-  @IBAction func generate(fromButton button: UIButton, withEvent: UIControl.Event) {
-    let type : IdentifierDataType?
-    switch self.integerName {
+  @IBAction func generate(fromButton _: UIButton, withEvent _: UIControl.Event) {
+    let type: IdentifierDataType?
+    switch integerName {
     case .bytes:
-      type = .bytes(size: Int(self.slider.value))
+      type = .bytes(size: Int(slider.value))
     case .minimumCount:
-      type = .minimumCount(Int(self.slider.value))
+      type = .minimumCount(Int(slider.value))
     default:
       type = nil
     }
@@ -50,9 +41,8 @@ class IntegerCountViewController: UIViewController {
       print(value)
     }
   }
-  
-  @IBAction func valueChanged(fromSlide slider: UISlider, withEvent: UIControl.Event) {
-    self.textField.text = "\(Int(slider.value))"
+
+  @IBAction func valueChanged(fromSlide slider: UISlider, withEvent _: UIControl.Event) {
+    textField.text = "\(Int(slider.value))"
   }
 }
-

@@ -1,22 +1,15 @@
-//
-//  AppDelegate.swift
-//  B32CFiOS
-//
-//  Created by Leo Dion on 12/19/19.
-//
-
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
-  func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+  func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
-    
+
     let viewController = IdentifierDataTypeTableViewController()
     let navigationViewController = UINavigationController(rootViewController: viewController)
-    let window = UIWindow.init(frame: UIScreen.main.bounds)
+    let window = UIWindow(frame: UIScreen.main.bounds)
     window.rootViewController = navigationViewController
     window.makeKeyAndVisible()
     self.window = window
@@ -24,7 +17,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   // MARK: UISceneSession Lifecycle
-
-
 }
-

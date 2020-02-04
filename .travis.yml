@@ -1,21 +1,14 @@
-matrix:
+jobs:
   include:
     - os: linux
       dist: bionic
-      #sudo: required
-      install:
-        - mkdir swift
-        - curl https://swift.org/builds/swift-5.1.3-release/ubuntu1804/swift-5.1.3-RELEASE/swift-5.1.3-RELEASE-ubuntu18.04.tar.gz -s | tar xz -C swift &> /dev/null
-        - export PATH="$(pwd)/swift/swift-5.1.3-RELEASE-ubuntu18.04/usr/bin:$PATH"
-      script:
-        - swift package update
-        - swift test
+      sudo: required
     - os: osx
-      language: objective-c
       osx_image: xcode11.3
-      before_install:
-        - gem install cocoapods --pre
-      script:
-        - swift package update
-        - swift test
-        - pod lib lint --allow-warnings
+env:
+  global:
+  - FRAMEWORK_NAME=_PACKAGE_NAME
+before_install:
+  - ./Scripts/before_install.sh
+script:
+  - ./Scripts/script.sh

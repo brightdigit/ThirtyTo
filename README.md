@@ -1,29 +1,29 @@
 # Base32Crockford
 
-[![CI Status](https://img.shields.io/travis/leogdion@brightdigit.com/Base32Crockford.svg?style=flat)](https://travis-ci.org/leogdion@brightdigit.com/Base32Crockford)
+[![SwiftPM](https://img.shields.io/badge/SPM-Linux%20%7C%20iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-success?logo=swift)](https://swift.org)
+[![Twitter](https://img.shields.io/badge/twitter-@brightdigit-blue.svg?style=flat)](http://twitter.com/brightdigit)
+![GitHub](https://img.shields.io/github/license/brightdigit/Base32Crockford)
+![GitHub issues](https://img.shields.io/github/issues/brightdigit/Base32Crockford)
+[![Beerpay](https://img.shields.io/beerpay/brightdigit/Base32Crockford.svg?maxAge=2592000)](https://beerpay.io/brightdigit/Base32Crockford)
+[![Analytics](https://ga-beacon.appspot.com/UA-33667276-5/brightdigit/Base32Crockford?flat&useReferer)](https://github.com/igrigorik/ga-beacon)
+
+![macOS](https://github.com/brightdigit/Base32Crockford/workflows/macOS/badge.svg)
+![ubuntu](https://github.com/brightdigit/Base32Crockford/workflows/ubuntu/badge.svg)
+![Travis (.com)](https://img.shields.io/travis/com/brightdigit/Base32Crockford?logo=travis)
+![Codecov](https://img.shields.io/codecov/c/github/brightdigit/Base32Crockford)
+![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/Base32Crockford)
+[![codebeat badge](https://codebeat.co/badges/4f86fb90-f8de-40c5-ab63-e6069cde5002)](https://codebeat.co/projects/github-com-brightdigit-Base32Crockford-master)
+![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/brightdigit/Base32Crockford)
+![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/brightdigit/Base32Crockford?label=debt)
+![Code Climate issues](https://img.shields.io/codeclimate/issues/brightdigit/Base32Crockford)
+
 [![Version](https://img.shields.io/cocoapods/v/Base32Crockford.svg?style=flat)](https://cocoapods.org/pods/Base32Crockford)
 [![License](https://img.shields.io/cocoapods/l/Base32Crockford.svg?style=flat)](https://cocoapods.org/pods/Base32Crockford)
 [![Platform](https://img.shields.io/cocoapods/p/Base32Crockford.svg?style=flat)](https://cocoapods.org/pods/Base32Crockford)
+![Cocoapods doc percentage](https://img.shields.io/cocoapods/metrics/doc-percent/Base32Crockford)
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
+[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
 
-## Example
+# DESCRIPTION HERE
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
-## Installation
-
-Base32Crockford is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-```ruby
-pod 'Base32Crockford'
-```
-
-## Author
-
-leogdion@brightdigit.com, leogdion@brightdigit.com
-
-## License
-
-Base32Crockford is available under the MIT license. See the LICENSE file for more info.
+[Documentation Here](/docs/README.md)

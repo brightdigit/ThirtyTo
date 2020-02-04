@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Base32Crockford: 3a1b3c2994cc9335c6a2f6bc3f71d385aa6cfd0f
+  Base32Crockford: f3fb224de46b1085aae162e964b505c31748ee12
 
 PODFILE CHECKSUM: aa0418ee7caecdcbf22902abc29fdeaa221737ef
 

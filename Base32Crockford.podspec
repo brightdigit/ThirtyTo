@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
   s.name             = 'Base32Crockford'
   s.version          = '0.1.0'
   s.summary          = 'Generate, encode, and decode data in a Base32 format.'
-  s.swift_version    = '4.2.1'
+  s.swift_version    = '5'
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -34,15 +34,4 @@ Using Douglas Crockford's Base32 encoding (https://www.crockford.com/wrmg/base32
   s.osx.deployment_target = '10.9'
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
-  # s.build_settings['EXPANDED_CODE_SIGN_IDENTITY'] = ""
-  # s.build_settings['CODE_SIGNING_REQUIRED'] = "NO"
-  # s.build_settings['CODE_SIGNING_ALLOWED'] = "NO"
-
-  # s.resource_bundles = {
-  #   'Base32Crockford' => ['Base32Crockford/Assets/*.png']
-  # }
-
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
