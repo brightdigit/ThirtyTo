@@ -57,9 +57,9 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
       }
     }
 
-    let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: $0)!
-    let values = string.map {
-      Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
+    let values = string.map { character -> String.IndexDistance in
+      let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: character)!
+      return Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
     }
 
     let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined(separator: "")
