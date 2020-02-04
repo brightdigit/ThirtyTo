@@ -8,7 +8,7 @@ extension Base32CrockfordEncodingProtocol {
   private func generateFromUUID() -> String {
     let uuid = UUID()
     let bytes = ByteCollection(uuid: uuid)
-    let data = Data(bytes: bytes)
+    let data = Data(bytes)
     return encode(data: data)
   }
 
