@@ -8,7 +8,7 @@
 [![Analytics](https://ga-beacon.appspot.com/UA-33667276-5/brightdigit/Base32Crockford?flat&useReferer)](https://github.com/igrigorik/ga-beacon)
 
 [![macOS](https://github.com/brightdigit/Base32Crockford/workflows/macOS/badge.svg)](https://github.com/brightdigit/Base32Crockford/actions?query=workflow%3AmacOS)
-[![ubuntu](https://github.com/brightdigit/Base32Crockford/workflows/ubuntu/badge.svg)]((https://github.com/brightdigit/Base32Crockford/actions?query=workflow%3Aubuntu)
+[![ubuntu](https://github.com/brightdigit/Base32Crockford/workflows/ubuntu/badge.svg)](https://github.com/brightdigit/Base32Crockford/actions?query=workflow%3Aubuntu)
 [![Travis (.com)](https://img.shields.io/travis/com/brightdigit/Base32Crockford?logo=travis)](https://travis-ci.com/brightdigit/Base32Crockford)
 [![Codecov](https://img.shields.io/codecov/c/github/brightdigit/Base32Crockford)](https://codecov.io/gh/brightdigit/Base32Crockford)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/Base32Crockford)](https://www.codefactor.io/repository/github/brightdigit/base32crockford)
