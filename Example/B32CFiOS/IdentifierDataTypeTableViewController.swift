@@ -90,9 +90,16 @@ class IdentifierDataTypeTableViewController: UITableViewController {
         idType = nil
       }
 
-      if let value = idType.map({ self.generate(basedOn: $0) }) {
-        print(value)
+      guard let actualType = idType else {
+        return
       }
+      let value = generate(basedOn: actualType)
+      let controller = UIAlertController(title: actualType.description, message: value, preferredStyle: .alert)
+      controller.addAction(UIAlertAction(title: "OK", style: .default, handler: {
+        _ in
+        controller.dismiss(animated: true)
+        }))
+      present(controller, animated: true)
     }
   }
 

@@ -18,7 +18,6 @@ final class Base32CrockfordTests: XCTestCase {
   func testMinimumUniqueCount() {
     [Int].random(withCount: 20, in: 0 ... 256).forEach(minimumUniqueCount(_:))
     minimumUniqueCount(0)
-    // self.minimumUniqueCount(0, withExpectedLength: 0)
   }
 
   func testMinimumUniqueCountLessThanZero() {
