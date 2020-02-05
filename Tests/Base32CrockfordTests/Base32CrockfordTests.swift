@@ -1,36 +1,6 @@
 @testable import Base32Crockford
 import XCTest
 
-//
-// extension XCTestCase {
-//  func expectFatalError(expectedMessage: String, testcase: @escaping () -> Void, completed: @escaping (String?) -> Void) {
-//
-//    // arrange
-//    let expectation = self.expectation(description: "expectingFatalError")
-//    var assertionMessage: String? = nil
-//
-//    // override fatalError. This will pause forever when fatalError is called.
-//    FatalErrorUtil.replaceFatalError { message, _, _ in
-//      assertionMessage = message
-//      expectation.fulfill()
-//      unreachable()
-//    }
-//
-//    // act, perform on separate thead because a call to fatalError pauses forever
-//    DispatchQueue.global(qos: .userInitiated).async(execute: testcase)
-//
-//    waitForExpectations(timeout: 5) { _ in
-//      // assert
-//      XCTAssertEqual(assertionMessage, expectedMessage)
-//
-//      // clean up
-//      FatalErrorUtil.restoreFatalError()
-//
-//      completed(assertionMessage)
-//    }
-//  }
-// }
-
 final class Base32CrockfordTests: XCTestCase {
   func testExample() {
     let b32cf = Base32CrockfordEncoding()
