@@ -1,11 +1,47 @@
-use_frameworks!
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
 
-target 'Base32Crockford_Example' do
+target 'iOS Example' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
   pod 'Base32Crockford', :path => '../'
 
-  target 'Base32Crockford_Tests' do
-    inherit! :search_paths
+  # Pods for iOS Example
 
-    
-  end
+end
+
+target 'macOS Example' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Base32Crockford', :path => '../'
+
+  # Pods for macOS Example
+
+end
+
+target 'tvOS Example' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Base32Crockford', :path => '../'
+
+  # Pods for tvOS Example
+
+end
+
+target 'watchOS Example' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+
+  # Pods for watchOS Example
+  pod 'Base32Crockford', :path => '../'
+
+end
+
+target 'watchOS Example Extension' do
+  # Comment the next line if you don't want to use dynamic frameworks
+  use_frameworks!
+  pod 'Base32Crockford', :path => '../'
+
+  # Pods for watchOS Example Extension
+
 end

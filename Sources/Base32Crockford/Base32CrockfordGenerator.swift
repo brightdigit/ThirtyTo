@@ -1,10 +1,3 @@
-//
-//  Base32CrockfordEncodingProtocol.Base32CrockfordGenerator.swift
-//  Base32Crockford
-//
-//  Created by Leo Dion on 11/8/18.
-//
-
 import Foundation
 
 public protocol Base32CrockfordGenerator {
@@ -12,22 +5,22 @@ public protocol Base32CrockfordGenerator {
 }
 
 extension Base32CrockfordEncodingProtocol {
-  private func generateFromUUID () -> String {
+  private func generateFromUUID() -> String {
     let uuid = UUID()
     let bytes = ByteCollection(uuid: uuid)
-    let data = Data(bytes: bytes)
-    return self.encode(data: data)
+    let data = Data(bytes)
+    return encode(data: data)
   }
-  
+
   private func generateSingle() -> String {
-    return self.generate(withByteSize: 5)
+    return generate(withByteSize: 5)
   }
-  
+
   private func generate(withByteSize size: Int) -> String {
     let data = Data.random(withNumberOfBytes: size)
-    return self.encode(data: data)
+    return encode(data: data)
   }
-  
+
   private func generate(forMinimumUniqueCount count: Int, fatalError: ((String?) -> Void)? = nil) -> String? {
     guard count > 0 else {
       if count == 0 {
@@ -41,30 +34,29 @@ extension Base32CrockfordEncodingProtocol {
         }
       }
     }
-    
+
     let data = Data.uniqueIdentifier(forMinimumCount: count)
-    return self.encode(data: data)
+    return encode(data: data)
   }
-  
+
   public func generateIdentifier(from identifierDataType: IdentifierDataType) -> String {
-    return self.generateIdentifier(from: identifierDataType)!
+    return generateIdentifier(from: identifierDataType)!
   }
-  
+
   private func generateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
     switch identifierDataType {
-      
     case .default:
-      return self.generateSingle()
+      return generateSingle()
     case .uuid:
-      return self.generateFromUUID()
-    case .bytes(let size):
-      return self.generate(withByteSize: size)
-    case .minimumCount(let count):
-      return self.generate(forMinimumUniqueCount: count, fatalError: fatalError)
+      return generateFromUUID()
+    case let .bytes(size):
+      return generate(withByteSize: size)
+    case let .minimumCount(count):
+      return generate(forMinimumUniqueCount: count, fatalError: fatalError)
     }
   }
-  
-  private func generate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]?  {
+
+  private func generate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
     guard count >= 0 else {
       if let fatalError = fatalError {
         fatalError("Array count cannot be less than 0.")
@@ -76,24 +68,22 @@ extension Base32CrockfordEncodingProtocol {
     guard count > 0 else {
       return [String]()
     }
-    return (1...count).map{
-      _ in
+    return (1 ... count).map { _ in
       self.generateIdentifier(from: identifierDataType)
     }
   }
-  
+
   public func generate(_ count: Int, from identifierDataType: IdentifierDataType) -> [String] {
-    return self.generate(count, from: identifierDataType, fatalError: nil)!
+    return generate(count, from: identifierDataType, fatalError: nil)!
   }
-  
+
   #if DEBUG
-  internal func debugGenerate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
-    return self.generate(count, from: identifierDataType, fatalError: fatalError)
-  }
-  
-  internal func debugGenerateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
-    return self.generateIdentifier(from: identifierDataType, fatalError: fatalError)
-  }
+    internal func debugGenerate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
+      return generate(count, from: identifierDataType, fatalError: fatalError)
+    }
+
+    internal func debugGenerateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
+      return generateIdentifier(from: identifierDataType, fatalError: fatalError)
+    }
   #endif
-  
 }

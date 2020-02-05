@@ -1,37 +1,26 @@
-//
-//  IdentifierDataType.swift
-//  Base32Crockford
-//
-//  Created by Leo Dion on 11/8/18.
-//
-
 import Foundation
 
-public enum IdentifierDataType : Equatable {
+public enum IdentifierDataType: Equatable {
   case `default`
   case uuid
   case bytes(size: Int)
   case minimumCount(Int)
-  
-  enum CodingKeys : String, CodingKey {
+
+  enum CodingKeys: String, CodingKey {
     case bytes
     case minimumCount
     case type
   }
 }
 
-struct InvalidIdentifierDataTypeError : Error {
-  
-}
+struct InvalidIdentifierDataTypeError: Error {}
 
-extension IdentifierDataType : Codable {
+extension IdentifierDataType: Codable {
   public init(from decoder: Decoder) throws {
-    
-  
     guard let container = try? decoder.container(keyedBy: CodingKeys.self) else {
       throw InvalidIdentifierDataTypeError()
     }
-    
+
     if container.allKeys.contains(.bytes) {
       guard let byteSize = try? container.decode(Int.self, forKey: .bytes) else {
         throw InvalidIdentifierDataTypeError()
@@ -52,24 +41,21 @@ extension IdentifierDataType : Codable {
         self = .default
         return
       }
-      
     }
     throw InvalidIdentifierDataTypeError()
   }
-  
+
   public func encode(to encoder: Encoder) throws {
     var container = encoder.container(keyedBy: CodingKeys.self)
     switch self {
     case .uuid:
       try container.encode("uuid", forKey: .type)
-    case .bytes(let size):
+    case let .bytes(size):
       try container.encode(size, forKey: .bytes)
-    case .minimumCount(let count):
+    case let .minimumCount(count):
       try container.encode(count, forKey: .minimumCount)
     default:
       try container.encodeNil(forKey: .type)
     }
   }
-  
-  
 }

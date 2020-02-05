@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "Docopt",
+        "repositoryURL": "https://github.com/elegantchaos/docopt.swift.git",
+        "state": {
+          "branch": null,
+          "revision": "fa71fca4b4e7411c70a21ef89256cd04a64c6dda",
+          "version": "0.6.11"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

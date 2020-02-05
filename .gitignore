@@ -1,27 +1,12 @@
+# Created by https://www.gitignore.io/api/swiftpm,swiftpackagemanager,xcode,swift,macos
+# Edit at https://www.gitignore.io/?templates=swiftpm,swiftpackagemanager,xcode,swift,macos
 
-# Created by https://www.gitignore.io/api/swift,xcode,swiftpm,carthage,cocoapods,swiftpackagemanager
-# Edit at https://www.gitignore.io/?templates=swift,xcode,swiftpm,carthage,cocoapods,swiftpackagemanager
-
-### Carthage ###
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-# Carthage/Checkouts
-
-Carthage/Build
-
-### CocoaPods ###
-## CocoaPods GitIgnore Template
-
-# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
-#           - Also handy if you have a large number of dependant pods
-#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
-Pods/
-# Created by https://www.gitignore.io/api/swift,xcode,macos
 
 ### macOS ###
 # General
 .DS_Store
+*.DS_Store
+
 .AppleDouble
 .LSOverride
 
@@ -57,6 +42,10 @@ build/
 DerivedData/
 
 ## Various settings
+# Xcode
+#
+build/
+
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -70,6 +59,8 @@ xcuserdata/
 ## Other
 *.moved-aside
 *.xccheckout
+*.xcuserstate
+
 *.xcscmblueprint
 
 ## Obj-C/Swift specific
@@ -83,33 +74,41 @@ timeline.xctimeline
 playground.xcworkspace
 
 # Swift Package Manager
-#
 # Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-Packages/
-Package.pins
-Package.resolved
+# Packages/
+# Package.pins
+# Package.resolved
 .build/
+xcuserdata
+*.xccheckout
+*.moved-aside
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
 
 # CocoaPods
-#
+
 # We recommend against adding the Pods directory to your .gitignore. However
 # you should judge for yourself, the pros and cons are mentioned at:
 # https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-*.xcworkspace
+
+Example/Pods/
+Example/*.xcworkspace
 
 # Carthage
-#
+
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
 
 Carthage/Build
 
+# Accio dependency management
+Dependencies/
+.accio/
+
 # fastlane
-#
+
 # It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
 # screenshots whenever they are needed.
 # For more information about the recommended setup visit:
@@ -121,79 +120,48 @@ fastlane/screenshots/**/*.png
 fastlane/test_output
 
 # Code Injection
-#
 # After new code Injection tools there's a generated folder /iOSInjectionProject
 # https://github.com/johnno1962/injectionforxcode
+VCS.swift
 
 iOSInjectionProject/
+Products
+
 
 ### SwiftPackageManager ###
 Packages
 xcuserdata
-*.xcodeproj
+/*.xcodeproj
+.tmp
+
 
 ### SwiftPM ###
 
+
 ### Xcode ###
 # Xcode
-#
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-## Build generated
+## User settings
 
-## Various settings
+## compatibility with Xcode 8 and earlier (ignoring not required starting Xcode 9)
 
-## Other
+## compatibility with Xcode 3 and earlier (ignoring not required starting Xcode 4)
 
-## Obj-C/Swift specific
+## Xcode Patch
+/*.xcodeproj/*
+.swiftpm
 
-## Playgrounds
-
-# Swift Package Manager
-#
-# Add this line if you want to avoid checking in source code from Swift Package Manager dependencies.
-Packages/
-Package.pins
-Package.resolved
-
-# CocoaPods
-#
-# We recommend against adding the Pods directory to your .gitignore. However
-# you should judge for yourself, the pros and cons are mentioned at:
-# https://guides.cocoapods.org/using/using-cocoapods.html#should-i-check-the-pods-directory-into-source-control
-#
-Pods/
-#
-# Add this line if you want to avoid checking in source code from the Xcode workspace
-*.xcworkspace
-
-# Carthage
-#
-# Add this line if you want to avoid checking in source code from Carthage dependencies.
-Carthage/Checkouts
-
-
-# fastlane
-#
-# It is recommended to not store the screenshots in the git repo. Instead, use fastlane to re-generate the
-# screenshots whenever they are needed.
-# For more information about the recommended setup visit:
-# https://docs.fastlane.tools/best-practices/source-control/#source-control
-
-
-# Code Injection
-#
-# After new code Injection tools there's a generated folder /iOSInjectionProject
-# https://github.com/johnno1962/injectionforxcode
-
-
-
-### Xcode Patch ###
-*.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
 /*.gcno
+
+### Xcode Patch ###
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.gitignore.io/api/swift,xcode,swiftpm,carthage,cocoapods,swiftpackagemanager
+# End of https://www.gitignore.io/api/swiftpm,swiftpackagemanager,xcode,swift,macos
+*.xcworkspace
+Pods
+*.lcov
+
