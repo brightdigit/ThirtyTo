@@ -4,7 +4,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
   public static let encoding: Base32CrockfordEncodingProtocol = Base32CrockfordEncoding()
 
   static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
-  static let checksum = [1, 1, 2, 4]
+  // static let checksum = [1, 1, 2, 4]
 
   struct ChecksumError: Error {}
 
@@ -31,7 +31,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     } while index != nil
 
     if lastSegment > 0 {
-      let lastIndex = (binary.next(bits: lastSegment)! << difference) + Base32CrockfordEncoding.checksum[difference - 1]
+      let lastIndex = (binary.next(bits: lastSegment)! << difference)
       let characterIndex = Base32CrockfordEncoding.characters.index(Base32CrockfordEncoding.characters.startIndex, offsetBy: lastIndex)
       encodedString.append(Base32CrockfordEncoding.characters[characterIndex])
     }
@@ -39,12 +39,13 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
   }
 
   public func decode(base32Encoded string: String) throws -> Data {
+    let standardized = string.uppercased()
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
     let checksumSize = strBitCount - dataBitCount
     let lastValue: UInt8?
     if checksumSize != 0 {
-      let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: string.last!)!
+      let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: standardized.last!)!
       lastValue = UInt8(Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex))
     } else {
       lastValue = nil
@@ -52,12 +53,12 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
 
     if let lastValue = lastValue {
       let checksumValue = (lastValue << (8 - checksumSize)) >> (8 - checksumSize)
-      guard checksumValue == Base32CrockfordEncoding.checksum[checksumSize - 1] else {
+      guard checksumValue == 0 else {
         throw ChecksumError()
       }
     }
 
-    let values = string.map { character -> String.IndexDistance in
+    let values = standardized.map { character -> String.IndexDistance in
       let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: character)!
       return Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
     }
