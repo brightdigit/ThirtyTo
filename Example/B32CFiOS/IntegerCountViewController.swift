@@ -12,8 +12,6 @@ extension IdentifierDataType: CustomStringConvertible {
       return "\(size) bytes"
     case let .minimumCount(count):
       return "Minimum Count of \(count)"
-    @unknown default:
-      return "Unknown"
     }
   }
 }
@@ -61,9 +59,9 @@ class IntegerCountViewController: UIViewController {
       return
     }
     let controller = UIAlertController(title: actualType.description, message: value, preferredStyle: .alert)
-    controller.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-      _ in
-      controller.dismiss(animated: true)
+    controller.addAction(UIAlertAction(title: "OK", style: .default,
+                                       handler: { _ in
+                                         controller.dismiss(animated: true)
       }))
     present(controller, animated: true)
   }

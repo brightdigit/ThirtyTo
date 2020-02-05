@@ -95,9 +95,9 @@ class IdentifierDataTypeTableViewController: UITableViewController {
       }
       let value = generate(basedOn: actualType)
       let controller = UIAlertController(title: actualType.description, message: value, preferredStyle: .alert)
-      controller.addAction(UIAlertAction(title: "OK", style: .default, handler: {
-        _ in
-        controller.dismiss(animated: true)
+      controller.addAction(UIAlertAction(title: "OK", style: .default,
+                                         handler: { _ in
+                                           controller.dismiss(animated: true)
         }))
       present(controller, animated: true)
     }
