@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Base32Crockford'
-  s.version          = '0.1.0'
+  s.version          = '0.2.0'
   s.summary          = 'Generate, encode, and decode data in a Base32 format.'
   s.swift_version    = '5'
 
