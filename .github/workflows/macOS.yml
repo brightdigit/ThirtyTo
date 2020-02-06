@@ -30,6 +30,8 @@ jobs:
       run: sourcedocs generate --spm-module ${{ env.PACKAGE_NAME }} --output-folder docs
     - name: CocoaPods Action
       run: pod lib lint
+    - name: SwiftPM check
+      run: swift package dump-package | jq -e ".products | length > 0"
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
