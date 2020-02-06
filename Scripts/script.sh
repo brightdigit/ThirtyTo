@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
-  swiftformat --lint . && swiftlint
+  swiftformat --lint . && swiftlint --quiet
 else
   # What to do in Ubunutu
   export PATH="${PWD}/swift-5.1.3-RELEASE-ubuntu18.04/usr/bin:$PATH"
