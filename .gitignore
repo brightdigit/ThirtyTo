@@ -164,4 +164,4 @@ xcuserdata
 *.xcworkspace
 Pods
 *.lcov
-
+Brewfile.lock.json
