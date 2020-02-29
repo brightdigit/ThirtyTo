@@ -12,7 +12,7 @@
 [![Travis (.com)](https://img.shields.io/travis/com/brightdigit/Base32Crockford?logo=travis)](https://travis-ci.com/brightdigit/Base32Crockford)
 [![Codecov](https://img.shields.io/codecov/c/github/brightdigit/Base32Crockford)](https://codecov.io/gh/brightdigit/Base32Crockford)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/Base32Crockford)](https://www.codefactor.io/repository/github/brightdigit/base32crockford)
-[![codebeat badge](https://codebeat.co/badges/4f86fb90-f8de-40c5-ab63-e6069cde5002)](https://codebeat.co/projects/github-com-brightdigit-Base32Crockford-master)
+[![codebeat badge](https://codebeat.co/badges/4f86fb90-f8de-40c5-ab63-e6069cde5002)](https://codebeat.co/projects/github-com-brightdigit-base32crockford-master)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/brightdigit/Base32Crockford)](https://codeclimate.com/github/brightdigit/Base32Crockford)
 [![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/brightdigit/Base32Crockford?label=debt)](https://codeclimate.com/github/brightdigit/Base32Crockford)
 [![Code Climate issues](https://img.shields.io/codeclimate/issues/brightdigit/Base32Crockford)](https://codeclimate.com/github/brightdigit/Base32Crockford)
