@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'Base32Crockford'
-  s.version          = '0.2.0'
+  s.version          = '0.3.0'
   s.summary          = 'Generate, encode, and decode data in a Base32 format.'
   s.swift_version    = '5'
 
@@ -26,7 +26,7 @@ Using Douglas Crockford's Base32 encoding (https://www.crockford.com/wrmg/base32
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'leogdion@brightdigit.com' => 'leogdion@brightdigit.com' }
-  s.source           = { :git => 'https://github.com/brightdigit/Base32Crockford.git', :tag => "0.2.0" }
+  s.source           = { :git => 'https://github.com/brightdigit/Base32Crockford.git', :tag => "0.3.0" }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>
 
   s.source_files = 'Sources/Base32Crockford/**/*'
