@@ -3,6 +3,12 @@
 # `Base32CrockfordEncodingProtocol`
 
 ## Methods
+### `standardize(string:)`
+
+```swift
+func standardize(string: String) -> String
+```
+
 ### `generateIdentifier(from:)`
 
 ```swift
