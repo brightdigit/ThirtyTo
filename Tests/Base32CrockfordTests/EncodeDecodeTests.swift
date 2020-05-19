@@ -31,20 +31,33 @@ final class EncodeDecodeTests: XCTestCase {
     }
   }
 
+  func decode(value: String, withExpected expected: Data) {
+    let actual: Data
+    do {
+      actual = try Base32CrockfordEncoding.encoding.decode(base32Encoded: value)
+    } catch {
+      XCTFail(error.localizedDescription)
+      return
+    }
+    XCTAssertEqual(actual, expected)
+  }
+
   func testDecoding() {
     for (expectedString, value) in data {
-      let actual: Data
       guard let expected = expectedString.data(using: .utf8) else {
         XCTFail("Unable to create data from string")
         continue
       }
-      do {
-        actual = try Base32CrockfordEncoding.encoding.decode(base32Encoded: value)
-      } catch {
-        XCTFail(error.localizedDescription)
-        continue
-      }
-      XCTAssertEqual(actual, expected)
+      var newValue = value
+      decode(value: value, withExpected: expected)
+      newValue = newValue.replacingOccurrences(of: "0", with: "O")
+      decode(value: newValue, withExpected: expected)
+      newValue = newValue.replacingOccurrences(of: "1", with: "L")
+      decode(value: newValue, withExpected: expected)
+      newValue = newValue.replacingOccurrences(of: "L", with: "I")
+      decode(value: newValue, withExpected: expected)
+      newValue = newValue.lowercased()
+      decode(value: newValue, withExpected: expected)
     }
   }
 }

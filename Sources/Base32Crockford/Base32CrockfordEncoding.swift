@@ -4,6 +4,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
   public static let encoding: Base32CrockfordEncodingProtocol = Base32CrockfordEncoding()
 
   static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
+
   // static let checksum = [1, 1, 2, 4]
 
   struct ChecksumError: Error {}
@@ -38,8 +39,26 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     return encodedString
   }
 
+  public func decodeWithoutChecksum(base32Encoded string: String) -> Data {
+    let standardized = standardize(string: string)
+    let strBitCount = string.count * 5
+    let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
+    let checksumSize = strBitCount - dataBitCount
+
+    let values = standardized.map { character -> String.IndexDistance in
+      let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: character)!
+      return Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
+    }
+
+    let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined(separator: "")
+
+    let bitStringWithoutChecksum = String(bitString[bitString.startIndex ... bitString.index(bitString.endIndex, offsetBy: -checksumSize - 1)])
+    let dataBytes = bitStringWithoutChecksum.split(by: 8).compactMap { UInt8($0, radix: 2) }
+    return Data(dataBytes)
+  }
+
   public func decode(base32Encoded string: String) throws -> Data {
-    let standardized = string.uppercased()
+    let standardized = standardize(string: string)
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
     let checksumSize = strBitCount - dataBitCount
