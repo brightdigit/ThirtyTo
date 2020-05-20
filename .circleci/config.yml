@@ -19,8 +19,8 @@ jobs:
       PACKAGE_NAME: << pipeline.parameters.package-name >>
     steps:
       - checkout
-      - run: apt-get update; apt-get install -y clang libicu-dev libssl-dev zlib1g-dev
-      - run: swift -v
+      #- run: apt-get update; apt-get install -y clang libicu-dev libssl-dev zlib1g-dev
+      #- run: swift -v
       - run:
          name: Download Swift 5.2
          command: wget -q https://swift.org/builds/swift-5.2-release/ubuntu1604/swift-5.2-RELEASE/swift-5.2-RELEASE-ubuntu16.04.tar.gz
@@ -48,7 +48,7 @@ jobs:
           command: llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/${{ PACKAGE_NAME }}PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
       - codecov/upload:
           file: << pipeline.parameters.codecov-upload-file >>
-          flags: circleci,bionic
+          flags: circleci,xenial
   build-catalina-11_4_1:
     macos:
       xcode: "11.4.1"
