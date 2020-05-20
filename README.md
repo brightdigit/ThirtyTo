@@ -10,6 +10,9 @@
 [![macOS](https://github.com/brightdigit/Base32Crockford/workflows/macOS/badge.svg)](https://github.com/brightdigit/Base32Crockford/actions?query=workflow%3AmacOS)
 [![ubuntu](https://github.com/brightdigit/Base32Crockford/workflows/ubuntu/badge.svg)](https://github.com/brightdigit/Base32Crockford/actions?query=workflow%3Aubuntu)
 [![Travis (.com)](https://img.shields.io/travis/com/brightdigit/Base32Crockford?logo=travis)](https://travis-ci.com/brightdigit/Base32Crockford)
+[![CircleCI](https://img.shields.io/circleci/build/github/brightdigit/Base32Crockford?label=xenial&logo=circleci&token=138d740bf2a55bea45604d67de3b4343ec074f9)](https://circleci.com/gh/brightdigit/Base32Crockford)
+[![Bitrise](https://img.shields.io/bitrise/2a58136e0ba95d50?label=macOS&logo=bitrise&token=hulZMBnfXwp0kKvyVcq8Ig)](https://app.bitrise.io/app/2a58136e0ba95d50)
+
 [![Codecov](https://img.shields.io/codecov/c/github/brightdigit/Base32Crockford)](https://codecov.io/gh/brightdigit/Base32Crockford)
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/Base32Crockford)](https://www.codefactor.io/repository/github/brightdigit/base32crockford)
 [![codebeat badge](https://codebeat.co/badges/4f86fb90-f8de-40c5-ab63-e6069cde5002)](https://codebeat.co/projects/github-com-brightdigit-base32crockford-master)
