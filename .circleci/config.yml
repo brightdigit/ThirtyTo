@@ -14,7 +14,7 @@ orbs:
 jobs:
   build-bionic:  
     machine:
-       image: swift:bionic
+      image: swift:bionic
     environment:
       PACKAGE_NAME: << pipeline.parameters.package-name >>
     steps:
