@@ -1,5 +1,6 @@
 ## Protocols
 
+-   [Base32CrockfordComparer](protocols/Base32CrockfordComparer.md)
 -   [Base32CrockfordEncodingProtocol](protocols/Base32CrockfordEncodingProtocol.md)
 -   [Base32CrockfordGenerator](protocols/Base32CrockfordGenerator.md)
 

@@ -3,7 +3,7 @@
 # `Base32CrockfordEncoding`
 
 ```swift
-public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol
+public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32CrockfordComparer
 ```
 
 ## Methods
@@ -17,4 +17,10 @@ public func encode(data: Data) -> String
 
 ```swift
 public func decode(base32Encoded string: String) throws -> Data
+```
+
+### `data(_:hasEncodedPrefix:)`
+
+```swift
+public func data(_ data: Data, hasEncodedPrefix prefix: String) -> Bool
 ```
