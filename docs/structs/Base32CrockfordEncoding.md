@@ -13,6 +13,12 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol
 public func encode(data: Data) -> String
 ```
 
+### `decodeWithoutChecksum(base32Encoded:)`
+
+```swift
+public func decodeWithoutChecksum(base32Encoded string: String) -> Data
+```
+
 ### `decode(base32Encoded:)`
 
 ```swift
