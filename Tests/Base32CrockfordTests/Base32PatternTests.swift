@@ -21,12 +21,8 @@ final class Base32EqualityTests: XCTestCase {
       shortValues.append((shortValues.last ?? shortId).lowercased())
       shortValues = [String](Set(shortValues))
       for aShortId in shortValues {
-        debugPrint(aShortId, fullId)
+        XCTAssert(Base32CrockfordEncoding.comparer.data(data, hasEncodedPrefix: aShortId))
         checks += 1
-        let result = encoding.decodeWithoutChecksum(base32Encoded: aShortId)
-        for (lhs, rhs) in zip(data, result) {
-          XCTAssertEqual(lhs, rhs)
-        }
       }
       if checks > 500 {
         return
