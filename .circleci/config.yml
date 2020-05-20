@@ -12,25 +12,23 @@ parameters:
 orbs:
   codecov: codecov/codecov@1.0.5
 jobs:
-  build-bionic:
-    docker:
-       - image: swift:bionic
+  build-xenial:  
+    machine:
+      image: ubuntu-1604:201903-01
     environment:
       PACKAGE_NAME: << pipeline.parameters.package-name >>
     steps:
       - checkout
-      - run: apt-get update; apt-get install -y clang libicu-dev libssl-dev zlib1g-dev
-      - run: swift -v
-      #- run:
-      #    name: Download Swift 5.2
-      #    command: wget -q https://swift.org/builds/swift-5.2-release/ubuntu1804/swift-5.2-RELEASE/swift-5.2-RELEASE-ubuntu18.04.tar.gz
-      #- run:
-      #    name: Extract Swift 5.2
-      #    command: tar xzf swift-5.2-RELEASE-ubuntu18.04.tar.gz
-      #- run:
-      #    name: Add Path
-      #    command: echo 'export PATH=/home/circleci/project/swift-5.2-RELEASE-ubuntu18.04/usr/bin:$PATH' >> $BASH_ENV
-      #- run: pwd
+      - run:
+         name: Download Swift 5.2
+         command: wget -q https://swift.org/builds/swift-5.2-release/ubuntu1604/swift-5.2-RELEASE/swift-5.2-RELEASE-ubuntu16.04.tar.gz
+      - run:
+         name: Extract Swift 5.2
+         command: tar xzf swift-5.2-RELEASE-ubuntu16.04.tar.gz
+      - run:
+         name: Add Path
+         command: echo 'export PATH=/home/circleci/project/swift-5.2-RELEASE-ubuntu16.04/usr/bin:$PATH' >> $BASH_ENV
+      - run: pwd
       - run:
           name: Resolve
           command: swift package resolve
@@ -45,10 +43,10 @@ jobs:
           command: curl -s https://raw.githubusercontent.com/daveverwer/SwiftPMLibrary/master/script.sh | bash -s -- mine
       - run:
           name: Prepare Code Coverage
-          command: llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/${{ PACKAGE_NAME }}PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
+          command: llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/${PACKAGE_NAME}PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
       - codecov/upload:
           file: << pipeline.parameters.codecov-upload-file >>
-          flags: circleci,bionic
+          flags: circleci,xenial
   build-catalina-11_4_1:
     macos:
       xcode: "11.4.1"
@@ -81,5 +79,5 @@ workflows:
   version: 2
   build:
     jobs:
-      - build-catalina-11_4_1
-      - build-bionic
+      #- build-catalina-11_4_1
+      - build-xenial
