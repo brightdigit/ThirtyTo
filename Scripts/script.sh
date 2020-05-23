@@ -7,7 +7,7 @@ elif [[ $TRAVIS_OS_NAME = 'linux' ]]; then
   RELEASE_DOT=$(lsb_release -sr)
   RELEASE_NUM=${RELEASE_DOT//[-._]/}
   RELEASE_NAME=$(lsb_release -sc)
-  export PATH="${PWD}/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_NUM}/usr/bin:$PATH"
+  export PATH="${PWD}/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}/usr/bin:$PATH"
 fi
 
 swift build
