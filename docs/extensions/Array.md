@@ -1,6 +1,9 @@
 **EXTENSION**
 
 # `Array`
+```swift
+extension Array where Element == UInt8
+```
 
 ## Methods
 ### `init(uuid:)`
