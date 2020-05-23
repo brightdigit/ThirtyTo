@@ -38,7 +38,7 @@ jobs:
          command: tar xzf swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
       - run:
          name: Add Path
-         command: echo 'export PATH=${PWD}/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_NUM}/usr/bin:$PATH' >> $BASH_ENV
+         command: echo 'export PATH=${PWD}/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}/usr/bin:$PATH' >> $BASH_ENV
       - run:
           name: Resolve
           command: swift package resolve
