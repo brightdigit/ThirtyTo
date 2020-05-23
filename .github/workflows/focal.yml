@@ -1,4 +1,4 @@
-name: fossa
+name: focal
 
 on: [push]
 
@@ -8,9 +8,12 @@ jobs:
       PACKAGE_NAME: Base32Crockford
       SWIFT_VER: 5.2.4
 
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
 
+    container:
+      image: 'ubuntu:20.04'
+      
     steps:
     - uses: actions/checkout@v2
     - name: Set Ubuntu Release DOT
