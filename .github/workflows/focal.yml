@@ -23,7 +23,7 @@ jobs:
     #- name: Set Ubuntu Release NUM
     #  run: echo "::set-env name=RELEASE_NUM::${RELEASE_DOT//[-._]/}"
     - name: Download Swift 5.2.4
-      run: wget -q https://swift.org/builds/swift-${SWIFT_VER}-release/ubuntu${RELEASE_NUM}/swift-${SWIFT_VER}-RELEASE/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
+      run: curl -O https://swift.org/builds/swift-${SWIFT_VER}-release/ubuntu${RELEASE_NUM}/swift-${SWIFT_VER}-RELEASE/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
     - name: Extract Swift 5.2.4
       run: tar xzf swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
     - name: Add Path
