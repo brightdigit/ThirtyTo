@@ -4,8 +4,9 @@ if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
   swiftformat --lint . && swiftlint
 elif [[ $TRAVIS_OS_NAME = 'linux' ]]; then
   # What to do in Ubunutu
-  RELEASE_DOT=$(lsb_release -r)
-  RELEASE_NUM=$(cut -f2 <<< "$RELEASE_DOT")
+  RELEASE_DOT=$(lsb_release -sr)
+  RELEASE_NUM=${RELEASE_DOT//[-._]/}
+  RELEASE_NAME=$(lsb_release -sc)
   export PATH="${PWD}/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_NUM}/usr/bin:$PATH"
 fi
 
@@ -17,7 +18,7 @@ if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
   bash <(curl https://codecov.io/bash) -F travis -F macOS -n $TRAVIS_JOB_NUMBER-$TRAVIS_OS_NAME
 else
   llvm-cov export -format="lcov" .build/x86_64-unknown-linux-gnu/debug/${FRAMEWORK_NAME}PackageTests.xctest -instr-profile .build/debug/codecov/default.profdata > info.lcov
-  bash <(curl https://codecov.io/bash) -F travis -F bionic -n $TRAVIS_JOB_NUMBER-$TRAVIS_OS_NAME
+  bash <(curl https://codecov.io/bash) -F travis -F $RELEASE_NAME -n $TRAVIS_JOB_NUMBER-$TRAVIS_OS_NAME
 fi
 
 if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
