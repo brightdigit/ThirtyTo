@@ -17,6 +17,8 @@ jobs:
       image: 'ubuntu:20.04'
       
     steps:
+    - name: Install wget lsb-release
+      run: sudo apt-get install -y wget lsb-release
     - uses: actions/checkout@v2
     #- name: Set Ubuntu Release DOT
     #  run: echo "::set-env name=RELEASE_DOT::$(lsb_release -sr)"
