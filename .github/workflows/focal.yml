@@ -7,6 +7,8 @@ jobs:
     env:
       PACKAGE_NAME: Base32Crockford
       SWIFT_VER: 5.2.4
+      RELEASE_DOT: 20.04
+      RELEASE_NUM: 2004
 
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, 'ci skip')"
@@ -16,13 +18,13 @@ jobs:
       
     steps:
     - uses: actions/checkout@v2
-    - name: Set Ubuntu Release DOT
-      run: echo "::set-env name=RELEASE_DOT::$(lsb_release -sr)"
-    - name: Set Ubuntu Release NUM
-      run: echo "::set-env name=RELEASE_NUM::${RELEASE_DOT//[-._]/}"
-    - name: Download Swift 5.2
+    #- name: Set Ubuntu Release DOT
+    #  run: echo "::set-env name=RELEASE_DOT::$(lsb_release -sr)"
+    #- name: Set Ubuntu Release NUM
+    #  run: echo "::set-env name=RELEASE_NUM::${RELEASE_DOT//[-._]/}"
+    - name: Download Swift 5.2.4
       run: wget -q https://swift.org/builds/swift-${SWIFT_VER}-release/ubuntu${RELEASE_NUM}/swift-${SWIFT_VER}-RELEASE/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
-    - name: Extract Swift 5.2
+    - name: Extract Swift 5.2.4
       run: tar xzf swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}.tar.gz
     - name: Add Path
       run: echo "::add-path::$GITHUB_WORKSPACE/swift-${SWIFT_VER}-RELEASE-ubuntu${RELEASE_DOT}/usr/bin"
