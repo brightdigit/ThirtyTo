@@ -1,6 +1,9 @@
 **EXTENSION**
 
 # `IdentifierDataType`
+```swift
+extension IdentifierDataType: Codable
+```
 
 ## Methods
 ### `init(from:)`
