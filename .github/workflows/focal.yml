@@ -10,7 +10,7 @@ jobs:
       RELEASE_DOT: 20.04
       RELEASE_NUM: 2004
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
     if: "!contains(github.event.head_commit.message, 'ci skip')"
 
     container:
