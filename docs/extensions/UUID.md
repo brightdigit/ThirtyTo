@@ -1,6 +1,9 @@
 **EXTENSION**
 
 # `UUID`
+```swift
+extension UUID
+```
 
 ## Methods
 ### `init(data:)`

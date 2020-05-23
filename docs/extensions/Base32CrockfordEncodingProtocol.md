@@ -1,6 +1,9 @@
 **EXTENSION**
 
 # `Base32CrockfordEncodingProtocol`
+```swift
+public extension Base32CrockfordEncodingProtocol
+```
 
 ## Methods
 ### `standardize(string:)`

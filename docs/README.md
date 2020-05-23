@@ -1,3 +1,5 @@
+# Reference Documentation
+
 ## Protocols
 
 -   [Base32CrockfordComparer](protocols/Base32CrockfordComparer.md)
@@ -22,6 +24,7 @@
 -   [String](extensions/String.md)
 -   [UUID](extensions/UUID.md)
 
-# Reference Documentation
 This reference documentation was generated with
 [SourceDocs](https://github.com/eneko/SourceDocs).
+
+Generated at 2020-05-23 19:50:43 +0000
