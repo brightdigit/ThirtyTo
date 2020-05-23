@@ -6,9 +6,6 @@ parameters:
   package-name:
     type: string
     default: "Base32Crockford"
-  package-name:
-    type: string
-    default: "Base32Crockford"
   swift-ver:
     type: string
     default: "5.2.4"
