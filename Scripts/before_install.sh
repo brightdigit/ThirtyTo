@@ -6,7 +6,7 @@ if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
 elif [[ $TRAVIS_OS_NAME = 'linux' ]]; then
   RELEASE_DOT=$(lsb_release -sr)
   RELEASE_NUM=${RELEASE_DOT//[-._]/}
-  if [[ $TRAVIS_CPU_ARCH == "arm64" ]] then
+  if [[ $TRAVIS_CPU_ARCH == "arm64" ]]; then
     curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
     sudo apt-get install swift5
   else 
