@@ -16,11 +16,13 @@ jobs:
         architecture:  [armv7,aarch64]
         distribution: [ubuntu16.04, ubuntu18.04]
     steps:
+    - uses: actions/checkout@v2
     - name: Build with Swift on arm
       uses: uraimo/run-on-arch-action@master
       with:
         architecture: ${{ matrix.architecture }}
         distribution: ${{ matrix.distribution }}
+        additionalArgs: "--volume \"$(pwd):/package\" --workdir \"/package\""
         run: |
           apt update
           apt install -y curl lsb-release sudo
