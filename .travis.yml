@@ -3,6 +3,9 @@ jobs:
     - os: linux
       dist: bionic
       sudo: required
+    - os: linux
+      dist: focal
+      sudo: required
     - os: osx
       osx_image: xcode11.4
 env:
