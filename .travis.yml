@@ -1,13 +1,17 @@
 jobs:
   include:
     - os: linux
-      dist: bionic
+      dist: 
+        - focal
+        - bionic
       sudo: required
-    - os: linux
-      dist: focal
-      sudo: required
+      arch:
+        - amd64
+        - arm64
     - os: osx
-      osx_image: xcode11.4
+      osx_image: 
+        - xcode11.4
+        - xcode11.5
 env:
   global:
   - FRAMEWORK_NAME=Base32Crockford
