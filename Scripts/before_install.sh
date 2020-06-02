@@ -6,7 +6,7 @@ if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
 elif [[ $TRAVIS_OS_NAME = 'linux' ]]; then
   RELEASE_DOT=$(lsb_release -sr)
   RELEASE_NUM=${RELEASE_DOT//[-._]/}
-  apt-get install \
+  sudo apt-get install \
           binutils \
           git \
           gnupg2 \
