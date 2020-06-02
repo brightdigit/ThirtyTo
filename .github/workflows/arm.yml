@@ -27,7 +27,7 @@ jobs:
           RELEASE_DOT=$(lsb_release -sr)
           RELEASE_NUM=${RELEASE_DOT//[-._]/}
           curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
-          apt-get install swift5
+          apt-get install -y swift5
           swift build
           swift test --enable-test-discovery --enable-code-coverage
           ls .build
