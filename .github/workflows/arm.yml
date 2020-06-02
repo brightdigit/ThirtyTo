@@ -22,7 +22,7 @@ jobs:
       with:
         architecture: ${{ matrix.architecture }}
         distribution: ${{ matrix.distribution }}
-        additionalArgs: "--volume \"$(pwd):/package\" --workdir \"/package\""
+        additionalArgs: "--volume \"$GITHUB_WORKSPACE:/package\" --workdir \"/package\""
         run: |
           apt update
           apt install -y curl lsb-release sudo
