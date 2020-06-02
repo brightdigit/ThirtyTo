@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         architecture:  [armv7,aarch64]
-        distribution: [ubuntu16.04, ubuntu18.04, ubuntu20.04]
+        distribution: [ubuntu16.04, ubuntu18.04]
     steps:
     - name: Build with Swift on arm
       uses: uraimo/run-on-arch-action@master
