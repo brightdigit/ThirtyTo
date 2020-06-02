@@ -2,19 +2,15 @@ jobs:
   include:
     - os: linux
       dist: bionic
-      sudo: required
       arch: amd64
     - os: linux
       dist: focal
-      sudo: required
       arch: amd64
     - os: linux
       dist: bionic
-      sudo: required
       arch: arm64
     - os: linux
       dist: focal
-      sudo: required
       arch: arm64
     - os: osx
       osx_image: xcode11.4
