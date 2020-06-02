@@ -23,10 +23,10 @@ jobs:
         distribution: ${{ matrix.distribution }}
         run: |
           apt update
-          apt install -y curl lsb-release
+          apt install -y curl lsb-release sudo
           RELEASE_DOT=$(lsb_release -sr)
           RELEASE_NUM=${RELEASE_DOT//[-._]/}
-          curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | bash
+          curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
           apt-get install swift5
           swift build
           swift test --enable-test-discovery --enable-code-coverage
