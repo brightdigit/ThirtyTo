@@ -32,6 +32,25 @@ jobs:
           apt install -y curl lsb-release sudo clang
           RELEASE_DOT=$(lsb_release -sr)
           RELEASE_NUM=${RELEASE_DOT//[-._]/}
+          echo $RELEASE_DOT
+          if [[ $RELEASE_DOT == "20.04" ]]; then
+            sudo apt-get -y install \
+                    binutils \
+                    git \
+                    gnupg2 \
+                    libc6-dev \
+                    libcurl4 \
+                    libedit2 \
+                    libgcc-9-dev \
+                    libpython2.7 \
+                    libsqlite3-0 \
+                    libstdc++-9-dev \
+                    libxml2 \
+                    libz3-dev \
+                    pkg-config \
+                    tzdata \
+                    zlib1g-dev
+            fi
           dpkg-reconfigure --frontend noninteractive tzdata
           curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
           apt-get install -y swift5
