@@ -26,10 +26,13 @@ jobs:
         #additionalArgs: "--volume \"${{ GITHUB_WORKSPACE }}:/package\" --workdir \"/package\""
         run: |
           ls -la
+          export DEBIAN_FRONTEND=noninteractive
+          ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime
           apt update
           apt install -y curl lsb-release sudo clang
           RELEASE_DOT=$(lsb_release -sr)
           RELEASE_NUM=${RELEASE_DOT//[-._]/}
+          dpkg-reconfigure --frontend noninteractive tzdata
           curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
           apt-get install -y swift5
           swift build
