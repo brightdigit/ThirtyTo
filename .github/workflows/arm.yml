@@ -52,7 +52,7 @@ jobs:
                     zlib1g-dev
                     
             else 
-              apt-get install \
+              apt-get -y install \
                 binutils \
                 git \
                 libc6-dev \
