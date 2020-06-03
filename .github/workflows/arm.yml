@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        architecture:  [armv7,aarch64]
+        architecture:  [aarch64]
         distribution: [ubuntu16.04,ubuntu18.04,ubuntu20.04]
     steps:
     - uses: actions/checkout@v2
@@ -51,7 +51,7 @@ jobs:
                     tzdata \
                     zlib1g-dev
                     
-            else 
+            elif [[ $RELEASE_DOT == "16.04" ]]; then
               apt-get -y install \
                 binutils \
                 git \
