@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         architecture:  [armv7,aarch64]
-        distribution: [ubuntu16.04, ubuntu18.04]
+        distribution: [ubuntu18.04]
     steps:
     - uses: actions/checkout@v2
     - name: Build with Swift on arm
@@ -26,7 +26,7 @@ jobs:
         run: |
           ls -la
           apt update
-          apt install -y curl lsb-release sudo libcurl3
+          apt install -y curl lsb-release sudo
           RELEASE_DOT=$(lsb_release -sr)
           RELEASE_NUM=${RELEASE_DOT//[-._]/}
           curl -s https://packagecloud.io/install/repositories/swift-arm/release/script.deb.sh | sudo bash
