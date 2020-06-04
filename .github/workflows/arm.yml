@@ -1,4 +1,4 @@
-name: arch
+name: arm
 
 on: [push]
 
