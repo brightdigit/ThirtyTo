@@ -1,5 +1,5 @@
 PODS:
-  - Base32Crockford (0.1.0)
+  - Base32Crockford (0.4.0)
 
 DEPENDENCIES:
   - Base32Crockford (from `../`)
@@ -9,7 +9,7 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Base32Crockford: ea44d32e5fb261d3dacf24e3cf355393467a1fca
+  Base32Crockford: 2c9004cad743df15bc79ad6a3943cea4098eadd6
 
 PODFILE CHECKSUM: dffbe8d2393958c54cbebff2ecf40e88475ba72d
 
