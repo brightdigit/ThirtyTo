@@ -12,8 +12,10 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
   }
 
   fileprivate static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
+  fileprivate static let checkSymbols = "*~$=U"
 
   fileprivate struct ChecksumError: Error {}
+
   fileprivate func sizeOf(checksumFrom string: String) -> Int {
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8

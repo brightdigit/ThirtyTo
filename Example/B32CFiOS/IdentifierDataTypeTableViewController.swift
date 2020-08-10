@@ -98,7 +98,7 @@ class IdentifierDataTypeTableViewController: UITableViewController {
       controller.addAction(UIAlertAction(title: "OK", style: .default,
                                          handler: { _ in
                                            controller.dismiss(animated: true)
-        }))
+                                         }))
       present(controller, animated: true)
     }
   }

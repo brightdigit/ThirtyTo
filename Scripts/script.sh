@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
-  swiftformat --lint . && swiftlint
+  swift run swiftformat --lint . && swift run swiftlint
 elif [[ $TRAVIS_OS_NAME = 'linux' ]]; then
   # What to do in Ubunutu
   RELEASE_DOT=$(lsb_release -sr)
@@ -25,7 +25,7 @@ else
   bash <(curl https://codecov.io/bash) -F travis -F $RELEASE_NAME -F $ARCH -n $TRAVIS_JOB_NUMBER-$TRAVIS_OS_NAME
 fi
 
-curl -s https://raw.githubusercontent.com/daveverwer/SwiftPMLibrary/master/script.sh | bash -s -- mine
+# curl -s https://raw.githubusercontent.com/daveverwer/SwiftPMLibrary/master/script.sh | bash -s -- mine
 
 if [[ $TRAVIS_OS_NAME = 'osx' ]]; then
   pod lib lint
