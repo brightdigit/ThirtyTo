@@ -1,5 +1,18 @@
 import Foundation
 
+public struct Base32CrockfordEncodingOptions: OptionSet {
+  public let rawValue: Int
+  public static let withChecksum = Base32CrockfordEncodingOptions(rawValue: 1 << 0)
+
+  public static let none: Base32CrockfordEncodingOptions = []
+
+  public init(rawValue: Int) {
+    self.rawValue = rawValue
+  }
+}
+
+public typealias Base32CrockfordDecodingOptions = Base32CrockfordEncodingOptions
+
 public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32CrockfordComparer {
   fileprivate static let _encoding = Base32CrockfordEncoding()
 
@@ -16,22 +29,22 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
 
   fileprivate struct ChecksumError: Error {}
 
-  fileprivate func sizeOf(checksumFrom string: String) -> Int {
+  fileprivate func sizeOf(extensionFrom string: String) -> Int {
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
     return strBitCount - dataBitCount
   }
 
-  fileprivate func decodeWithoutChecksum(base32Encoded string: String) -> Data {
+  fileprivate func decodeWithoutExtension(base32Encoded string: String) -> Data {
     let standardized = standardize(string: string)
-    let checksumSize = sizeOf(checksumFrom: standardized)
+    let extensionSize = sizeOf(extensionFrom: standardized)
 
-    return decode(standardizedString: standardized, withChecksumSize: checksumSize)
+    return decode(standardizedString: standardized, withExtensionSize: extensionSize)
   }
 
-  fileprivate func verifyChecksum(_ checksumSize: Int, _ standardized: String) throws {
+  fileprivate func verifyExtension(_ size: Int, _ standardized: String) throws {
     let lastValue: UInt8?
-    if checksumSize != 0 {
+    if size != 0 {
       let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: standardized.last!)!
       lastValue = UInt8(Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex))
     } else {
@@ -39,14 +52,14 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
     }
 
     if let lastValue = lastValue {
-      let checksumValue = (lastValue << (8 - checksumSize)) >> (8 - checksumSize)
-      guard checksumValue == 0 else {
+      let extensionValue = (lastValue << (8 - size)) >> (8 - size)
+      guard extensionValue == 0 else {
         throw ChecksumError()
       }
     }
   }
 
-  fileprivate func decode(standardizedString standardized: String, withChecksumSize checksumSize: Int) -> Data {
+  fileprivate func decode(standardizedString standardized: String, withExtensionSize checksumSize: Int) -> Data {
     let values = standardized.map { character -> String.IndexDistance in
       let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: character)!
       return Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
@@ -59,7 +72,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
     return Data(dataBytes)
   }
 
-  public func encode(data: Data) -> String {
+  public func encode(data: Data, options _: Base32CrockfordEncodingOptions) -> String {
     let dataBitCount = data.count * 8
     let resBitCount = Int(ceil(Double(dataBitCount) / 5) * 5.0)
     let difference = resBitCount - dataBitCount
@@ -89,16 +102,16 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
     return encodedString
   }
 
-  public func decode(base32Encoded string: String) throws -> Data {
+  public func decode(base32Encoded string: String, options _: Base32CrockfordDecodingOptions) throws -> Data {
     let standardized = standardize(string: string)
-    let checksumSize = sizeOf(checksumFrom: standardized)
-    try verifyChecksum(checksumSize, standardized)
+    let extensionSize = sizeOf(extensionFrom: standardized)
+    try verifyExtension(extensionSize, standardized)
 
-    return decode(standardizedString: standardized, withChecksumSize: checksumSize)
+    return decode(standardizedString: standardized, withExtensionSize: extensionSize)
   }
 
   public func data(_ data: Data, hasEncodedPrefix prefix: String) -> Bool {
-    let prefixData = decodeWithoutChecksum(base32Encoded: prefix)
+    let prefixData = decodeWithoutExtension(base32Encoded: prefix)
     return zip(data, prefixData).allSatisfy { $0 == $1 }
   }
 }

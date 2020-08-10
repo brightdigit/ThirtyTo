@@ -7,16 +7,16 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
 ```
 
 ## Methods
-### `encode(data:)`
+### `encode(data:options:)`
 
 ```swift
-public func encode(data: Data) -> String
+public func encode(data: Data, options _: Base32CrockfordEncodingOptions) -> String
 ```
 
-### `decode(base32Encoded:)`
+### `decode(base32Encoded:options:)`
 
 ```swift
-public func decode(base32Encoded string: String) throws -> Data
+public func decode(base32Encoded string: String, options _: Base32CrockfordDecodingOptions) throws -> Data
 ```
 
 ### `data(_:hasEncodedPrefix:)`
