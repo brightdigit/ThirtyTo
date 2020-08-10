@@ -1,19 +1,19 @@
 import Foundation
 
+public struct InvalidIdentifierDataTypeError: Error {}
+
 public enum IdentifierDataType: Equatable {
   case `default`
   case uuid
   case bytes(size: Int)
   case minimumCount(Int)
 
-  enum CodingKeys: String, CodingKey {
+  public enum CodingKeys: String, CodingKey {
     case bytes
     case minimumCount
     case type
   }
 }
-
-struct InvalidIdentifierDataTypeError: Error {}
 
 extension IdentifierDataType: Codable {
   public init(from decoder: Decoder) throws {
@@ -28,7 +28,9 @@ extension IdentifierDataType: Codable {
       self = .bytes(size: byteSize)
       return
     } else if container.allKeys.contains(.minimumCount) {
-      guard let minimumCount = try? container.decode(Int.self, forKey: .minimumCount) else {
+      guard let minimumCount = try? container.decode(
+        Int.self, forKey: .minimumCount
+      ) else {
         throw InvalidIdentifierDataTypeError()
       }
       self = .minimumCount(minimumCount)
@@ -50,10 +52,13 @@ extension IdentifierDataType: Codable {
     switch self {
     case .uuid:
       try container.encode("uuid", forKey: .type)
+
     case let .bytes(size):
       try container.encode(size, forKey: .bytes)
+
     case let .minimumCount(count):
       try container.encode(count, forKey: .minimumCount)
+
     default:
       try container.encodeNil(forKey: .type)
     }

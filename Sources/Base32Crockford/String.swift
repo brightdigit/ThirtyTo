@@ -7,12 +7,16 @@ extension String {
     return padded
   }
 
-  func split(by length: Int) -> [String] {
+  public func split(by length: Int) -> [String] {
     var startIndex = self.startIndex
     var results = [Substring]()
 
     while startIndex < endIndex {
-      let endIndex = index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
+      let endIndex = index(
+        startIndex,
+        offsetBy: length,
+        limitedBy: self.endIndex
+      ) ?? self.endIndex
       results.append(self[startIndex ..< endIndex])
       startIndex = endIndex
     }
