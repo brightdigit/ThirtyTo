@@ -60,7 +60,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
   }
 
   fileprivate func decode(standardizedString standardized: String, withExtensionSize checksumSize: Int) -> Data {
-    let values = standardized.map { character -> String.IndexDistance in
+    let values = standardized.map { character in
       let lastIndex = Base32CrockfordEncoding.characters.firstIndex(of: character)!
       return Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
     }
