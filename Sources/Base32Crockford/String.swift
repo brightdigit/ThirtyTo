@@ -20,5 +20,3 @@ extension String {
     return results.map { String($0) }
   }
 }
-
-

@@ -6,7 +6,7 @@ final class Base32EqualityTests: XCTestCase {
     let values = ["0": "O", "1": "I", "I": "L"]
     let encoding = Base32CrockfordEncoding()
     var checks = 0
-    for _ in 0 ... 2000 {
+    for _ in 0 ... 2_000 {
       let id = UUID()
       let data = Data(Array(uuid: id))
       let fullId = encoding.encode(data: data)

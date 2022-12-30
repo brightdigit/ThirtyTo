@@ -33,15 +33,15 @@ public struct Binary {
   }
 
   public func bits(_ start: Int, _ length: Int) -> Int {
-    return bits(start ..< (start + length))
+    bits(start ..< (start + length))
   }
 
   public func byte(_ position: Int) -> Int {
-    return Int(bytes[position])
+    Int(bytes[position])
   }
 
   public func bitsWithInternalOffsetAvailable(_ length: Int) -> Bool {
-    return (bytes.count * byteSize) >= (readingOffset + length)
+    (bytes.count * byteSize) >= (readingOffset + length)
   }
 
   public mutating func next(bits length: Int) -> Int? {

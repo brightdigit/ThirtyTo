@@ -50,10 +50,13 @@ extension IdentifierDataType: Codable {
     switch self {
     case .uuid:
       try container.encode("uuid", forKey: .type)
+
     case let .bytes(size):
       try container.encode(size, forKey: .bytes)
+
     case let .minimumCount(count):
       try container.encode(count, forKey: .minimumCount)
+
     default:
       try container.encodeNil(forKey: .type)
     }

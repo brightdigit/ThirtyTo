@@ -9,12 +9,12 @@ extension Array where Element == UInt8 {
 
 extension Array where Element: FixedWidthInteger {
   public static func random(withCount count: Int, in range: ClosedRange<Element>? = nil) -> Array {
-    return random(withCount: count, in: range, fatalError: nil)!
+    random(withCount: count, in: range, fatalError: nil)!
   }
 
   #if DEBUG
     internal static func debugRandom(withCount count: Int, in range: ClosedRange<Element>? = nil, fatalError: ((String?) -> Void)? = nil) -> Array? {
-      return random(withCount: count, in: range, fatalError: fatalError)
+      random(withCount: count, in: range, fatalError: fatalError)
     }
   #endif
 

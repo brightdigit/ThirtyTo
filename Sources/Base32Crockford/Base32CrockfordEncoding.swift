@@ -17,11 +17,11 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
   fileprivate static let _encoding = Base32CrockfordEncoding()
 
   public static var encoding: Base32CrockfordEncodingProtocol {
-    return _encoding
+    _encoding
   }
 
   public static var comparer: Base32CrockfordComparer {
-    return _encoding
+    _encoding
   }
 
   fileprivate static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
@@ -65,7 +65,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
       return Base32CrockfordEncoding.characters.distance(from: Base32CrockfordEncoding.characters.startIndex, to: lastIndex)
     }
 
-    let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined(separator: "")
+    let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined()
 
     let bitStringWithoutChecksum = String(bitString[bitString.startIndex ... bitString.index(bitString.endIndex, offsetBy: -checksumSize - 1)])
     let dataBytes = bitStringWithoutChecksum.split(by: 8).compactMap { UInt8($0, radix: 2) }
@@ -91,7 +91,6 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
       )
       encodedString.append(
         Base32CrockfordEncoding.characters[characterIndex])
-
     } while index != nil
 
     if lastSegment > 0 {

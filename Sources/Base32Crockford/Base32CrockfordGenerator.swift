@@ -13,7 +13,7 @@ extension Base32CrockfordEncodingProtocol {
   }
 
   private func generateSingle() -> String {
-    return generate(withByteSize: 5)
+    generate(withByteSize: 5)
   }
 
   private func generate(withByteSize size: Int) -> String {
@@ -40,17 +40,20 @@ extension Base32CrockfordEncodingProtocol {
   }
 
   public func generateIdentifier(from identifierDataType: IdentifierDataType) -> String {
-    return generateIdentifier(from: identifierDataType)!
+    generateIdentifier(from: identifierDataType)!
   }
 
   private func generateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
     switch identifierDataType {
     case .default:
       return generateSingle()
+
     case .uuid:
       return generateFromUUID()
+
     case let .bytes(size):
       return generate(withByteSize: size)
+
     case let .minimumCount(count):
       return generate(forMinimumUniqueCount: count, fatalError: fatalError)
     }
@@ -74,16 +77,16 @@ extension Base32CrockfordEncodingProtocol {
   }
 
   public func generate(_ count: Int, from identifierDataType: IdentifierDataType) -> [String] {
-    return generate(count, from: identifierDataType, fatalError: nil)!
+    generate(count, from: identifierDataType, fatalError: nil)!
   }
 
   #if DEBUG
     internal func debugGenerate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
-      return generate(count, from: identifierDataType, fatalError: fatalError)
+      generate(count, from: identifierDataType, fatalError: fatalError)
     }
 
     internal func debugGenerateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
-      return generateIdentifier(from: identifierDataType, fatalError: fatalError)
+      generateIdentifier(from: identifierDataType, fatalError: fatalError)
     }
   #endif
 }
