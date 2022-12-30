@@ -71,21 +71,6 @@ jobs:
             iOSVersion: 15.4
             watchOSVersion: 8.5
             watchName: "Apple Watch Series 7 - 41mm"
-          - runs-on: macos-12
-            xcode: "/Applications/Xcode_13.4.1.app"
-            iOSVersion: 15.5
-            watchOSVersion: 8.5
-            watchName: "Apple Watch Series 7 - 41mm"
-          - runs-on: macos-12
-            xcode: "/Applications/Xcode_14.0.1.app"
-            iOSVersion: "16.0"
-            watchOSVersion: "9.0"
-            watchName: "Apple Watch Series 8 (41mm)"
-          - runs-on: macos-12
-            xcode: "/Applications/Xcode_14.1.app"
-            iOSVersion: "16.1"
-            watchOSVersion: "9.1"
-            watchName: "Apple Watch Ultra (49mm)"
     steps:
       - uses: actions/checkout@v3
       - name: Cache swift package modules
@@ -139,6 +124,9 @@ jobs:
           done
       - name: Run iOS target tests
         run:  xcodebuild test -scheme Base32Crockford -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13,OS=${{ matrix.iOSVersion }}' -enableCodeCoverage YES build test
+      - uses: sersoft-gmbh/swift-coverage-action@v3
+        with:
+          fail-on-empty-output: true        
       - name: Upload iOS coverage to Codecov
         uses: codecov/codecov-action@v3        
         with:
@@ -146,9 +134,6 @@ jobs:
           flags: iOS,iOS-${{ matrix.iOSVersion }}
           verbose: true        
           token: ${{ secrets.CODECOV_TOKEN }}   
-      - uses: sersoft-gmbh/swift-coverage-action@v3
-        with:
-          fail-on-empty-output: true
       - name: Run watchOS target tests
         run: xcodebuild test -scheme Base32Crockford -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test 
       - uses: sersoft-gmbh/swift-coverage-action@v3
