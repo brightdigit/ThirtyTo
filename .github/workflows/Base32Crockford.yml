@@ -145,9 +145,15 @@ jobs:
           fail_ci_if_error: true
           flags: iOS,iOS-${{ matrix.iOSVersion }}
           verbose: true        
-          token: ${{ secrets.CODECOV_TOKEN }}          
+          token: ${{ secrets.CODECOV_TOKEN }}   
+      - uses: sersoft-gmbh/swift-coverage-action@v3
+        with:
+          fail-on-empty-output: true
       - name: Run watchOS target tests
-        run: xcodebuild test -scheme Base32Crockford -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test
+        run: xcodebuild test -scheme Base32Crockford -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test 
+      - uses: sersoft-gmbh/swift-coverage-action@v3
+        with:
+          fail-on-empty-output: true
       - name: Upload watchOS coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
