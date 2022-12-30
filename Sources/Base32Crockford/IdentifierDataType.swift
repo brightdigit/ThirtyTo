@@ -1,19 +1,19 @@
 import Foundation
 
+public struct InvalidIdentifierDataTypeError: Error {}
+
 public enum IdentifierDataType: Equatable {
   case `default`
   case uuid
   case bytes(size: Int)
   case minimumCount(Int)
 
-  enum CodingKeys: String, CodingKey {
+  public enum CodingKeys: String, CodingKey {
     case bytes
     case minimumCount
     case type
   }
 }
-
-struct InvalidIdentifierDataTypeError: Error {}
 
 extension IdentifierDataType: Codable {
   public init(from decoder: Decoder) throws {

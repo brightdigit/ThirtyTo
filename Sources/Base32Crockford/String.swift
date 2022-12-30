@@ -7,7 +7,7 @@ extension String {
     return padded
   }
 
-  func split(by length: Int) -> [String] {
+  public func split(by length: Int) -> [String] {
     var startIndex = self.startIndex
     var results = [Substring]()
 

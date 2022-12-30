@@ -1,10 +1,10 @@
 import Foundation
 
 public struct Base32CrockfordEncodingOptions: OptionSet {
-  public let rawValue: Int
   public static let withChecksum = Base32CrockfordEncodingOptions(rawValue: 1 << 0)
-
   public static let none: Base32CrockfordEncodingOptions = []
+
+  public let rawValue: Int
 
   public init(rawValue: Int) {
     self.rawValue = rawValue
@@ -15,7 +15,9 @@ public typealias Base32CrockfordDecodingOptions = Base32CrockfordEncodingOptions
 
 // swiftlint:disable:next line_length
 public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32CrockfordComparer {
-  fileprivate static let _encoding = Base32CrockfordEncoding()
+  private struct ChecksumError: Error {}
+
+  private static let _encoding = Base32CrockfordEncoding()
 
   public static var encoding: Base32CrockfordEncodingProtocol {
     _encoding
@@ -25,25 +27,23 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
     _encoding
   }
 
-  fileprivate static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
-  fileprivate static let checkSymbols = "*~$=U"
+  private static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
+  private static let checkSymbols = "*~$=U"
 
-  fileprivate struct ChecksumError: Error {}
-
-  fileprivate func sizeOf(extensionFrom string: String) -> Int {
+  private func sizeOf(extensionFrom string: String) -> Int {
     let strBitCount = string.count * 5
     let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
     return strBitCount - dataBitCount
   }
 
-  fileprivate func decodeWithoutExtension(base32Encoded string: String) -> Data {
+  private func decodeWithoutExtension(base32Encoded string: String) -> Data {
     let standardized = standardize(string: string)
     let extensionSize = sizeOf(extensionFrom: standardized)
 
     return decode(standardizedString: standardized, withExtensionSize: extensionSize)
   }
 
-  fileprivate func verifyExtension(_ size: Int, _ standardized: String) throws {
+  private func verifyExtension(_ size: Int, _ standardized: String) throws {
     let lastValue: UInt8?
     if let last = standardized.last, size != 0 {
       if let lastIndex = Base32CrockfordEncoding.characters.firstIndex(
@@ -70,7 +70,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
     }
   }
 
-  fileprivate func decode(
+  private func decode(
     standardizedString standardized: String,
     withExtensionSize checksumSize: Int
   ) -> Data {
@@ -118,7 +118,8 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
         Base32CrockfordEncoding.characters.startIndex, offsetBy: index
       )
       encodedString.append(
-        Base32CrockfordEncoding.characters[characterIndex])
+        Base32CrockfordEncoding.characters[characterIndex]
+      )
     } while index != nil
 
     if lastSegment > 0 {
