@@ -140,10 +140,12 @@ jobs:
       - name: Run iOS target tests
         run:  xcodebuild test -scheme Base32Crockford -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13,OS=${{ matrix.iOSVersion }}' -derivedDataPath "./DerivedData"
       - uses: sersoft-gmbh/swift-coverage-action@v3
+        with:
+          search-paths: ./DerivedData    
+          fail-on-empty-output: true
       - name: Upload iOS coverage to Codecov
         uses: codecov/codecov-action@v3        
         with:
-          search-paths: ./DerivedData
           fail_ci_if_error: true
           flags: iOS,iOS-${{ matrix.iOSVersion }}
           verbose: true        
@@ -151,10 +153,12 @@ jobs:
       - name: Run watchOS target tests
         run: xcodebuild test -scheme Base32Crockford -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -derivedDataPath "./DerivedData"
       - uses: sersoft-gmbh/swift-coverage-action@v3
+        with:
+          search-paths: ./DerivedData      
+          fail-on-empty-output: true    
       - name: Upload watchOS coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
-          search-paths: ./DerivedData
           fail_ci_if_error: true
           flags: watchOS,watchOS${{ matrix.watchOSVersion }}
           verbose: true
