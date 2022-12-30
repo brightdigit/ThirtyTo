@@ -12,7 +12,11 @@ extension String {
     var results = [Substring]()
 
     while startIndex < endIndex {
-      let endIndex = index(startIndex, offsetBy: length, limitedBy: self.endIndex) ?? self.endIndex
+      let endIndex = index(
+        startIndex,
+        offsetBy: length,
+        limitedBy: self.endIndex
+      ) ?? self.endIndex
       results.append(self[startIndex ..< endIndex])
       startIndex = endIndex
     }

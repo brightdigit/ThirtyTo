@@ -2,7 +2,10 @@ import Foundation
 
 public protocol Base32CrockfordEncodingProtocol: Base32CrockfordGenerator {
   func encode(data: Data, options: Base32CrockfordEncodingOptions) -> String
-  func decode(base32Encoded string: String, options: Base32CrockfordDecodingOptions) throws -> Data
+  func decode(
+    base32Encoded string: String,
+    options: Base32CrockfordDecodingOptions
+  ) throws -> Data
   static var encoding: Base32CrockfordEncodingProtocol { get }
 }
 

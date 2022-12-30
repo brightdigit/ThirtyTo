@@ -28,7 +28,9 @@ extension IdentifierDataType: Codable {
       self = .bytes(size: byteSize)
       return
     } else if container.allKeys.contains(.minimumCount) {
-      guard let minimumCount = try? container.decode(Int.self, forKey: .minimumCount) else {
+      guard let minimumCount = try? container.decode(
+        Int.self, forKey: .minimumCount
+      ) else {
         throw InvalidIdentifierDataTypeError()
       }
       self = .minimumCount(minimumCount)
