@@ -1,24 +1,28 @@
 import Foundation
 
 public protocol Base32CrockfordEncodingProtocol: Base32CrockfordGenerator {
-  func encode(data: Data, options: Base32CrockfordEncodingOptions) -> String
-  func decode(base32Encoded string: String, options: Base32CrockfordDecodingOptions) throws -> Data
   static var encoding: Base32CrockfordEncodingProtocol { get }
+
+  func encode(data: Data, options: Base32CrockfordEncodingOptions) -> String
+  func decode(
+    base32Encoded string: String,
+    options: Base32CrockfordDecodingOptions
+  ) throws -> Data
 }
 
-public extension Base32CrockfordEncodingProtocol {
-  func encode(data: Data) -> String {
+extension Base32CrockfordEncodingProtocol {
+  public func encode(data: Data) -> String {
     encode(data: data, options: .none)
   }
 
-  func decode(base32Encoded string: String) throws -> Data {
+  public func decode(base32Encoded string: String) throws -> Data {
     try decode(base32Encoded: string, options: .none)
   }
 }
 
-public extension Base32CrockfordEncodingProtocol {
-  func standardize(string: String) -> String {
-    return string
+extension Base32CrockfordEncodingProtocol {
+  public func standardize(string: String) -> String {
+    string
       .uppercased()
       .replacingOccurrences(of: "O", with: "0")
       .replacingOccurrences(of: "I", with: "1")

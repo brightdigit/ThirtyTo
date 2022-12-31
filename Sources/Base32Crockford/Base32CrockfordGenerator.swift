@@ -13,7 +13,7 @@ extension Base32CrockfordEncodingProtocol {
   }
 
   private func generateSingle() -> String {
-    return generate(withByteSize: 5)
+    generate(withByteSize: 5)
   }
 
   private func generate(withByteSize size: Int) -> String {
@@ -21,16 +21,23 @@ extension Base32CrockfordEncodingProtocol {
     return encode(data: data)
   }
 
-  private func generate(forMinimumUniqueCount count: Int, fatalError: ((String?) -> Void)? = nil) -> String? {
+  private func generate(
+    forMinimumUniqueCount count: Int,
+    fatalError: ((String?) -> Void)? = nil
+  ) -> String? {
+    // swiftlint:disable empty_count
     guard count > 0 else {
       if count == 0 {
         return ""
       } else {
+        // swiftlint:enable empty_count
         if let fatalError = fatalError {
           fatalError("Cannot construct String identifier for unique count less than 0.")
           return nil
         } else {
-          Swift.fatalError("Cannot construct String identifier for unique count less than 0.")
+          Swift.fatalError(
+            "Cannot construct String identifier for unique count less than 0."
+          )
         }
       }
     }
@@ -40,23 +47,35 @@ extension Base32CrockfordEncodingProtocol {
   }
 
   public func generateIdentifier(from identifierDataType: IdentifierDataType) -> String {
-    return generateIdentifier(from: identifierDataType)!
+    // swiftlint:disable:next force_unwrapping
+    generateIdentifier(from: identifierDataType)!
   }
 
-  private func generateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
+  private func generateIdentifier(
+    from identifierDataType: IdentifierDataType,
+    fatalError: ((String?) -> Void)? = nil
+  ) -> String? {
     switch identifierDataType {
     case .default:
       return generateSingle()
+
     case .uuid:
       return generateFromUUID()
+
     case let .bytes(size):
       return generate(withByteSize: size)
+
     case let .minimumCount(count):
       return generate(forMinimumUniqueCount: count, fatalError: fatalError)
     }
   }
 
-  private func generate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
+  private func generate(
+    _ count: Int,
+    from identifierDataType: IdentifierDataType,
+    fatalError: ((String?) -> Void)? = nil
+  ) -> [String]? {
+    // swiftlint:disable empty_count
     guard count >= 0 else {
       if let fatalError = fatalError {
         fatalError("Array count cannot be less than 0.")
@@ -68,22 +87,34 @@ extension Base32CrockfordEncodingProtocol {
     guard count > 0 else {
       return [String]()
     }
+    // swiftlint:enable empty_count
     return (1 ... count).map { _ in
       self.generateIdentifier(from: identifierDataType)
     }
   }
 
-  public func generate(_ count: Int, from identifierDataType: IdentifierDataType) -> [String] {
-    return generate(count, from: identifierDataType, fatalError: nil)!
+  public func generate(
+    _ count: Int,
+    from identifierDataType: IdentifierDataType
+  ) -> [String] {
+    // swiftlint:disable:next force_unwrapping
+    generate(count, from: identifierDataType, fatalError: nil)!
   }
 
   #if DEBUG
-    internal func debugGenerate(_ count: Int, from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> [String]? {
-      return generate(count, from: identifierDataType, fatalError: fatalError)
+    internal func debugGenerate(
+      _ count: Int,
+      from identifierDataType: IdentifierDataType,
+      fatalError: ((String?) -> Void)? = nil
+    ) -> [String]? {
+      generate(count, from: identifierDataType, fatalError: fatalError)
     }
 
-    internal func debugGenerateIdentifier(from identifierDataType: IdentifierDataType, fatalError: ((String?) -> Void)? = nil) -> String? {
-      return generateIdentifier(from: identifierDataType, fatalError: fatalError)
+    internal func debugGenerateIdentifier(
+      from identifierDataType: IdentifierDataType,
+      fatalError: ((String?) -> Void)? = nil
+    ) -> String? {
+      generateIdentifier(from: identifierDataType, fatalError: fatalError)
     }
   #endif
 }

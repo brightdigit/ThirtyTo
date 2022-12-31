@@ -129,7 +129,7 @@ final class Base32CrockfordTests: XCTestCase {
   }
 
   func testIdentifierDataTypeCodable() {
-    identifierDataType(.minimumCount(10000), isCodableWith: """
+    identifierDataType(.minimumCount(10_000), isCodableWith: """
     {
     "minimumCount" : 10000
     }
