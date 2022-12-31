@@ -69,7 +69,6 @@ jobs:
         with:
           fail_ci_if_error: true
           flags: spm,swift-${{ matrix.swift-version }}
-          verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
   build-macos:
     name: Build on macOS
@@ -159,7 +158,6 @@ jobs:
         with:
           fail_ci_if_error: true
           flags: iOS,iOS-${{ matrix.iOSVersion }}
-          verbose: true        
           token: ${{ secrets.CODECOV_TOKEN }}   
       - name: Run watchOS target tests
         run: xcodebuild test -scheme Base32Crockford -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test 
@@ -171,5 +169,4 @@ jobs:
         with:
           fail_ci_if_error: true
           flags: watchOS,watchOS${{ matrix.watchOSVersion }}
-          verbose: true
           token: ${{ secrets.CODECOV_TOKEN }}
