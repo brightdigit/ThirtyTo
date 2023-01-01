@@ -101,16 +101,16 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
   }
 
   public func encode(data: Data, options _: Base32CrockfordEncodingOptions) -> String {
-    let dataBitCount = data.count * 8
-    let resBitCount = Int(ceil(Double(dataBitCount) / 5) * 5.0)
-    let difference = resBitCount - dataBitCount
-    let lastSegment = difference == 0 ? 0 : 5 - difference
-    var binary = Binary(data: data)
+//    let dataBitCount = data.count * 8
+//    let resBitCount = Int(ceil(Double(dataBitCount) / 5) * 5.0)
+//    let difference = resBitCount - dataBitCount
+//    let lastSegment = difference == 0 ? 0 : 5 - difference
     var encodedString = ""
     var index: Int?
-
+    
+    var binary = Binary(data: data, sectionSize: 5)
     repeat {
-      index = binary.next(bits: 5)
+      index = binary.nextSection()
       guard let index = index else {
         break
       }
@@ -122,16 +122,16 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
       )
     } while index != nil
 
-    if lastSegment > 0 {
-      let lastIndex = (binary.next(bits: lastSegment)! << difference)
-      let characterIndex = Base32CrockfordEncoding
-        .characters
-        .index(
-          Base32CrockfordEncoding.characters.startIndex,
-          offsetBy: lastIndex
-        )
-      encodedString.append(Base32CrockfordEncoding.characters[characterIndex])
-    }
+//    if lastSegment > 0 {
+//      let lastIndex = (binary.next(bits: lastSegment)! << difference)
+//      let characterIndex = Base32CrockfordEncoding
+//        .characters
+//        .index(
+//          Base32CrockfordEncoding.characters.startIndex,
+//          offsetBy: lastIndex
+//        )
+//      encodedString.append(Base32CrockfordEncoding.characters[characterIndex])
+//    }
     return encodedString
   }
 
