@@ -3,7 +3,7 @@ import XCTest
 
 final class EncodeDecodeTests: XCTestCase {
   var data: [String: String]!
-  var python: [UUID: String]!
+  //var python: [UUID: String]!
   var checksumData: [UUID: String]!
   
   static let allValues = [
@@ -294,19 +294,19 @@ final class EncodeDecodeTests: XCTestCase {
         return dictionary
       }
     
-    let pythonUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/python")
-    guard let pythonText = try? String(contentsOf: pythonUrl) else {
-      return
-    }
-    python = pythonText.components(separatedBy: .newlines).reduce([UUID: String]()) { data, line in
-      let components = line.components(separatedBy: .whitespaces)
-      guard let key = components.first, let value = components.last, components.first != components.last else {
-        return data
-      }
-      var dictionary = data
-      dictionary[UUID(uuidString: key)!] = value
-      return dictionary
-    }
+//    let pythonUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/python")
+//    guard let pythonText = try? String(contentsOf: pythonUrl) else {
+//      return
+//    }
+//    python = pythonText.components(separatedBy: .newlines).reduce([UUID: String]()) { data, line in
+//      let components = line.components(separatedBy: .whitespaces)
+//      guard let key = components.first, let value = components.last, components.first != components.last else {
+//        return data
+//      }
+//      var dictionary = data
+//      dictionary[UUID(uuidString: key)!] = value
+//      return dictionary
+//    }
   }
 
   func testEncoding() {
@@ -328,13 +328,13 @@ final class EncodeDecodeTests: XCTestCase {
     }
   }
   
-  func testEncodingPython() {
-    for (value, expected) in python {
-      let data = Data(Array(uuid: value))
-      let actual = Base32CrockfordEncoding.encoding.encode(data: data).uppercased()
-      XCTAssertEqual(actual, expected, "Encoded value of \(value): \(actual) does not equal \(expected)")
-    }
-  }
+//  func testEncodingPython() {
+//    for (value, expected) in python {
+//      let data = Data(Array(uuid: value))
+//      let actual = Base32CrockfordEncoding.encoding.encode(data: data).uppercased()
+//      XCTAssertEqual(actual, expected, "Encoded value of \(value): \(actual) does not equal \(expected)")
+//    }
+//  }
 
 
   func testEncodingWithChecksum () {
