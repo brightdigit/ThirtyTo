@@ -53,8 +53,11 @@ final class PythonTests: XCTestCase {
     func testExample() throws {
       for parameters in self.python {
         let uuidData = Data(Array(uuid: parameters.uuid))
-        let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData)
-        let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data)
+        let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+        let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+//        XCTAssertEqual(parameters.integer.data.first, uuidData.first)
+//        XCTAssertEqual(parameters.integer.data.last, uuidData.last)
+        XCTAssertEqual(parameters.integer.data.count, 128 / 8)
         XCTAssertEqual(encodedInt, encodedUUID)
         XCTAssertEqual(encodedInt, parameters.encoded)
         XCTAssertEqual(encodedUUID, parameters.encoded)

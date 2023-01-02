@@ -27,7 +27,8 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol, Base32Cr
     _encoding
   }
 
-  private static let characters = "0123456789abcdefghjkmnpqrtuvwxyz".uppercased()
+  private static let characters = "0123456789abcdefghjkmnpqrstvwxyz".uppercased()
+                                   
   private static let checkSymbols = "*~$=U"
 
   private func sizeOf(extensionFrom string: String) -> Int {
