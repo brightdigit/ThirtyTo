@@ -2,7 +2,7 @@
 import XCTest
 
 final class Base32CrockfordTests: XCTestCase {
-  var parametersArray : [Parameters]!
+  var parametersArray: [Parameters]!
   struct Parameters {
     internal init(uuid: UUID, integer: UInt128, encoded: String, encodedWithChecksum: String) {
       self.uuid = uuid
@@ -10,7 +10,7 @@ final class Base32CrockfordTests: XCTestCase {
       self.encoded = encoded
       self.encodedWithChecksum = encodedWithChecksum
     }
-    
+
     internal init?(line: String) {
       guard !line.isEmpty else {
         return nil
@@ -27,38 +27,38 @@ final class Base32CrockfordTests: XCTestCase {
       let encodedWithChecksum = components[3]
       self.init(uuid: uuid, integer: integer, encoded: encoded, encodedWithChecksum: encodedWithChecksum)
     }
-    
+
     let uuid: UUID
-    let integer : UInt128
+    let integer: UInt128
     let encoded: String
-    let encodedWithChecksum : String
+    let encodedWithChecksum: String
   }
-  
+
   override func setUp() {
     let pythonUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/python")
     guard let pythonText = try? String(contentsOf: pythonUrl) else {
       return
     }
-    
+
     parametersArray = pythonText.components(separatedBy: .newlines).compactMap(Parameters.init)
   }
 
-    func testNumbersAndUUIDs() throws {
-      for parameters in self.parametersArray {
-        let uuidData = Data(Array(uuid: parameters.uuid))
-        let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
-        let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
-        let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded)
-        let decodedUUID = UUID(data: decodedUUIDBytes)
-        XCTAssertEqual(parameters.integer.data.count, 128 / 8)
-        XCTAssertEqual(encodedInt, encodedUUID)
-        XCTAssertEqual(encodedInt, parameters.encoded)
-        XCTAssertEqual(encodedUUID, parameters.encoded)
-        XCTAssertEqual(decodedUUID, parameters.uuid)
-        return
-      }
+  func testNumbersAndUUIDs() throws {
+    for parameters in parametersArray {
+      let uuidData = Data(Array(uuid: parameters.uuid))
+      let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+      let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+      let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded)
+      let decodedUUID = UUID(data: decodedUUIDBytes)
+      XCTAssertEqual(parameters.integer.data.count, 128 / 8)
+      XCTAssertEqual(encodedInt, encodedUUID)
+      XCTAssertEqual(encodedInt, parameters.encoded)
+      XCTAssertEqual(encodedUUID, parameters.encoded)
+      XCTAssertEqual(decodedUUID, parameters.uuid)
+      return
     }
-  
+  }
+
   func testRandomData() {
     let b32cf = Base32CrockfordEncoding()
     for length in 1 ... 20 {
@@ -69,7 +69,8 @@ final class Base32CrockfordTests: XCTestCase {
       let encodedString = b32cf.encode(data: expectedData)
       let actualData = try? b32cf.decode(base32Encoded: encodedString)
       XCTAssertEqual(
-        expectedData.hexEncodedString().replacingOccurrences(of: "^0+", with: "", options: .regularExpression), actualData?.hexEncodedString().replacingOccurrences(of: "^0+", with: "", options: .regularExpression))
+        expectedData.hexEncodedString().replacingOccurrences(of: "^0+", with: "", options: .regularExpression), actualData?.hexEncodedString().replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+      )
     }
   }
 }

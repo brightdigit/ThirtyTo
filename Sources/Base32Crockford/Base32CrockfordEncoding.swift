@@ -13,10 +13,7 @@ public struct Base32CrockfordEncodingOptions: OptionSet {
 
 public typealias Base32CrockfordDecodingOptions = Base32CrockfordEncodingOptions
 
-// swiftlint:disable:next line_length
 public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
-  private struct ChecksumError: Error {}
-
   private static let _encoding = Base32CrockfordEncoding()
 
   public static var encoding: Base32CrockfordEncodingProtocol {
@@ -24,7 +21,8 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
   }
 
   private static let characters = "0123456789abcdefghjkmnpqrstvwxyz".uppercased()
-                                   
+
+  // periphery:ignore
   private static let checkSymbols = "*~$=U"
 
   private func decode(
@@ -44,17 +42,18 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     }
 
     let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined()
-    let dataBytes = bitString.split(by: 8).map {
-      UInt8($0, radix: 2)!
+    let dataBytes = bitString.split(by: 8).compactMap {
+      UInt8($0, radix: 2)
     }
-    print(dataBytes.map{String($0, radix: 2)}.joined())
+    precondition((bitString.count - 1) / 8 + 1 == dataBytes.count)
+
     return Data(dataBytes)
   }
 
   public func encode(data: Data, options _: Base32CrockfordEncodingOptions) -> String {
     var encodedString = ""
     var index: Int?
-    
+
     var binary = Binary(data: data, sectionSize: 5)
     repeat {
       index = binary.nextSection()
@@ -68,7 +67,8 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
         Base32CrockfordEncoding.characters[characterIndex]
       )
     } while index != nil
-    return encodedString.replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+    return encodedString
+      .replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
   }
 
   public func decode(
