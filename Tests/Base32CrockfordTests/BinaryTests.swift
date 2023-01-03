@@ -10,8 +10,7 @@ import Base32Crockford
 
 final class BinaryTests: XCTestCase {
 
-  func testBinaryValues () {
-    
+  func testBinaryValues () {    
     var value = Binary(data: .init([UInt8(8)]), sectionSize: 5)
     XCTAssertEqual(value.readingOffset, -2)
     var section : Int?

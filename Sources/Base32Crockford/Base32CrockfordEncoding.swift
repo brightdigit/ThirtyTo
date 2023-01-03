@@ -23,53 +23,9 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     _encoding
   }
 
-//  public static var comparer: Base32CrockfordComparer {
-//    _encoding
-//  }
-
   private static let characters = "0123456789abcdefghjkmnpqrstvwxyz".uppercased()
                                    
   private static let checkSymbols = "*~$=U"
-
-//  private func sizeOf(extensionFrom string: String) -> Int {
-//    let strBitCount = string.count * 5
-//    let dataBitCount = Int(floor(Double(strBitCount) / 8)) * 8
-//    return strBitCount - dataBitCount
-//  }
-//
-//  private func decodeWithoutExtension(base32Encoded string: String) -> Data {
-//    let standardized = standardize(string: string)
-//    let extensionSize = sizeOf(extensionFrom: standardized)
-//
-//    return decode(standardizedString: standardized, withExtensionSize: extensionSize)
-//  }
-//
-//  private func verifyExtension(_ size: Int, _ standardized: String) throws {
-//    let lastValue: UInt8?
-//    if let last = standardized.last, size != 0 {
-//      if let lastIndex = Base32CrockfordEncoding.characters.firstIndex(
-//        of: last
-//      ) {
-//        lastValue = UInt8(
-//          Base32CrockfordEncoding.characters.distance(
-//            from: Base32CrockfordEncoding.characters.startIndex,
-//            to: lastIndex
-//          )
-//        )
-//      } else {
-//        lastValue = nil
-//      }
-//    } else {
-//      lastValue = nil
-//    }
-//
-//    if let lastValue = lastValue {
-//      let extensionValue = (lastValue << (8 - size)) >> (8 - size)
-//      guard extensionValue == 0 else {
-//        throw ChecksumError()
-//      }
-//    }
-//  }
 
   private func decode(
     standardizedString standardized: String,
@@ -88,13 +44,6 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     }
 
     let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined()
-print(bitString)
-//    let bitStringWithoutChecksum = String(
-//      bitString[
-//        bitString.startIndex ...
-//          bitString.index(bitString.endIndex, offsetBy: -checksumSize - 1)
-//      ]
-//    )
     let dataBytes = bitString.split(by: 8).map {
       UInt8($0, radix: 2)!
     }
@@ -103,10 +52,6 @@ print(bitString)
   }
 
   public func encode(data: Data, options _: Base32CrockfordEncodingOptions) -> String {
-//    let dataBitCount = data.count * 8
-//    let resBitCount = Int(ceil(Double(dataBitCount) / 5) * 5.0)
-//    let difference = resBitCount - dataBitCount
-//    let lastSegment = difference == 0 ? 0 : 5 - difference
     var encodedString = ""
     var index: Int?
     
@@ -123,17 +68,6 @@ print(bitString)
         Base32CrockfordEncoding.characters[characterIndex]
       )
     } while index != nil
-
-//    if lastSegment > 0 {
-//      let lastIndex = (binary.next(bits: lastSegment)! << difference)
-//      let characterIndex = Base32CrockfordEncoding
-//        .characters
-//        .index(
-//          Base32CrockfordEncoding.characters.startIndex,
-//          offsetBy: lastIndex
-//        )
-//      encodedString.append(Base32CrockfordEncoding.characters[characterIndex])
-//    }
     return encodedString.replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
   }
 
@@ -142,17 +76,6 @@ print(bitString)
     options _: Base32CrockfordDecodingOptions
   ) throws -> Data {
     let standardized = standardize(string: string)
-    //let extensionSize = sizeOf(extensionFrom: standardized)
-    //try verifyExtension(extensionSize, standardized)
-
     return decode(standardizedString: standardized, withExtensionSize: 0)
   }
-//
-//  public func data(_ data: Data, hasEncodedPrefix prefix: String) -> Bool {
-//    let prefixData = try! decode(base32Encoded: prefix)
-//    print(data.last)
-//    print(data.first)
-//    print(prefixData[1])
-//    return zip(data, prefixData).allSatisfy { $0 == $1 }
-//  }
 }
