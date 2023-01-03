@@ -54,8 +54,14 @@ final class Base32CrockfordTests: XCTestCase {
       let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded).trim(to: 16)
       let decodedUUID = UUID(data: decodedUUIDBytes)
 
+      let decodedWithDashesUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded.randomDashes()).trim(to: 16)
+      let decodedWithDashesUUID = UUID(data: decodedUUIDBytes)
+
       let decodedUUIDChecksumBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum, options: .init(withChecksum: true)).trim(to: 16)
       let decodedUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
+
+      let decodedUUIDChecksumWithDashesBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum.randomDashes(), options: .init(withChecksum: true)).trim(to: 16)
+      let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
 
       let moduloIndex = Base32CrockfordEncoding.allChecksumSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
 
@@ -68,12 +74,15 @@ final class Base32CrockfordTests: XCTestCase {
       XCTAssertEqual(parameters.integer.data.count, 128 / 8)
       XCTAssertEqual(encodedInt, encodedUUID)
       XCTAssertEqual(encodedInt, parameters.encoded)
+      XCTAssertEqual(encodedInt, parameters.encoded)
       XCTAssertEqual(encodedUUID, parameters.encoded)
       XCTAssertEqual(decodedUUID, parameters.uuid, "Invalid Row \(index)")
+      XCTAssertEqual(decodedWithDashesUUID, parameters.uuid)
       XCTAssertEqual(actualMod, modulo, "Invalid Row \(index)")
       XCTAssertEqual(modulo, parameters.integer.data.remainderBy(37))
       XCTAssertEqual(encodedUUIDChecksum, parameters.encodedWithChecksum)
       XCTAssertEqual(decodedUUIDChecksum, parameters.uuid)
+      XCTAssertEqual(decodedWithDashesUUIDChecksum, parameters.uuid)
     }
   }
 

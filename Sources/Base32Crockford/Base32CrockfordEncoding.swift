@@ -98,5 +98,6 @@ public struct Base32CrockfordEncoding {
       .replacingOccurrences(of: "O", with: "0")
       .replacingOccurrences(of: "I", with: "1")
       .replacingOccurrences(of: "L", with: "1")
+      .replacingOccurrences(of: "-", with: "")
   }
 }
