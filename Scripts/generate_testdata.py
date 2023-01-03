@@ -1,7 +1,9 @@
 import uuid 
 import base32_crockford
 
-for _ in range(100):
+for int in range(255):
   id = uuid.uuid4()
-  strck = base32_crockford.encode(id.int, checksum=False)
-  print(id, strck)
+  intencoded = base32_crockford.encode(id.int, checksum=False)
+  intencodedcs = base32_crockford.encode(id.int, checksum=True)
+  #bytesencoded = base32_crockford.encode(id.bytes, checksum=False)
+  print(id, id.int, intencoded, intencodedcs)
