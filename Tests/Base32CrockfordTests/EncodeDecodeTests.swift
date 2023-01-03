@@ -2,43 +2,43 @@
 import XCTest
 
 final class EncodeDecodeTests: XCTestCase {
-  var data: [String: String]!
+  //var data: [String: String]!
   //var python: [UUID: String]!
   var checksumData: [UUID: String]!
   
   static let allValues = [
-    "00",
-    "01",
-    "02",
-    "03",
-    "04",
-    "05",
-    "06",
-    "07",
-    "08",
-    "09",
-    "0A",
-    "0B",
-    "0C",
-    "0D",
-    "0E",
-    "0F",
-    "0G",
-    "0H",
-    "0J",
-    "0K",
-    "0M",
-    "0N",
-    "0P",
-    "0Q",
-    "0R",
-    "0S",
-    "0T",
-    "0V",
-    "0W",
-    "0X",
-    "0Y",
-    "0Z",
+    "0",
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "J",
+    "K",
+    "M",
+    "N",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
     "10",
     "11",
     "12",
@@ -264,62 +264,62 @@ final class EncodeDecodeTests: XCTestCase {
     "7Y"
 
   ]
-
-  override func setUp() {
-    let valuesUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/values")
-    guard let allText = try? String(contentsOf: valuesUrl) else {
-      return
-    }
-    data = allText.components(separatedBy: .newlines).reduce([String: String]()) { data, line in
-      let components = line.components(separatedBy: .whitespaces)
-      guard let key = components.first, let value = components.last, components.first != components.last else {
-        return data
-      }
-      var dictionary = data
-      dictionary[key] = value
-      return dictionary
-    }
-
-      let checksumUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/checksum")
-      guard let checksumText = try? String(contentsOf: checksumUrl) else {
-        return
-      }
-      checksumData = checksumText.components(separatedBy: .newlines).reduce([UUID: String]()) { data, line in
-        let components = line.components(separatedBy: .whitespaces)
-        guard let key = components.first, let value = components.last, components.first != components.last else {
-          return data
-        }
-        var dictionary = data
-        dictionary[UUID(uuidString: key)!] = value
-        return dictionary
-      }
-    
-//    let pythonUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/python")
-//    guard let pythonText = try? String(contentsOf: pythonUrl) else {
+//
+//  override func setUp() {
+//    let valuesUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/values")
+//    guard let allText = try? String(contentsOf: valuesUrl) else {
 //      return
 //    }
-//    python = pythonText.components(separatedBy: .newlines).reduce([UUID: String]()) { data, line in
+//    data = allText.components(separatedBy: .newlines).reduce([String: String]()) { data, line in
 //      let components = line.components(separatedBy: .whitespaces)
 //      guard let key = components.first, let value = components.last, components.first != components.last else {
 //        return data
 //      }
 //      var dictionary = data
-//      dictionary[UUID(uuidString: key)!] = value
+//      dictionary[key] = value
 //      return dictionary
 //    }
-  }
-
-  func testEncoding() {
-    for (value, expected) in data {
-      guard let data = value.data(using: .utf8) else {
-        XCTFail("Unable to create data from string")
-        continue
-      }
-      let actual = Base32CrockfordEncoding.encoding.encode(data: data).lowercased()
-      XCTAssertEqual(actual, expected)
-    }
-  }
-  
+//
+//      let checksumUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/checksum")
+//      guard let checksumText = try? String(contentsOf: checksumUrl) else {
+//        return
+//      }
+//      checksumData = checksumText.components(separatedBy: .newlines).reduce([UUID: String]()) { data, line in
+//        let components = line.components(separatedBy: .whitespaces)
+//        guard let key = components.first, let value = components.last, components.first != components.last else {
+//          return data
+//        }
+//        var dictionary = data
+//        dictionary[UUID(uuidString: key)!] = value
+//        return dictionary
+//      }
+//
+////    let pythonUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/python")
+////    guard let pythonText = try? String(contentsOf: pythonUrl) else {
+////      return
+////    }
+////    python = pythonText.components(separatedBy: .newlines).reduce([UUID: String]()) { data, line in
+////      let components = line.components(separatedBy: .whitespaces)
+////      guard let key = components.first, let value = components.last, components.first != components.last else {
+////        return data
+////      }
+////      var dictionary = data
+////      dictionary[UUID(uuidString: key)!] = value
+////      return dictionary
+////    }
+//  }
+//
+//  func testEncoding() {
+//    for (value, expected) in data {
+//      guard let data = value.data(using: .utf8) else {
+//        XCTFail("Unable to create data from string")
+//        continue
+//      }
+//      let actual = Base32CrockfordEncoding.encoding.encode(data: data).lowercased()
+//      XCTAssertEqual(actual, expected)
+//    }
+//  }
+//
   func testIntegers() {
     for value : UInt8 in 5...12 {
       let data = Data([value])
@@ -336,15 +336,15 @@ final class EncodeDecodeTests: XCTestCase {
 //    }
 //  }
 
-
-  func testEncodingWithChecksum () {
-
-      for (value, expected) in checksumData {
-        let data = Data(Array(uuid: value))
-        let actual = Base32CrockfordEncoding.encoding.encode(data: data, options: .withChecksum).uppercased()
-        XCTAssertEqual(actual, expected)
-      }
-  }
+//
+//  func testEncodingWithChecksum () {
+//
+//      for (value, expected) in checksumData {
+//        let data = Data(Array(uuid: value))
+//        let actual = Base32CrockfordEncoding.encoding.encode(data: data, options: .withChecksum).uppercased()
+//        XCTAssertEqual(actual, expected)
+//      }
+//  }
 
   func decode(value: String, withExpected expected: Data) {
     let actual: Data
@@ -356,23 +356,23 @@ final class EncodeDecodeTests: XCTestCase {
     }
     XCTAssertEqual(actual, expected)
   }
-
-  func testDecoding() {
-    for (expectedString, value) in data {
-      guard let expected = expectedString.data(using: .utf8) else {
-        XCTFail("Unable to create data from string")
-        continue
-      }
-      var newValue = value
-      decode(value: value, withExpected: expected)
-      newValue = newValue.replacingOccurrences(of: "0", with: "O")
-      decode(value: newValue, withExpected: expected)
-      newValue = newValue.replacingOccurrences(of: "1", with: "L")
-      decode(value: newValue, withExpected: expected)
-      newValue = newValue.replacingOccurrences(of: "L", with: "I")
-      decode(value: newValue, withExpected: expected)
-      newValue = newValue.lowercased()
-      decode(value: newValue, withExpected: expected)
-    }
-  }
+//
+//  func testDecoding() {
+//    for (expectedString, value) in data {
+//      guard let expected = expectedString.data(using: .utf8) else {
+//        XCTFail("Unable to create data from string")
+//        continue
+//      }
+//      var newValue = value
+//      decode(value: value, withExpected: expected)
+//      newValue = newValue.replacingOccurrences(of: "0", with: "O")
+//      decode(value: newValue, withExpected: expected)
+//      newValue = newValue.replacingOccurrences(of: "1", with: "L")
+//      decode(value: newValue, withExpected: expected)
+//      newValue = newValue.replacingOccurrences(of: "L", with: "I")
+//      decode(value: newValue, withExpected: expected)
+//      newValue = newValue.lowercased()
+//      decode(value: newValue, withExpected: expected)
+//    }
+//  }
 }

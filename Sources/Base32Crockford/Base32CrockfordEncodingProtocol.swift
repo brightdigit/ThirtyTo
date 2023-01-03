@@ -1,6 +1,6 @@
 import Foundation
 
-public protocol Base32CrockfordEncodingProtocol: Base32CrockfordGenerator {
+public protocol Base32CrockfordEncodingProtocol {
   static var encoding: Base32CrockfordEncodingProtocol { get }
 
   func encode(data: Data, options: Base32CrockfordEncodingOptions) -> String

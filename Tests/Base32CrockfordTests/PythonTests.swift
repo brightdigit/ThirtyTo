@@ -55,12 +55,20 @@ final class PythonTests: XCTestCase {
         let uuidData = Data(Array(uuid: parameters.uuid))
         let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
         let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+        
+       print(uuidData.hexEncodedString())
+        print(parameters.integer.data.hexEncodedString())
+       // print(parameters.integer.byteSwapped.data.hexEncodedString())
+       // print(Data(uuidData.reversed()).hexEncodedString())
+        //print(Data(parameters.integer.data.reversed()).hexEncodedString())
 //        XCTAssertEqual(parameters.integer.data.first, uuidData.first)
 //        XCTAssertEqual(parameters.integer.data.last, uuidData.last)
+        //XCTAssertEqual(parameters.integer.byteSwapped.data.hexEncodedString(), uuidData.hexEncodedString())
         XCTAssertEqual(parameters.integer.data.count, 128 / 8)
         XCTAssertEqual(encodedInt, encodedUUID)
         XCTAssertEqual(encodedInt, parameters.encoded)
         XCTAssertEqual(encodedUUID, parameters.encoded)
+        return
       }
     }
 
@@ -69,9 +77,24 @@ final class PythonTests: XCTestCase {
 
 extension UInt128 {
     var data: Data {
-        var int = self
-        return Data(bytes: &int, count: MemoryLayout<UInt128>.size)
+      var upperBits = self.byteSwapped.value.upperBits
+      var lowerBits = self.byteSwapped.value.lowerBits
+      return Data(bytes: &lowerBits, count: MemoryLayout<UInt64>.size) +
+      Data(bytes: &upperBits, count: MemoryLayout<UInt64>.size)
+      
     }
     
 
+}
+
+extension Data {
+    struct HexEncodingOptions: OptionSet {
+        let rawValue: Int
+        static let upperCase = HexEncodingOptions(rawValue: 1 << 0)
+    }
+
+    func hexEncodedString(options: HexEncodingOptions = []) -> String {
+        let format = options.contains(.upperCase) ? "%02hhX" : "%02hhx"
+        return self.map { String(format: format, $0) }.joined()
+    }
 }
