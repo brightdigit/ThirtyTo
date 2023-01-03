@@ -1,24 +1,7 @@
 import Foundation
 
-public struct Base32CrockfordEncodingOptions: OptionSet {
-  public static let withChecksum = Base32CrockfordEncodingOptions(rawValue: 1 << 0)
-  public static let none: Base32CrockfordEncodingOptions = []
-
-  public let rawValue: Int
-
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
-  }
-}
-
-public typealias Base32CrockfordDecodingOptions = Base32CrockfordEncodingOptions
-
-public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
-  private static let _encoding = Base32CrockfordEncoding()
-
-  public static var encoding: Base32CrockfordEncodingProtocol {
-    _encoding
-  }
+public struct Base32CrockfordEncoding {
+  public static let encoding = Base32CrockfordEncoding()
 
   private static let characters = "0123456789abcdefghjkmnpqrstvwxyz".uppercased()
 
@@ -26,8 +9,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
   private static let checkSymbols = "*~$=U"
 
   private func decode(
-    standardizedString standardized: String,
-    withExtensionSize _: Int
+    standardizedString standardized: String
   ) -> Data {
     let values = standardized.map { character -> Int in
       guard let lastIndex = Base32CrockfordEncoding.characters.firstIndex(
@@ -53,7 +35,10 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     return Data(dataBytes)
   }
 
-  public func encode(data: Data, options _: Base32CrockfordEncodingOptions) -> String {
+  public func encode(
+    data: Data,
+    options _: Base32CrockfordEncodingOptions = .none
+  ) -> String {
     var encodedString = ""
     var index: Int?
 
@@ -76,9 +61,17 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
 
   public func decode(
     base32Encoded string: String,
-    options _: Base32CrockfordDecodingOptions
+    options _: Base32CrockfordDecodingOptions = .none
   ) throws -> Data {
     let standardized = standardize(string: string)
-    return decode(standardizedString: standardized, withExtensionSize: 0)
+    return decode(standardizedString: standardized)
+  }
+
+  public func standardize(string: String) -> String {
+    string
+      .uppercased()
+      .replacingOccurrences(of: "O", with: "0")
+      .replacingOccurrences(of: "I", with: "1")
+      .replacingOccurrences(of: "L", with: "1")
   }
 }
