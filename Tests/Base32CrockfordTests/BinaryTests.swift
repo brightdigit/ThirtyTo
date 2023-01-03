@@ -9,7 +9,7 @@ final class BinaryTests: XCTestCase {
     var lastSectionValue: Int = -1
     repeat {
       section = value.nextSection()
-      if let section {
+      if let section = section {
         lastSectionValue = section
       }
     } while section != nil
