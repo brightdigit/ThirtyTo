@@ -70,7 +70,7 @@ public struct Base32CrockfordEncoding {
       )
     } while index != nil
 
-    if options.contains(.withChecksum) {
+    if options.withChecksum {
       encodedString.append(
         Self.allChecksumSymbols.characterAtOffset(
           data.remainderBy(
@@ -80,8 +80,16 @@ public struct Base32CrockfordEncoding {
       )
     }
 
-    return encodedString
+    encodedString = encodedString
       .replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+
+    guard let groupingOptions = options.groupingBy else {
+      return encodedString
+    }
+
+    return encodedString
+      .split(by: groupingOptions.maxLength)
+      .joined(separator: groupingOptions.separator)
   }
 
   public func decode(
