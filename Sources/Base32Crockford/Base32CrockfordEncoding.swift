@@ -45,7 +45,7 @@ public struct Base32CrockfordEncoding: Base32CrockfordEncodingProtocol {
     let dataBytes = bitString.split(by: 8).compactMap {
       UInt8($0, radix: 2)
     }
-    precondition((bitString.count - 1) / 8 + 1 == dataBytes.count)
+    precondition((((bitString.count - 1) / 8) + 1) == dataBytes.count, "Expected \(((bitString.count - 1) / 8) + 1) bytes from \(bitString.count) bits but received \(dataBytes.count)")
 
     return Data(dataBytes)
   }
