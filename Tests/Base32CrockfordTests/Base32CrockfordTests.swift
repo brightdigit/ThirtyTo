@@ -44,18 +44,86 @@ final class Base32CrockfordTests: XCTestCase {
   }
 
   func testNumbersAndUUIDs() throws {
-    for parameters in parametersArray {
+    for (index, parameters) in parametersArray.enumerated() {
+      let divisor: UInt128 = 37
       let uuidData = Data(Array(uuid: parameters.uuid))
-      let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
-      let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
-      let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded)
+      let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData)
+      let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data)
+      let encodedUUIDChecksum = Base32CrockfordEncoding.encoding.encode(data: uuidData, options: .withChecksum)
+
+      let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded).trim(to: 16)
       let decodedUUID = UUID(data: decodedUUIDBytes)
+
+      let decodedUUIDChecksumBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum, options: .init(withChecksum: true)).trim(to: 16)
+      let decodedUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
+
+      let moduloIndex = Base32CrockfordEncoding.allChecksumSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
+
+      let modulo = Base32CrockfordEncoding.allChecksumSymbols.distance(
+        from: Base32CrockfordEncoding.allChecksumSymbols.startIndex,
+        to: moduloIndex
+      )
+
+      let actualMod = Int(parameters.integer % divisor)
       XCTAssertEqual(parameters.integer.data.count, 128 / 8)
       XCTAssertEqual(encodedInt, encodedUUID)
       XCTAssertEqual(encodedInt, parameters.encoded)
       XCTAssertEqual(encodedUUID, parameters.encoded)
-      XCTAssertEqual(decodedUUID, parameters.uuid)
+      XCTAssertEqual(decodedUUID, parameters.uuid, "Invalid Row \(index)")
+      XCTAssertEqual(actualMod, modulo, "Invalid Row \(index)")
+      XCTAssertEqual(modulo, parameters.integer.data.remainderBy(37))
+      XCTAssertEqual(encodedUUIDChecksum, parameters.encodedWithChecksum)
+      XCTAssertEqual(decodedUUIDChecksum, parameters.uuid)
+    }
+  }
+
+  func testBadChecksum() {
+    let data = Data(Array(uuid: .init()))
+    let encodedWithChecksum = Base32CrockfordEncoding.encoding.encode(data: data, options: .withChecksum)
+    let (encoded, checksum) = encodedWithChecksum.split(withChecksum: true)
+    guard let checksum = checksum else {
+      XCTFail()
       return
+    }
+    var badChecksum = checksum
+    repeat {
+      badChecksum = Base32CrockfordEncoding.allChecksumSymbols.randomElement()!
+    } while badChecksum == checksum
+    let badEncodedWithChecksum = encoded.appending(String(badChecksum))
+    let mismatchValueExpected = Base32CrockfordEncoding.allChecksumSymbols.firstOffsetOf(character: badChecksum)
+    let badChecksumExpected = Base32CrockfordEncoding.allChecksumSymbols.firstOffsetOf(character: checksum)
+    do {
+      _ = try Base32CrockfordEncoding.encoding.decode(base32Encoded: badEncodedWithChecksum, options: .init(withChecksum: true))
+      XCTFail()
+    } catch let error as Base32CrockfordDecodingError {
+      guard case let .checksum(badChecksumActual, mismatchValue: mismatchValueActual) = error.details else {
+        XCTFail()
+        return
+      }
+      XCTAssertEqual(mismatchValueActual, mismatchValueExpected)
+      XCTAssertEqual(badChecksumActual, badChecksumExpected)
+      return
+    } catch {
+      XCTFail()
+    }
+  }
+
+  func testInvalidCharacter() {
+    let invalidCharacters = "!@#$%^&*()_-+{}[]:;<>,./?"
+    let expectedCharacter = invalidCharacters.randomElement()!
+    let badString = String("0123456789ABCDEFGHJKMNPQRSTVWXYZ".shuffled() + [expectedCharacter])
+    XCTAssertEqual(badString.count, 33)
+    do {
+      _ = try Base32CrockfordEncoding.encoding.decode(base32Encoded: badString)
+      XCTFail()
+    } catch let error as Base32CrockfordDecodingError {
+      guard case let .invalidCharacter(actualCharacter) = error.details else {
+        XCTAssertNil(error)
+        return
+      }
+      XCTAssertEqual(actualCharacter, expectedCharacter)
+    } catch {
+      XCTAssertNil(error)
     }
   }
 

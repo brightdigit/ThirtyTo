@@ -2,42 +2,59 @@ import Foundation
 
 public struct Base32CrockfordEncoding {
   public static let encoding = Base32CrockfordEncoding()
-
-  private static let characters = "0123456789abcdefghjkmnpqrstvwxyz".uppercased()
-
-  // periphery:ignore
+  private static let characters = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
   private static let checkSymbols = "*~$=U"
+  public static let allChecksumSymbols = characters + checkSymbols
 
-  private func decode(
-    standardizedString standardized: String
-  ) -> Data {
-    let values = standardized.map { character -> Int in
-      guard let lastIndex = Base32CrockfordEncoding.characters.firstIndex(
-        of: character
-      ) else {
-        preconditionFailure("Invalid Characters should never be passed.")
-      }
-      return Base32CrockfordEncoding.characters.distance(
-        from: Base32CrockfordEncoding.characters.startIndex,
-        to: lastIndex
+  private func validate(
+    _ result: Data,
+    from standardized: String,
+    withChecksum checksum: Character
+  ) throws {
+    let expected = Self.allChecksumSymbols.firstOffsetOf(character: checksum)
+    let actual = result.remainderBy(Self.allChecksumSymbols.count)
+
+    guard expected == actual else {
+      throw Base32CrockfordDecodingError.checksumError(
+        from: standardized,
+        actualValue: actual,
+        expectedValue: expected
       )
     }
+  }
+
+  private func decode(
+    standardizedString standardized: String,
+    options: Base32CrockfordDecodingOptions = .none
+  ) throws -> Data {
+    let (valueString, checksum) = standardized.split(withChecksum: options.withChecksum)
+
+    let values = try valueString.offsets(
+      basedOnCharacterMap: Self.characters,
+      onInvalidCharacter: Base32CrockfordDecodingError.invalidCharacter(_:from:)
+    )
 
     let bitString = values.map { String($0, radix: 2).pad(toSize: 5) }.joined()
-    let dataBytes = bitString.split(by: 8).compactMap {
-      UInt8($0, radix: 2)
-    }
+    let dataBytes = bitString.split(by: 8).compactMap { UInt8($0, radix: 2) }
     let expectedByteCount = ((bitString.count - 1) / 8) + 1
 
     // swiftlint:disable:next line_length
     precondition(expectedByteCount == dataBytes.count, "Expected \(expectedByteCount) bytes from \(bitString.count) bits but received \(dataBytes.count)")
 
-    return Data(dataBytes)
+    let result = Data(dataBytes)
+
+    guard let checksum = checksum else {
+      return result
+    }
+
+    try validate(result, from: standardized, withChecksum: checksum)
+
+    return result
   }
 
   public func encode(
     data: Data,
-    options _: Base32CrockfordEncodingOptions = .none
+    options: Base32CrockfordEncodingOptions = .none
   ) -> String {
     var encodedString = ""
     var index: Int?
@@ -48,23 +65,31 @@ public struct Base32CrockfordEncoding {
       guard let index = index else {
         break
       }
-      let characterIndex = Base32CrockfordEncoding.characters.index(
-        Base32CrockfordEncoding.characters.startIndex, offsetBy: index
-      )
       encodedString.append(
-        Base32CrockfordEncoding.characters[characterIndex]
+        Self.characters.characterAtOffset(index)
       )
     } while index != nil
+
+    if options.contains(.withChecksum) {
+      encodedString.append(
+        Self.allChecksumSymbols.characterAtOffset(
+          data.remainderBy(
+            Self.allChecksumSymbols.count
+          )
+        )
+      )
+    }
+
     return encodedString
       .replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
   }
 
   public func decode(
     base32Encoded string: String,
-    options _: Base32CrockfordDecodingOptions = .none
+    options: Base32CrockfordDecodingOptions = .none
   ) throws -> Data {
     let standardized = standardize(string: string)
-    return decode(standardizedString: standardized)
+    return try decode(standardizedString: standardized, options: options)
   }
 
   public func standardize(string: String) -> String {
