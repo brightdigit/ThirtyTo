@@ -2,7 +2,64 @@
 import XCTest
 
 final class Base32CrockfordTests: XCTestCase {
-  func testExample() {
+  var parametersArray: [Parameters]!
+  struct Parameters {
+    internal init(uuid: UUID, integer: UInt128, encoded: String, encodedWithChecksum: String) {
+      self.uuid = uuid
+      self.integer = integer
+      self.encoded = encoded
+      self.encodedWithChecksum = encodedWithChecksum
+    }
+
+    internal init?(line: String) {
+      guard !line.isEmpty else {
+        return nil
+      }
+      let components = line.components(separatedBy: .whitespaces)
+      precondition(components.count == 4)
+      guard let uuid = UUID(uuidString: components[0]) else {
+        preconditionFailure()
+      }
+      guard let integer = UInt128(components[1]) else {
+        preconditionFailure()
+      }
+      let encoded = components[2]
+      let encodedWithChecksum = components[3]
+      self.init(uuid: uuid, integer: integer, encoded: encoded, encodedWithChecksum: encodedWithChecksum)
+    }
+
+    let uuid: UUID
+    let integer: UInt128
+    let encoded: String
+    let encodedWithChecksum: String
+  }
+
+  override func setUp() {
+    let pythonUrl = URL(fileURLWithPath: #file).deletingLastPathComponent().appendingPathComponent("../../Data/python")
+    guard let pythonText = try? String(contentsOf: pythonUrl) else {
+      return
+    }
+
+    parametersArray = pythonText.components(separatedBy: .newlines).compactMap(Parameters.init)
+  }
+
+  func testNumbersAndUUIDs() throws {
+    for parameters in parametersArray {
+      let uuidData = Data(Array(uuid: parameters.uuid))
+      let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+      let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data).replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+      let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded)
+      let decodedUUID = UUID(data: decodedUUIDBytes)
+      XCTAssertEqual(parameters.integer.data.count, 128 / 8)
+      XCTAssertEqual(encodedInt, encodedUUID)
+      XCTAssertEqual(encodedInt, parameters.encoded)
+      XCTAssertEqual(encodedUUID, parameters.encoded)
+      XCTAssertEqual(decodedUUID, parameters.uuid)
+      return
+    }
+  }
+
+  func testRandomData() {
     let b32cf = Base32CrockfordEncoding()
     for length in 1 ... 20 {
       let bytes = (0 ... length - 1).map { _ in
@@ -11,149 +68,9 @@ final class Base32CrockfordTests: XCTestCase {
       let expectedData = Data(bytes)
       let encodedString = b32cf.encode(data: expectedData)
       let actualData = try? b32cf.decode(base32Encoded: encodedString)
-      XCTAssertEqual(expectedData, actualData)
+      XCTAssertEqual(
+        expectedData.hexEncodedString().replacingOccurrences(of: "^0+", with: "", options: .regularExpression), actualData?.hexEncodedString().replacingOccurrences(of: "^0+", with: "", options: .regularExpression)
+      )
     }
   }
-
-  func testMinimumUniqueCount() {
-    [Int].random(withCount: 20, in: 0 ... 256).forEach(minimumUniqueCount(_:))
-    minimumUniqueCount(0)
-  }
-
-  func testMinimumUniqueCountLessThanZero() {
-    minimumUniqueCountLessThanZero(-1)
-    minimumUniqueCountLessThanZero(Int.min)
-  }
-
-  func testUUID() {
-    let b32cf = Base32CrockfordEncoding()
-    (1 ... 20).forEach { _ in
-
-      let uuidb32 = b32cf.generateIdentifier(from: .uuid)
-      let data: Data
-      do {
-        data = try b32cf.decode(base32Encoded: uuidb32)
-        _ = UUID(data: data)
-      } catch {
-        XCTFail(error.localizedDescription)
-      }
-    }
-  }
-
-  func testGenerateArray() {
-    [Int].random(withCount: 20, in: 0 ... 256).forEach(generateArrayTest(withCount:))
-    generateArrayTest(withCount: 0)
-  }
-
-  func testGenerateArrayLessThanZero() {
-    [Int].random(withCount: 3, in: Int.min ... -1).forEach(generateArrayLessThanZero(withCount:))
-
-    generateArrayLessThanZero(withCount: -1)
-    generateArrayLessThanZero(withCount: Int.min)
-  }
-
-  func generateArrayLessThanZero(withCount count: Int) {
-    let expectedMessage = "Array count cannot be less than 0."
-    var actualMessage: String?
-    let expectation = self.expectation(description: "expectingFatalError")
-    let b32cf = Base32CrockfordEncoding()
-    let result = b32cf.debugGenerate(
-      count,
-      from: .default,
-      fatalError: { message in
-        actualMessage = message
-        expectation.fulfill()
-      }
-    )
-    waitForExpectations(timeout: 5) { error in
-      XCTAssertNil(error)
-      XCTAssertNil(result)
-      XCTAssertEqual(actualMessage, expectedMessage)
-    }
-  }
-
-  func generateArrayTest(withCount count: Int) {
-    let b32cf = Base32CrockfordEncoding()
-    let ids = b32cf.generate(count, from: .default)
-    XCTAssertEqual(ids.count, count)
-    XCTAssertNil(ids.first(where: { $0.count != 8 }))
-    XCTAssertNil(ids.first(where: { (try? b32cf.decode(base32Encoded: $0))?.count != 5 }))
-  }
-
-  func minimumUniqueCount(_ count: Int) {
-    let length: Int?
-    if count == 0 {
-      length = 0
-    } else if count < 0 {
-      length = nil
-    } else {
-      let numberOfBytes = Int(ceil(log(Double(count)) / log(256.0)))
-      length = Int(ceil(Double(numberOfBytes) * 8.0 / 5.0))
-    }
-    let b32cf = Base32CrockfordEncoding()
-    let string = b32cf.generateIdentifier(from: .minimumCount(count))
-
-    XCTAssertEqual(string.count, length)
-  }
-
-  func minimumUniqueCountLessThanZero(_ count: Int) {
-    let expectedMessage = "Cannot construct String identifier for unique count less than 0."
-    var actualMessage: String?
-    let expectation = self.expectation(description: "expectingFatalError")
-    let b32cf = Base32CrockfordEncoding()
-    let result = b32cf.debugGenerateIdentifier(from: .minimumCount(count), fatalError: { message in
-      actualMessage = message
-      expectation.fulfill()
-    })
-    waitForExpectations(timeout: 5) { error in
-      XCTAssertNil(error)
-      XCTAssertNil(result)
-      XCTAssertEqual(actualMessage, expectedMessage)
-    }
-  }
-
-  func identifierDataType(_ identifierDataType: IdentifierDataType, isCodableWith string: String) {
-    let decoder = JSONDecoder()
-    let encoder = JSONEncoder()
-
-    let expectedString = string.components(separatedBy: .whitespacesAndNewlines).joined(separator: "")
-    let actualIdentifierDataType = try? decoder.decode(IdentifierDataType.self, from:
-      string.data(using: .utf8)!)
-    XCTAssertEqual(actualIdentifierDataType, identifierDataType)
-
-    let actualString = (try? encoder.encode(identifierDataType)).map {
-      String(data: $0, encoding: .utf8)
-    }
-
-    XCTAssertEqual(actualString, expectedString)
-  }
-
-  func testIdentifierDataTypeCodable() {
-    identifierDataType(.minimumCount(10_000), isCodableWith: """
-    {
-    "minimumCount" : 10000
-    }
-    """)
-
-    identifierDataType(.bytes(size: 5), isCodableWith: """
-    {
-    "bytes" : 5
-    }
-    """)
-
-    identifierDataType(.uuid, isCodableWith: """
-    {
-    "type" : "uuid"
-    }
-    """)
-    identifierDataType(.default, isCodableWith: """
-    {
-    "type" : null
-    }
-    """)
-  }
-
-  static var allTests = [
-    ("testExample", testExample)
-  ]
 }

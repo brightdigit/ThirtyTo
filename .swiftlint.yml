@@ -96,17 +96,17 @@ opt_in_rules:
   - xct_specific_matcher
   - yoda_condition
 cyclomatic_complexity:
+  - 4
   - 6
-  - 9
 type_body_length:
-  - 250
-  - 500
+  - 100
+  - 200
 file_length:
-  - 400
-  - 800
+  - 100
+  - 200
 function_body_length:
+  - 15
   - 25
-  - 40
 function_parameter_count: 8
 line_length:
   - 90

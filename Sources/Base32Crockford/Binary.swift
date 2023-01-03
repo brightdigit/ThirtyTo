@@ -1,19 +1,25 @@
 import Foundation
 
 public struct Binary {
+  public let sectionSize: Int
   public let bytes: [UInt8]
   public var readingOffset: Int = 0
   public let byteSize: Int
 
-  public init(data: Data, byteSize: Int = 8) {
+  public init(data: Data, sectionSize: Int, byteSize: Int = 8) {
     self.byteSize = byteSize
     let bytesLength = data.count
     var bytesArray = [UInt8](repeating: 0, count: bytesLength)
     (data as NSData).getBytes(&bytesArray, length: bytesLength)
     bytes = bytesArray
+    self.sectionSize = sectionSize
+    readingOffset = (data.count * byteSize) % sectionSize - sectionSize
   }
 
   public func bit(_ position: Int) -> Int {
+    guard position >= 0 else {
+      return 0
+    }
     let bytePosition = position / byteSize
     let bitPosition = (byteSize - 1) - (position % byteSize)
     let byte = self.byte(bytePosition)
@@ -44,10 +50,10 @@ public struct Binary {
     (bytes.count * byteSize) >= (readingOffset + length)
   }
 
-  public mutating func next(bits length: Int) -> Int? {
-    if bitsWithInternalOffsetAvailable(length) {
-      let returnValue = bits(readingOffset, length)
-      readingOffset += length
+  public mutating func nextSection() -> Int? {
+    if bitsWithInternalOffsetAvailable(sectionSize) {
+      let returnValue = bits(readingOffset, sectionSize)
+      readingOffset += sectionSize
       return returnValue
     } else {
       return nil

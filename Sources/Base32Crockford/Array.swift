@@ -17,6 +17,7 @@ extension Array where Element: FixedWidthInteger {
   }
 
   #if DEBUG
+    // periphery:ignore
     internal static func debugRandom(
       withCount count: Int,
       in range: ClosedRange<Element>? = nil,
