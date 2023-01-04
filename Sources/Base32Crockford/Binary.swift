@@ -59,4 +59,21 @@ public struct Binary {
       return nil
     }
   }
+
+  public mutating func string(basedOnCharacterMap characterMap: String) -> String {
+    var encodedString = ""
+    var index: Int?
+
+    repeat {
+      index = nextSection()
+      guard let index = index else {
+        break
+      }
+      encodedString.append(
+        characterMap.characterAtOffset(index)
+      )
+    } while index != nil
+
+    return encodedString
+  }
 }

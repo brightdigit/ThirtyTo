@@ -39,7 +39,7 @@ public struct Base32CrockfordEncoding {
     let expectedByteCount = ((bitString.count - 1) / 8) + 1
 
     // swiftlint:disable:next line_length
-    precondition(expectedByteCount == dataBytes.count, "Expected \(expectedByteCount) bytes from \(bitString.count) bits but received \(dataBytes.count)")
+    assert(expectedByteCount == dataBytes.count, "Expected \(expectedByteCount) bytes from \(bitString.count) bits but received \(dataBytes.count)")
 
     let result = Data(dataBytes)
 
@@ -56,19 +56,8 @@ public struct Base32CrockfordEncoding {
     data: Data,
     options: Base32CrockfordEncodingOptions = .none
   ) -> String {
-    var encodedString = ""
-    var index: Int?
-
     var binary = Binary(data: data, sectionSize: 5)
-    repeat {
-      index = binary.nextSection()
-      guard let index = index else {
-        break
-      }
-      encodedString.append(
-        Self.characters.characterAtOffset(index)
-      )
-    } while index != nil
+    var encodedString = binary.string(basedOnCharacterMap: Self.characters)
 
     if options.withChecksum {
       encodedString.append(
