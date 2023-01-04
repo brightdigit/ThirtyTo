@@ -49,13 +49,19 @@ final class Base32CrockfordTests: XCTestCase {
       let uuidData = Data(Array(uuid: parameters.uuid))
       let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData)
       let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data)
-      let encodedUUIDChecksum = Base32CrockfordEncoding.encoding.encode(data: uuidData, options: .withChecksum)
+      let encodedUUIDChecksum = Base32CrockfordEncoding.encoding.encode(data: uuidData, options: .init(withChecksum: true))
 
       let decodedUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded).trim(to: 16)
       let decodedUUID = UUID(data: decodedUUIDBytes)
 
+      let decodedWithDashesUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded.randomDashes()).trim(to: 16)
+      let decodedWithDashesUUID = UUID(data: decodedUUIDBytes)
+
       let decodedUUIDChecksumBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum, options: .init(withChecksum: true)).trim(to: 16)
       let decodedUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
+
+      let decodedUUIDChecksumWithDashesBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum.randomDashes(), options: .init(withChecksum: true)).trim(to: 16)
+      let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
 
       let moduloIndex = Base32CrockfordEncoding.allChecksumSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
 
@@ -68,18 +74,21 @@ final class Base32CrockfordTests: XCTestCase {
       XCTAssertEqual(parameters.integer.data.count, 128 / 8)
       XCTAssertEqual(encodedInt, encodedUUID)
       XCTAssertEqual(encodedInt, parameters.encoded)
+      XCTAssertEqual(encodedInt, parameters.encoded)
       XCTAssertEqual(encodedUUID, parameters.encoded)
       XCTAssertEqual(decodedUUID, parameters.uuid, "Invalid Row \(index)")
+      XCTAssertEqual(decodedWithDashesUUID, parameters.uuid)
       XCTAssertEqual(actualMod, modulo, "Invalid Row \(index)")
       XCTAssertEqual(modulo, parameters.integer.data.remainderBy(37))
       XCTAssertEqual(encodedUUIDChecksum, parameters.encodedWithChecksum)
       XCTAssertEqual(decodedUUIDChecksum, parameters.uuid)
+      XCTAssertEqual(decodedWithDashesUUIDChecksum, parameters.uuid)
     }
   }
 
   func testBadChecksum() {
     let data = Data(Array(uuid: .init()))
-    let encodedWithChecksum = Base32CrockfordEncoding.encoding.encode(data: data, options: .withChecksum)
+    let encodedWithChecksum = Base32CrockfordEncoding.encoding.encode(data: data, options: .init(withChecksum: true))
     let (encoded, checksum) = encodedWithChecksum.split(withChecksum: true)
     guard let checksum = checksum else {
       XCTFail()
@@ -115,7 +124,7 @@ final class Base32CrockfordTests: XCTestCase {
     XCTAssertEqual(badString.count, 33)
     do {
       _ = try Base32CrockfordEncoding.encoding.decode(base32Encoded: badString)
-      XCTFail()
+      XCTFail("String \(badString) was valid.")
     } catch let error as Base32CrockfordDecodingError {
       guard case let .invalidCharacter(actualCharacter) = error.details else {
         XCTAssertNil(error)
@@ -125,6 +134,17 @@ final class Base32CrockfordTests: XCTestCase {
     } catch {
       XCTAssertNil(error)
     }
+  }
+
+  func testSeparator() throws {
+    let base32String = "69RDT89E2T8BMB7SZVZ03F4SGV2"
+    let expected3String = "69R-DT8-9E2-T8B-MB7-SZV-Z03-F4S-GV2"
+    let expected9String = "69RDT89E2-T8BMB7SZV-Z03F4SGV2"
+    let decoded = try Base32CrockfordEncoding.encoding.decode(base32Encoded: base32String, options: .init(withChecksum: true))
+    let actual3String = Base32CrockfordEncoding.encoding.encode(data: decoded, options: .init(withChecksum: true, groupingBy: .init(maxLength: 3)))
+    let actual9String = Base32CrockfordEncoding.encoding.encode(data: decoded, options: .init(withChecksum: true, groupingBy: .init(maxLength: 9)))
+    XCTAssertEqual(actual3String, expected3String)
+    XCTAssertEqual(actual9String, expected9String)
   }
 
   func testRandomData() {
