@@ -48,6 +48,7 @@ final class Base32CrockfordTests: XCTestCase {
       let divisor: UInt128 = 37
       let uuidData = Data(Array(uuid: parameters.uuid))
       let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData)
+
       let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data)
       let encodedUUIDChecksum = Base32CrockfordEncoding.encoding.encode(data: uuidData, options: .init(withChecksum: true))
 
@@ -55,13 +56,13 @@ final class Base32CrockfordTests: XCTestCase {
       let decodedUUID = UUID(data: decodedUUIDBytes)
 
       let decodedWithDashesUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded.randomDashes()).trim(to: 16)
-      let decodedWithDashesUUID = UUID(data: decodedUUIDBytes)
+      let decodedWithDashesUUID = UUID(data: decodedWithDashesUUIDBytes)
 
       let decodedUUIDChecksumBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum, options: .init(withChecksum: true)).trim(to: 16)
       let decodedUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
 
       let decodedUUIDChecksumWithDashesBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum.randomDashes(), options: .init(withChecksum: true)).trim(to: 16)
-      let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
+      let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumWithDashesBytes)
 
       let moduloIndex = Base32CrockfordEncoding.allChecksumSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
 
@@ -143,6 +144,7 @@ final class Base32CrockfordTests: XCTestCase {
     let decoded = try Base32CrockfordEncoding.encoding.decode(base32Encoded: base32String, options: .init(withChecksum: true))
     let actual3String = Base32CrockfordEncoding.encoding.encode(data: decoded, options: .init(withChecksum: true, groupingBy: .init(maxLength: 3)))
     let actual9String = Base32CrockfordEncoding.encoding.encode(data: decoded, options: .init(withChecksum: true, groupingBy: .init(maxLength: 9)))
+
     XCTAssertEqual(actual3String, expected3String)
     XCTAssertEqual(actual9String, expected9String)
   }

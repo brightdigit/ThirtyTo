@@ -2,13 +2,12 @@ import Foundation
 
 public struct Base32CrockfordEncodingOptions {
   public struct GroupingOptions {
-    public init(maxLength: Int, separator: String = "-") {
+    public init(maxLength: Int) {
       self.maxLength = maxLength
-      self.separator = separator
     }
 
     public let maxLength: Int
-    public let separator: String
+    public let separator: String = "-"
   }
 
   public static let none = Base32CrockfordEncodingOptions(withChecksum: false)

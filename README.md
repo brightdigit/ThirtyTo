@@ -40,7 +40,8 @@ Swift Package for using Base32Crockford Encoding for Data and Identifiers.
 
 # Introduction
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In dictum non consectetur a erat nam at lectus urna. Maecenas accumsan lacus vel facilisis volutpat est velit.
+**ThirtyTo** provides a way to encode data and create identifiers which is both efficient and human-readable. While Base64 is more efficient it is not very human-readable with both both upper case and lower case letters as well as punctuation.
+
 ## Requirements 
 
 **Apple Platforms**
@@ -60,100 +61,159 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor i
 
 ## Why use Base32Crockford
 
-Lorem markdownum matri, nominis et carpis suo: mihi. Saxum misero inritamina
-tenvit emissi ad illa dixit intremuere videt ventos rector tantum Ixiona,
-planguntur palmis.
+Base32Crockford offers the most reasonable compromise when it comes to encoding data. Being a super set of Base16, it uses all ten digits and 22 of the 26 Latin upper case characters.
 
-- Certe tuta est
-- Haec circumdat festa iuris vertit per
-- Ubi perdere mecum
-- Diu pectora perdere palmas et
-- Abit arces miscet vinctoque monte
+| Symbol Value 	| Decode Symbol 	| Encode Symbol 	|
+|:------------:	|:-------------:	|:-------------:	|
+| 0            	| 0 O o         	| 0             	|
+| 1            	| 1 I i L l     	| 1             	|
+| 2            	| 2             	| 2             	|
+| 3            	| 3             	| 3             	|
+| 4            	| 4             	| 4             	|
+| 5            	| 5             	| 5             	|
+| 6            	| 6             	| 6             	|
+| 7            	| 7             	| 7             	|
+| 8            	| 8             	| 8             	|
+| 9            	| 9             	| 9             	|
+| 10           	| A a           	| A             	|
+| 11           	| B b           	| B             	|
+| 12           	| C c           	| C             	|
+| 13           	| D d           	| D             	|
+| 14           	| E e           	| E             	|
+| 15           	| F f           	| F             	|
+| 16           	| G g           	| G             	|
+| 17           	| H h           	| H             	|
+| 18           	| J j           	| J             	|
+| 19           	| K k           	| K             	|
+| 20           	| M m           	| M             	|
+| 21           	| N n           	| N             	|
+| 22           	| P p           	| P             	|
+| 23           	| Q q           	| Q             	|
+| 24           	| R r           	| R             	|
+| 25           	| S s           	| S             	|
+| 26           	| T t           	| T             	|
+| 27           	| V v           	| V             	|
+| 28           	| W w           	| W             	|
+| 29           	| X x           	| X             	|
+| 30           	| Y y           	| Y             	|
+| 31           	| Z z           	| Z             	|
 
-Non tuum certa, [inquirit](http://formae.io/quoque-et) lumen; modo mirere inops
-adsensere dumque phaedimus feros delectat longo leae. Petis et referunt viisque,
-contigit quae huius fessa calidi, Aiax. Non praesentior sono spumis; Oete os ira
-ergo adsuetudine senex.
 # Usage
 
-Lorem markdownum es nisi regem, abit collumque ignibus, date aliud cervice
-redderet: aderat. Sensi [Actoridaeque](http://invenio-taedis.net/) ipsius in
-vicina, transformat vinctum paternis; in nec **et est**. Solum populosque auras,
-est pellis cupit debes erat date amorem, Aeaciden corpore occiderat.
-
-Alis sanguis modo! Sim Argo, suis Cimoli coniuge. Furores quas.
-
-1. Pedibus humum
-2. Conplexa temptasse digitos
-3. In petit quem quoque summis rutilos tu
-
-Aspicit ore candida caput perveni *vultuque* coniugio remissurus veni crescitque
-animos ipsumque. Est priores ipsa, cum requies primum orat stravimus hac? Rex in
-quod si inguine addidit auctor genas diluvio et quem pugnant aequalis, saltumque
-minoribus quam, quotiens turis?
+**ThirtyTo** enables the encoding and decoding data in _Base32Crockford_ as well as creation of unique identifiers. There are a variety of options available for encoding and decoding.
 
 ## Encoding and Decoding Data
 
-Lorem markdownum te Emathion tamen [exhortantur
-aurato](http://www.infiducia.io/caencu) aut ubi **fuit cautibus**, inde ille non
-nympharum geminam; est. Conscendit quartus, petisti, pudor Cassiope *corda*
-suus, erubuit suffundit vestigia mitissima aduncae? Cura versus; dedit mare
-urbem valido. Quoniam in [fine](http://mihi.net/), superesse, pius gladios;
-honores Hyperionis ille.
+All encoding and decoding is done through the `Base32CrockfordEncoding.encoding` object. This provides an interface into encoding and decoding data as well standardizing. 
 
-    itunes_mirror += mipsCleanVlb;
-    tag = compact(fileBotnet(keystroke, cameraPram),
-            crossplatformTrimAnalyst.networking(23, -4), hdmi);
-    driveUndoMarketing(virusUtf);
-    teraflopsIm.cellLionLayout.graymail(clickBounce + ict, defaultSystem);
+To encode any data call:
 
-In somnus reserata conripimus velamine vix rursus culpa. Vacuas villo.
+```swift
+public func encode(
+    data: Data,
+    options: Base32CrockfordEncodingOptions = .none
+  ) -> String
+```
 
-> Accipiam illi vela luctata solo, poma
-> [venistis](http://iunoniaea.net/foresqueet.html), regia fores, sola. Priamus
-> ardebant soporem, possederat, thalami consumpta infelicem plena formam.
+Therefore to encode a `Data` object, simply call via:
 
-Iuvenes fuit natus terga tenebo eburnae vos dextra ignotos erat
-[caeleste](http://www.et.org/ille) de galea liberioris iungi cognosceret movens
-genae? Animos auctor crudelibus lupis coniugis inposuitque **hiatu sorte
-excussit** Iuppiter Phlegethontide. Attonitas dabitur locorum *per aut* infelix,
-et de credar Amphimedon duri: sacra alius sensit.
+```swift
+let data : Data // 0x00b003786a8d4aa28411f4e268c43629 
+let base32String = Base32CrockfordEncoding.encoding.encode(data: data)
+print(base32String) // P01QGTMD9AH884FMW9MC8DH9
+```
+
+If you wish to decode the string you can call `Base32CrockfordEncoding.decode`:
+
+```swift
+let data = try Base32CrockfordEncoding.encoding.decode(
+    base32Encoded: "P01QGTMD9AH884FMW9MC8DH9"
+) // 0x00b003786a8d4aa28411f4e268c43629
+```
+
+The `Base32CrockfordEncoding.encode` object provides the ability to specify options on formatting and a checksum.
+
+### How Checksum Works
+
+You can optionally provide a checksum character at the end which allows for detecting transmission and entry errors early and inexpensively.
+
+According to the specification:
+
+> The check symbol encodes the number modulo 37, 37 being the least prime number greater than 32. We introduce 5 additional symbols that are used only for encoding or decoding the check symbol.
+
+The additional 5 symbols are:
+
+| Symbol Value 	| Decode Symbol 	| Encode Symbol 	|
+|----	|-----	|---	|
+| 32 	| *   	| * 	|
+| 33 	| ~   	| ~ 	|
+| 34 	| $   	| $ 	|
+| 35 	| =   	| = 	|
+| 36 	| U u 	| U 	|
+
+If you wish to include the checksum, pass true for the `withChecksum` property on the `Base32CrockfordEncodingOptions` object:
+
+```swift
+let data : Data // 0xb63d798c4329401684d1d41d3becc95c
+let base32String = Base32CrockfordEncoding.encoding.encode(
+    data: data,
+    options: .init(withChecksum: true)
+)
+print(base32String) // 5P7NWRRGS980B89MEM3MXYSJAW5
+```
+
+When decoding a string wtih a checksum, you must specify true for the `withChecksum` property on `Base32CrockfordDecodingOptions`:
+
+```swift
+let data = try Base32CrockfordEncoding.encoding.decode(
+    base32Encoded: "5P7NWRRGS980B89MEM3MXYSJAW5"a,
+    options: .init(withChecksum: true)
+) // 0xb63d798c4329401684d1d41d3becc95c
+```
+
+Besides adding a checksum, `Base32CrockfordEncodingOptions` also provides the ability to add a grouping separator.
 
 ### Using Group Separators
 
-Lorem markdownum submovet qui. Mihi lumina causas. Quam nec, matrum Credulitas
-adsiduis foret auditur Tritoniacam nostri. Ipsum cupit unda fas Priami clangore
-levant. Diro arcus mansit, formae, violavit silvas muneris vulnera fata,
-micuerunt.
+According to the Base32Crockford specification:
 
-    spreadsheet = ppp.window_model_ppp.resourcesRosettaKernel(of) + igp;
-    if (http_radcab_web(motherboard * 1, modifier, print_c)) {
-        textUnmountAdf = internet_and_cisc(point, insertionText, 1) + drive;
-        apple_spam.podcast.compact(tiger_snapshot, 4);
-    } else {
-        clip = serviceWeb;
-        lossyDuplexBox(dbms(databaseSinkSample), ethernetDialServer);
-        tween_tiff_document /= control(712371, footerVduPermalink, asp);
-    }
-    if (-5 < mirrored + modem + spool) {
-        leopardBackupDdr.newbiePci = status_zone;
-    }
-    memory_teraflops_rich.ergonomicsDvrMinimize(webmasterHardPaper);
-    var portPumOverwrite = graphic(del_flood.deleteCompile.odbc_icf(delete_left,
-            language_multicasting_syntax));
+> Hyphens (-) can be inserted into symbol strings. This can partition a string into manageable pieces, improving readability by helping to prevent confusion. Hyphens are ignored during decoding.
 
-Pectora ego studeat inpia, et ignes inponique lustrat Lucina. Dentibus sed mecum
-absens ad cuncta cultum *faciente* oculos; felix fixa pomoque venitque; ceu
-tecta domus luctus convicia.
+To insert hyphens to the encoded string, provide the `GroupingOptions` object to `Base32CrockfordEncodingOptions`:
 
-1. Aquilone ferro
-2. Parum Iapygis ore latus quid nymphas
-3. Sit temptatis possis
-4. Ingenti revolutaque aevoque socer patria sceptrum ut
-5. Et illac auctor manere
-6. Quidem Oileos aliquemque
+```swift
+let data : Data // 00c9c37484b85a42e8b3e7fbf806f2661b
+let base32StringGroupedBy3 = Base32CrockfordEncoding.encoding.encode(
+    data: data,
+    options: .init(groupingBy: .init(maxLength: 3))
+)
+let base32StringGroupedBy9 = Base32CrockfordEncoding.encoding.encode(
+    data: data,
+    options: .init(groupingBy: .init(maxLength: 9))
+)
+print(base32StringGroupedBy3) // 69R-DT8-9E2-T8B-MB7-SZV-Z03-F4S-GV2
+print(base32StringGroupedBy9) // 69RDT89E2-T8BMB7SZV-Z03F4SGV2
+```
 
-### Adding a Checksum
+When decoding, hyphens are ignored:
+
+```swift
+let dataNoHyphens = try Base32CrockfordEncoding.encoding.decode(
+    base32Encoded: "69RDT89E2T8BMB7SZVZ03F4SGV2"
+) // 00c9c37484b85a42e8b3e7fbf806f2661b
+
+let dataGroupedBy3 = try Base32CrockfordEncoding.encoding.decode(
+    base32Encoded: "69R-DT8-9E2-T8B-MB7-SZV-Z03-F4S-GV2"
+) // 00c9c37484b85a42e8b3e7fbf806f2661b
+
+let dataGroupedBy9 = try Base32CrockfordEncoding.encoding.decode(
+    base32Encoded: "69RDT89E2-T8BMB7SZV-Z03F4SGV2"
+) // 00c9c37484b85a42e8b3e7fbf806f2661b
+
+assert(dataNoHyphens == dataGroupedBy3) // true
+assert(dataNoHyphens == dataGroupedBy9) // true
+assert(dataGroupedBy3 == dataGroupedBy9) // true
+```
 
 ## Creating an Identifier
 
