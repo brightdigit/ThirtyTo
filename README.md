@@ -1,3 +1,4 @@
+<!-->
 # ThirtyTo
 
 [![SwiftPM](https://img.shields.io/badge/SPM-Linux%20%7C%20iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-success?logo=swift)](https://swift.org)
@@ -19,6 +20,7 @@
 [What is ThirtyTo?](https://www.crockford.com/base32.html)
 
 [Documentation Here](/docs/README.md)
+-->
 
 <p align="center">
     <img alt="ThirtyTo" title="ThirtyTo" src="Assets/logo.svg" height="200">
@@ -37,9 +39,7 @@ Share your local development server easily with your Apple devices.
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbrightdigit%2FThirtyTo%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/brightdigit/ThirtyTo)
 
 
-<!--
 [![Codecov](https://img.shields.io/codecov/c/github/brightdigit/ThirtyTo)](https://codecov.io/gh/brightdigit/ThirtyTo)
--->
 [![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/ThirtyTo)](https://www.codefactor.io/repository/github/brightdigit/ThirtyTo)
 [![codebeat badge](https://codebeat.co/badges/54695d4b-98c8-4f0f-855e-215500163094)](https://codebeat.co/projects/github-com-brightdigit-ThirtyTo-main)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/brightdigit/ThirtyTo)](https://codeclimate.com/github/brightdigit/ThirtyTo)
@@ -62,7 +62,7 @@ Share your local development server easily with your Apple devices.
 
 # Introduction
 
-When you are developing a full stack Swift application, you want to easily test and debug your application on both the device (iPhone, Apple Watch, iPad, etc...) as well as your development server. If you are using simulator then setting your host server to `localhost` will work but often we need to test on an actual device. You can either be an IT expert your local network's DNS or you can use ThirtyTo to easily connect your local server to your device.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In dictum non consectetur a erat nam at lectus urna. Maecenas accumsan lacus vel facilisis volutpat est velit.
 
 ## Requirements 
 
@@ -77,6 +77,13 @@ When you are developing a full stack Swift application, you want to easily test 
 - Ubuntu 18.04 or later
 - Swift 5.5.2 or later
 
+## Why use Base32
+
+### Beneifts
+
+### Drawbacks
+
+<!--
 ## Using Ngrok
 
 Ngrok is a fantastic service for setting up local development server for outside access. Let's say you need to share your local development server because you're testing on an actual device which can't access your machine via your local network. You can run `ngrok` to setup an https address which tunnels to your local development server:
@@ -102,11 +109,112 @@ That's where ThirtyTo comes in...
 ## Using the Cloud for Meta-Server Access
 
 With ThirtyTo you save the address (such as `https://c633-2600-1702-4050-7d30-cc59-3ffb-effa-6719.ngrok.io`) to a key-value storage and pull that address from your Apple device during development.
+-->
+
+# Usage
+
+Lorem markdownum es nisi regem, abit collumque ignibus, date aliud cervice
+redderet: aderat. Sensi [Actoridaeque](http://invenio-taedis.net/) ipsius in
+vicina, transformat vinctum paternis; in nec **et est**. Solum populosque auras,
+est pellis cupit debes erat date amorem, Aeaciden corpore occiderat.
+
+Alis sanguis modo! Sim Argo, suis Cimoli coniuge. Furores quas.
+
+1. Pedibus humum
+2. Conplexa temptasse digitos
+3. In petit quem quoque summis rutilos tu
+
+Aspicit ore candida caput perveni *vultuque* coniugio remissurus veni crescitque
+animos ipsumque. Est priores ipsa, cum requies primum orat stravimus hac? Rex in
+quod si inguine addidit auctor genas diluvio et quem pugnant aequalis, saltumque
+minoribus quam, quotiens turis?
+
+## Encoding and Decoding Data
+
+Lorem markdownum te Emathion tamen [exhortantur
+aurato](http://www.infiducia.io/caencu) aut ubi **fuit cautibus**, inde ille non
+nympharum geminam; est. Conscendit quartus, petisti, pudor Cassiope *corda*
+suus, erubuit suffundit vestigia mitissima aduncae? Cura versus; dedit mare
+urbem valido. Quoniam in [fine](http://mihi.net/), superesse, pius gladios;
+honores Hyperionis ille.
+
+    itunes_mirror += mipsCleanVlb;
+    tag = compact(fileBotnet(keystroke, cameraPram),
+            crossplatformTrimAnalyst.networking(23, -4), hdmi);
+    driveUndoMarketing(virusUtf);
+    teraflopsIm.cellLionLayout.graymail(clickBounce + ict, defaultSystem);
+
+In somnus reserata conripimus velamine vix rursus culpa. Vacuas villo.
+
+> Accipiam illi vela luctata solo, poma
+> [venistis](http://iunoniaea.net/foresqueet.html), regia fores, sola. Priamus
+> ardebant soporem, possederat, thalami consumpta infelicem plena formam.
+
+Iuvenes fuit natus terga tenebo eburnae vos dextra ignotos erat
+[caeleste](http://www.et.org/ille) de galea liberioris iungi cognosceret movens
+genae? Animos auctor crudelibus lupis coniugis inposuitque **hiatu sorte
+excussit** Iuppiter Phlegethontide. Attonitas dabitur locorum *per aut* infelix,
+et de credar Amphimedon duri: sacra alius sensit.
+
+### Using Group Separators
+
+Lorem markdownum submovet qui. Mihi lumina causas. Quam nec, matrum Credulitas
+adsiduis foret auditur Tritoniacam nostri. Ipsum cupit unda fas Priami clangore
+levant. Diro arcus mansit, formae, violavit silvas muneris vulnera fata,
+micuerunt.
+
+    spreadsheet = ppp.window_model_ppp.resourcesRosettaKernel(of) + igp;
+    if (http_radcab_web(motherboard * 1, modifier, print_c)) {
+        textUnmountAdf = internet_and_cisc(point, insertionText, 1) + drive;
+        apple_spam.podcast.compact(tiger_snapshot, 4);
+    } else {
+        clip = serviceWeb;
+        lossyDuplexBox(dbms(databaseSinkSample), ethernetDialServer);
+        tween_tiff_document /= control(712371, footerVduPermalink, asp);
+    }
+    if (-5 < mirrored + modem + spool) {
+        leopardBackupDdr.newbiePci = status_zone;
+    }
+    memory_teraflops_rich.ergonomicsDvrMinimize(webmasterHardPaper);
+    var portPumOverwrite = graphic(del_flood.deleteCompile.odbc_icf(delete_left,
+            language_multicasting_syntax));
+
+Pectora ego studeat inpia, et ignes inponique lustrat Lucina. Dentibus sed mecum
+absens ad cuncta cultum *faciente* oculos; felix fixa pomoque venitque; ceu
+tecta domus luctus convicia.
+
+1. Aquilone ferro
+2. Parum Iapygis ore latus quid nymphas
+3. Sit temptatis possis
+4. Ingenti revolutaque aevoque socer patria sceptrum ut
+5. Et illac auctor manere
+6. Quidem Oileos aliquemque
+
+### Adding a Checksum
+
+## Creating an Identifier
+
+Lorem markdownum duas, qui data superare trisulcis rex haec unius! Rupe quo aut,
+cum per, pius attactu. Repperit canenda deiectuque coepit vertitur violentus
+quoque! Siccoque corpus. Illa intima Bacchum nativum.
+
+Verque aves ab verba. Hoc auris sed formosissimus malorum virum: cum locoque
+genuit, lumina velamina, huc. Materiam cetera, forte, deus tibi hiberna vates
+revocamina. Tenebat validisne quod post longe parvis, sic superari!
+
+- Atque et volvitur corpora
+- Est ab protinus cornua renuente medii dum
+- Modo suo convertit temporis Lapithas numenque coronat
+
+### UUID
+
+### What is ULID?
 
 # Installation
 
-ThirtyTo has two components: Server and Client. You can check out the ThirtyToDemoApp Xcode project for an example. Before setting up our server and client app, let's setup our key-value storage.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In dictum non consectetur a erat nam at lectus urna. Maecenas accumsan lacus vel facilisis volutpat est velit.
 
+<!--
 ## Cloud Setup
 
 If you haven't already setup an account with ngrok and install the command-line tool via homebrew. Next let's setup a key-value storage with kvdb.io which is currently supported. _If you have another service, please create an issue in the repo. Your feedback is helpful._ 
@@ -176,6 +284,7 @@ let baseURL = try await KVdb.url(withKey: key, atBucket: bucketName)
 ```
 
 At the point, you'll have the base url of your Vapor application and can begin using it in your application!
+-->
 # License 
 
 This code is distributed under the MIT license. See the [LICENSE](https://github.com/brightdigit/ThirtyTo/LICENSE) file for more info.
