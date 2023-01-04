@@ -1,5 +1,5 @@
 extension String {
-  public func pad(toSize: Int) -> String {
+  internal func pad(toSize: Int) -> String {
     var padded = self
     for _ in 0 ..< (toSize - count) {
       padded = "0" + padded
@@ -7,7 +7,7 @@ extension String {
     return padded
   }
 
-  public func split(by length: Int) -> [String] {
+  internal func split(by length: Int) -> [String] {
     var endIndex = self.endIndex
     var results = [Substring]()
 

@@ -1,11 +1,13 @@
 import Foundation
 
 extension UUID {
+  /// Create a UUID from bytes.
+  /// - Parameter data: Bytes of the UUID.
   public init(data: Data) {
-    var bytes = [UInt8](repeating: 0, count: data.count)
-    _ = bytes.withUnsafeMutableBufferPointer {
-      data.copyBytes(to: $0)
+    assert(data.count == 16)
+    let uuidC = data.withUnsafeBytes {
+      $0.load(as: uuid_t.self)
     }
-    self = NSUUID(uuidBytes: bytes) as UUID
+    self.init(uuid: uuidC)
   }
 }

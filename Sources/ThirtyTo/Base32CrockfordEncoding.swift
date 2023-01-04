@@ -1,18 +1,17 @@
 import Foundation
 
+/// Encoder and Decoder for Base32Crockford.
 public struct Base32CrockfordEncoding {
+  /// Shared encoding object.
   public static let encoding = Base32CrockfordEncoding()
-  private static let characters = "0123456789ABCDEFGHJKMNPQRSTVWXYZ"
-  private static let checkSymbols = "*~$=U"
-  public static let allChecksumSymbols = characters + checkSymbols
 
   private func validate(
     _ result: Data,
     from standardized: String,
     withChecksum checksum: Character
   ) throws {
-    let expected = Self.allChecksumSymbols.firstOffsetOf(character: checksum)
-    let actual = result.remainderBy(Self.allChecksumSymbols.count)
+    let expected = Self.CharacterSets.checkSymbols.firstOffsetOf(character: checksum)
+    let actual = result.remainderBy(Self.CharacterSets.checkSymbols.count)
 
     guard expected == actual else {
       throw Base32CrockfordDecodingError.checksumError(
@@ -30,7 +29,7 @@ public struct Base32CrockfordEncoding {
     let (valueString, checksum) = standardized.split(withChecksum: options.withChecksum)
 
     let values = try valueString.offsets(
-      basedOnCharacterMap: Self.characters,
+      basedOnCharacterMap: Self.CharacterSets.symbols,
       onInvalidCharacter: Base32CrockfordDecodingError.invalidCharacter(_:from:)
     )
 
@@ -52,18 +51,23 @@ public struct Base32CrockfordEncoding {
     return result
   }
 
+  /// Encode the data to a Base32Crockford string.
+  /// - Parameters:
+  ///   - data: The Data to encode
+  ///   - options: Encoding options.
+  /// - Returns: Base32Crockford String.
   public func encode(
     data: Data,
     options: Base32CrockfordEncodingOptions = .none
   ) -> String {
     var binary = Binary(data: data, sectionSize: 5)
-    var encodedString = binary.string(basedOnCharacterMap: Self.characters)
+    var encodedString = binary.string(basedOnCharacterMap: Self.CharacterSets.symbols)
 
     if options.withChecksum {
       encodedString.append(
-        Self.allChecksumSymbols.characterAtOffset(
+        Self.CharacterSets.checkSymbols.characterAtOffset(
           data.remainderBy(
-            Self.allChecksumSymbols.count
+            Self.CharacterSets.checkSymbols.count
           )
         )
       )
@@ -78,9 +82,18 @@ public struct Base32CrockfordEncoding {
 
     return encodedString
       .split(by: groupingOptions.maxLength)
-      .joined(separator: groupingOptions.separator)
+      .joined(
+        separator: Base32CrockfordEncodingOptions.GroupingOptions.separator
+      )
   }
 
+  /// Decode a Base32Crockford String.
+  /// - Parameters:
+  ///   - string: The Base32Crockford String.
+  ///   - options: Options for decoding a Base32Crockford String.
+  /// - Throws: `Base32CrockfordDecodingError`
+  ///  If there's an invalid character or checksum value.
+  /// - Returns: Decoded Data
   public func decode(
     base32Encoded string: String,
     options: Base32CrockfordDecodingOptions = .none
@@ -89,6 +102,13 @@ public struct Base32CrockfordEncoding {
     return try decode(standardizedString: standardized, options: options)
   }
 
+  /// Standardizes a Base32Crockford encoded string by
+  /// * Converting O,I,L to their respective digits
+  /// * Removing all group separating hyphens
+  /// * Convert all alphabet characters to uppercase.
+  ///
+  /// - Parameter string: The String to standardize.
+  /// - Returns: The standardized String.
   public func standardize(string: String) -> String {
     string
       .uppercased()

@@ -1,12 +1,12 @@
 import Foundation
 
-public struct Binary {
-  public let sectionSize: Int
-  public let bytes: [UInt8]
-  public var readingOffset: Int = 0
-  public let byteSize: Int
+internal struct Binary {
+  internal let sectionSize: Int
+  internal let bytes: [UInt8]
+  internal var readingOffset: Int = 0
+  internal let byteSize: Int
 
-  public init(data: Data, sectionSize: Int, byteSize: Int = 8) {
+  internal init(data: Data, sectionSize: Int, byteSize: Int = 8) {
     self.byteSize = byteSize
     let bytesLength = data.count
     var bytesArray = [UInt8](repeating: 0, count: bytesLength)
@@ -16,7 +16,7 @@ public struct Binary {
     readingOffset = (data.count * byteSize) % sectionSize - sectionSize
   }
 
-  public func bit(_ position: Int) -> Int {
+  private func bit(_ position: Int) -> Int {
     guard position >= 0 else {
       return 0
     }
@@ -26,7 +26,7 @@ public struct Binary {
     return (byte >> bitPosition) & 0x01
   }
 
-  public func bits(_ range: Range<Int>) -> Int {
+  private func bits(_ range: Range<Int>) -> Int {
     var positions = [Int]()
 
     for position in range.lowerBound ..< range.upperBound {
@@ -38,19 +38,19 @@ public struct Binary {
     }
   }
 
-  public func bits(_ start: Int, _ length: Int) -> Int {
+  private func bits(_ start: Int, _ length: Int) -> Int {
     bits(start ..< (start + length))
   }
 
-  public func byte(_ position: Int) -> Int {
+  private func byte(_ position: Int) -> Int {
     Int(bytes[position])
   }
 
-  public func bitsWithInternalOffsetAvailable(_ length: Int) -> Bool {
+  private func bitsWithInternalOffsetAvailable(_ length: Int) -> Bool {
     (bytes.count * byteSize) >= (readingOffset + length)
   }
 
-  public mutating func nextSection() -> Int? {
+  internal mutating func nextSection() -> Int? {
     if bitsWithInternalOffsetAvailable(sectionSize) {
       let returnValue = bits(readingOffset, sectionSize)
       readingOffset += sectionSize
@@ -60,7 +60,7 @@ public struct Binary {
     }
   }
 
-  public mutating func string(basedOnCharacterMap characterMap: String) -> String {
+  internal mutating func string(basedOnCharacterMap characterMap: String) -> String {
     var encodedString = ""
     var index: Int?
 

@@ -64,10 +64,10 @@ final class Base32CrockfordTests: XCTestCase {
       let decodedUUIDChecksumWithDashesBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum.randomDashes(), options: .init(withChecksum: true)).trim(to: 16)
       let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumWithDashesBytes)
 
-      let moduloIndex = Base32CrockfordEncoding.allChecksumSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
+      let moduloIndex = Base32CrockfordEncoding.CharacterSets.checkSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
 
-      let modulo = Base32CrockfordEncoding.allChecksumSymbols.distance(
-        from: Base32CrockfordEncoding.allChecksumSymbols.startIndex,
+      let modulo = Base32CrockfordEncoding.CharacterSets.checkSymbols.distance(
+        from: Base32CrockfordEncoding.CharacterSets.checkSymbols.startIndex,
         to: moduloIndex
       )
 
@@ -97,11 +97,11 @@ final class Base32CrockfordTests: XCTestCase {
     }
     var badChecksum = checksum
     repeat {
-      badChecksum = Base32CrockfordEncoding.allChecksumSymbols.randomElement()!
+      badChecksum = Base32CrockfordEncoding.CharacterSets.checkSymbols.randomElement()!
     } while badChecksum == checksum
     let badEncodedWithChecksum = encoded.appending(String(badChecksum))
-    let mismatchValueExpected = Base32CrockfordEncoding.allChecksumSymbols.firstOffsetOf(character: badChecksum)
-    let badChecksumExpected = Base32CrockfordEncoding.allChecksumSymbols.firstOffsetOf(character: checksum)
+    let mismatchValueExpected = Base32CrockfordEncoding.CharacterSets.checkSymbols.firstOffsetOf(character: badChecksum)
+    let badChecksumExpected = Base32CrockfordEncoding.CharacterSets.checkSymbols.firstOffsetOf(character: checksum)
     do {
       _ = try Base32CrockfordEncoding.encoding.decode(base32Encoded: badEncodedWithChecksum, options: .init(withChecksum: true))
       XCTFail()

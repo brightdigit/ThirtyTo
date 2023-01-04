@@ -1,12 +1,19 @@
 import Foundation
 
+/// An error which occured in decoding a Base32Crockford String.
 public struct Base32CrockfordDecodingError: Error {
+  /// Type of error which occured
   public enum Details {
+    // invalid checksum
     case checksum(Int, mismatchValue: Int?)
+    // unacceptable character
     case invalidCharacter(Character)
   }
 
+  /// The source string which triggered the error
   public let source: String
+
+  /// The details of the type of error.
   public let details: Details
 
   private init(source: String, details: Base32CrockfordDecodingError.Details) {

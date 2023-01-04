@@ -1,4 +1,4 @@
-import ThirtyTo
+@testable import ThirtyTo
 import XCTest
 
 final class BinaryTests: XCTestCase {
