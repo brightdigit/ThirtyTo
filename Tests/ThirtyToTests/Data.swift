@@ -1,4 +1,4 @@
-@testable import Base32Crockford
+@testable import ThirtyTo
 import XCTest
 
 extension Data {

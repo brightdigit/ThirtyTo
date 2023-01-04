@@ -6,23 +6,23 @@
 import PackageDescription
 
 let package = Package(
-  name: "Base32Crockford",
+  name: "ThirtyTo",
   products: [
     .library(
-      name: "Base32Crockford",
-      targets: ["Base32Crockford"]
+      name: "ThirtyTo",
+      targets: ["ThirtyTo"]
     )
   ],
   dependencies: [
   ],
   targets: [
     .target(
-      name: "Base32Crockford",
+      name: "ThirtyTo",
       dependencies: []
     ),
     .testTarget(
-      name: "Base32CrockfordTests",
-      dependencies: ["Base32Crockford"]
+      name: "ThirtyToTests",
+      dependencies: ["ThirtyTo"]
     )
   ]
 )

@@ -1,4 +1,4 @@
-@testable import Base32Crockford
+@testable import ThirtyTo
 import XCTest
 
 final class Base32CrockfordTests: XCTestCase {
@@ -48,6 +48,7 @@ final class Base32CrockfordTests: XCTestCase {
       let divisor: UInt128 = 37
       let uuidData = Data(Array(uuid: parameters.uuid))
       let encodedUUID = Base32CrockfordEncoding.encoding.encode(data: uuidData)
+
       let encodedInt = Base32CrockfordEncoding.encoding.encode(data: parameters.integer.data)
       let encodedUUIDChecksum = Base32CrockfordEncoding.encoding.encode(data: uuidData, options: .init(withChecksum: true))
 
@@ -55,18 +56,18 @@ final class Base32CrockfordTests: XCTestCase {
       let decodedUUID = UUID(data: decodedUUIDBytes)
 
       let decodedWithDashesUUIDBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encoded.randomDashes()).trim(to: 16)
-      let decodedWithDashesUUID = UUID(data: decodedUUIDBytes)
+      let decodedWithDashesUUID = UUID(data: decodedWithDashesUUIDBytes)
 
       let decodedUUIDChecksumBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum, options: .init(withChecksum: true)).trim(to: 16)
       let decodedUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
 
       let decodedUUIDChecksumWithDashesBytes = try Base32CrockfordEncoding.encoding.decode(base32Encoded: parameters.encodedWithChecksum.randomDashes(), options: .init(withChecksum: true)).trim(to: 16)
-      let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumBytes)
+      let decodedWithDashesUUIDChecksum = UUID(data: decodedUUIDChecksumWithDashesBytes)
 
-      let moduloIndex = Base32CrockfordEncoding.allChecksumSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
+      let moduloIndex = Base32CrockfordEncoding.CharacterSets.checkSymbols.firstIndex(of: parameters.encodedWithChecksum.last!)!
 
-      let modulo = Base32CrockfordEncoding.allChecksumSymbols.distance(
-        from: Base32CrockfordEncoding.allChecksumSymbols.startIndex,
+      let modulo = Base32CrockfordEncoding.CharacterSets.checkSymbols.distance(
+        from: Base32CrockfordEncoding.CharacterSets.checkSymbols.startIndex,
         to: moduloIndex
       )
 
@@ -96,11 +97,11 @@ final class Base32CrockfordTests: XCTestCase {
     }
     var badChecksum = checksum
     repeat {
-      badChecksum = Base32CrockfordEncoding.allChecksumSymbols.randomElement()!
+      badChecksum = Base32CrockfordEncoding.CharacterSets.checkSymbols.randomElement()!
     } while badChecksum == checksum
     let badEncodedWithChecksum = encoded.appending(String(badChecksum))
-    let mismatchValueExpected = Base32CrockfordEncoding.allChecksumSymbols.firstOffsetOf(character: badChecksum)
-    let badChecksumExpected = Base32CrockfordEncoding.allChecksumSymbols.firstOffsetOf(character: checksum)
+    let mismatchValueExpected = Base32CrockfordEncoding.CharacterSets.checkSymbols.firstOffsetOf(character: badChecksum)
+    let badChecksumExpected = Base32CrockfordEncoding.CharacterSets.checkSymbols.firstOffsetOf(character: checksum)
     do {
       _ = try Base32CrockfordEncoding.encoding.decode(base32Encoded: badEncodedWithChecksum, options: .init(withChecksum: true))
       XCTFail()
@@ -143,6 +144,7 @@ final class Base32CrockfordTests: XCTestCase {
     let decoded = try Base32CrockfordEncoding.encoding.decode(base32Encoded: base32String, options: .init(withChecksum: true))
     let actual3String = Base32CrockfordEncoding.encoding.encode(data: decoded, options: .init(withChecksum: true, groupingBy: .init(maxLength: 3)))
     let actual9String = Base32CrockfordEncoding.encoding.encode(data: decoded, options: .init(withChecksum: true, groupingBy: .init(maxLength: 9)))
+
     XCTAssertEqual(actual3String, expected3String)
     XCTAssertEqual(actual9String, expected9String)
   }

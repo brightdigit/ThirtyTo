@@ -1,50 +1,12 @@
-<p align="center">
-    <img alt="ThirtyTo" title="ThirtyTo" src="Assets/logo.svg" height="200">
-</p>
-<h1 align="center"> ThirtyTo </h1>
+# ``ThirtyTo``
 
 Swift Package for using Base32Crockford Encoding for Data and Identifiers.
 
-[![SwiftPM](https://img.shields.io/badge/SPM-Linux%20%7C%20iOS%20%7C%20macOS%20%7C%20watchOS%20%7C%20tvOS-success?logo=swift)](https://swift.org)
-[![Twitter](https://img.shields.io/badge/twitter-@brightdigit-blue.svg?style=flat)](http://twitter.com/brightdigit)
-![GitHub](https://img.shields.io/github/license/brightdigit/ThirtyTo)
-![GitHub issues](https://img.shields.io/github/issues/brightdigit/ThirtyTo)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/brightdigit/ThirtyTo/ThirtyTo.yml?label=actions&logo=github&?branch=main)
-
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbrightdigit%2FThirtyTo%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/brightdigit/ThirtyTo)
-[![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2Fbrightdigit%2FThirtyTo%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/brightdigit/ThirtyTo)
-
-
-[![Codecov](https://img.shields.io/codecov/c/github/brightdigit/ThirtyTo)](https://codecov.io/gh/brightdigit/ThirtyTo)
-[![CodeFactor Grade](https://img.shields.io/codefactor/grade/github/brightdigit/ThirtyTo)](https://www.codefactor.io/repository/github/brightdigit/ThirtyTo)
-[![codebeat badge](https://codebeat.co/badges/54695d4b-98c8-4f0f-855e-215500163094)](https://codebeat.co/projects/github-com-brightdigit-ThirtyTo-main)
-[![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability/brightdigit/ThirtyTo)](https://codeclimate.com/github/brightdigit/ThirtyTo)
-[![Code Climate technical debt](https://img.shields.io/codeclimate/tech-debt/brightdigit/ThirtyTo?label=debt)](https://codeclimate.com/github/brightdigit/ThirtyTo)
-[![Code Climate issues](https://img.shields.io/codeclimate/issues/brightdigit/ThirtyTo)](https://codeclimate.com/github/brightdigit/ThirtyTo)
-[![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg)](https://houndci.com)
-
-# Table of Contents
-
-* [Introduction](#introduction)
-   * [Requirements](#requirements)
-   * [Installation](#installation)
-   * [Why use Base32Crockford](#why-use-base32crockford)
-* [Usage](#usage)
-   * [Encoding and Decoding Data](#encoding-and-decoding-data)
-      * [How Checksum Works](#how-checksum-works)
-      * [Using Group Separators](#using-group-separators)
-   * [Creating an Identifier](#creating-an-identifier)
-      * [UUID](#uuid)
-      * [What is ULID?](#what-is-ulid)
-* [References](#references)
-* [License](#license)
-
-
-# Introduction
+## Overview
 
 **ThirtyTo** provides a way to encode data and create identifiers which is both efficient and human-readable. While Base64 is more efficient it is not very human-readable with both both upper case and lower case letters as well as punctuation.
 
-## Requirements 
+### Requirements 
 
 **Apple Platforms**
 
@@ -57,54 +19,54 @@ Swift Package for using Base32Crockford Encoding for Data and Identifiers.
 - Ubuntu 18.04 or later
 - Swift 5.5.2 or later
 
-## Installation
+### Installation
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In dictum non consectetur a erat nam at lectus urna. Maecenas accumsan lacus vel facilisis volutpat est velit.
 
-## Why use Base32Crockford
+### Why use Base32Crockford
 
 Base32Crockford offers the most reasonable compromise when it comes to encoding data. Being a super set of Base16, it uses all ten digits and 22 of the 26 Latin upper case characters.
 
-| Symbol Value 	| Decode Symbol 	| Encode Symbol 	|
-|:------------:	|:-------------:	|:-------------:	|
-| 0            	| 0 O o         	| 0             	|
-| 1            	| 1 I i L l     	| 1             	|
-| 2            	| 2             	| 2             	|
-| 3            	| 3             	| 3             	|
-| 4            	| 4             	| 4             	|
-| 5            	| 5             	| 5             	|
-| 6            	| 6             	| 6             	|
-| 7            	| 7             	| 7             	|
-| 8            	| 8             	| 8             	|
-| 9            	| 9             	| 9             	|
-| 10           	| A a           	| A             	|
-| 11           	| B b           	| B             	|
-| 12           	| C c           	| C             	|
-| 13           	| D d           	| D             	|
-| 14           	| E e           	| E             	|
-| 15           	| F f           	| F             	|
-| 16           	| G g           	| G             	|
-| 17           	| H h           	| H             	|
-| 18           	| J j           	| J             	|
-| 19           	| K k           	| K             	|
-| 20           	| M m           	| M             	|
-| 21           	| N n           	| N             	|
-| 22           	| P p           	| P             	|
-| 23           	| Q q           	| Q             	|
-| 24           	| R r           	| R             	|
-| 25           	| S s           	| S             	|
-| 26           	| T t           	| T             	|
-| 27           	| V v           	| V             	|
-| 28           	| W w           	| W             	|
-| 29           	| X x           	| X             	|
-| 30           	| Y y           	| Y             	|
-| 31           	| Z z           	| Z             	|
+| Symbol Value   | Decode Symbol   | Encode Symbol   |
+|:------------:  |:-------------:  |:-------------:  |
+| 0              | 0 O o           | 0               |
+| 1              | 1 I i L l       | 1               |
+| 2              | 2               | 2               |
+| 3              | 3               | 3               |
+| 4              | 4               | 4               |
+| 5              | 5               | 5               |
+| 6              | 6               | 6               |
+| 7              | 7               | 7               |
+| 8              | 8               | 8               |
+| 9              | 9               | 9               |
+| 10             | A a             | A               |
+| 11             | B b             | B               |
+| 12             | C c             | C               |
+| 13             | D d             | D               |
+| 14             | E e             | E               |
+| 15             | F f             | F               |
+| 16             | G g             | G               |
+| 17             | H h             | H               |
+| 18             | J j             | J               |
+| 19             | K k             | K               |
+| 20             | M m             | M               |
+| 21             | N n             | N               |
+| 22             | P p             | P               |
+| 23             | Q q             | Q               |
+| 24             | R r             | R               |
+| 25             | S s             | S               |
+| 26             | T t             | T               |
+| 27             | V v             | V               |
+| 28             | W w             | W               |
+| 29             | X x             | X               |
+| 30             | Y y             | Y               |
+| 31             | Z z             | Z               |
 
-# Usage
+### Usage
 
 **ThirtyTo** enables the encoding and decoding data in _Base32Crockford_ as well as creation of unique identifiers. There are a variety of options available for encoding and decoding.
 
-## Encoding and Decoding Data
+### Encoding and Decoding Data
 
 All encoding and decoding is done through the `Base32CrockfordEncoding.encoding` object. This provides an interface into encoding and decoding data as well standardizing. 
 
@@ -135,7 +97,7 @@ let data = try Base32CrockfordEncoding.encoding.decode(
 
 The `Base32CrockfordEncoding.encode` object provides the ability to specify options on formatting and a checksum.
 
-### How Checksum Works
+#### How Checksum Works
 
 You can optionally provide a checksum character at the end which allows for detecting transmission and entry errors early and inexpensively.
 
@@ -145,13 +107,13 @@ According to the specification:
 
 The additional 5 symbols are:
 
-| Symbol Value 	| Decode Symbol 	| Encode Symbol 	|
-|----	|-----	|---	|
-| 32 	| *   	| * 	|
-| 33 	| ~   	| ~ 	|
-| 34 	| $   	| $ 	|
-| 35 	| =   	| = 	|
-| 36 	| U u 	| U 	|
+| Symbol Value   | Decode Symbol   | Encode Symbol   |
+|----  |-----  |---  |
+| 32   | *     | *   |
+| 33   | ~     | ~   |
+| 34   | $     | $   |
+| 35   | =     | =   |
+| 36   | U u   | U   |
 
 If you wish to include the checksum, pass true for the `withChecksum` property on the `Base32CrockfordEncodingOptions` object:
 
@@ -175,7 +137,7 @@ let data = try Base32CrockfordEncoding.encoding.decode(
 
 Besides adding a checksum, `Base32CrockfordEncodingOptions` also provides the ability to add a grouping separator.
 
-### Using Group Separators
+#### Using Group Separators
 
 According to the Base32Crockford specification:
 
@@ -217,7 +179,7 @@ assert(dataNoHyphens == dataGroupedBy9) // true
 assert(dataGroupedBy3 == dataGroupedBy9) // true
 ```
 
-## Creating an Identifier
+### Creating an Identifier
 
 Lorem markdownum duas, qui data superare trisulcis rex haec unius! Rupe quo aut,
 cum per, pius attactu. Repperit canenda deiectuque coepit vertitur violentus
@@ -231,7 +193,7 @@ revocamina. Tenebat validisne quod post longe parvis, sic superari!
 - Est ab protinus cornua renuente medii dum
 - Modo suo convertit temporis Lapithas numenque coronat
 
-### UUID
+#### UUID
 
 Lorem markdownum adire sui erit suis, esse. Iuvenem merentem negare ingentia et
 vitta, Oeagrius sic turpe colonos opertos quaerit aquas ira parsque parenti
@@ -250,7 +212,7 @@ Gratissime iunxit, neque *praebere*, cum et nec axes, vara otia. Nantemque est;
 iterum quid mortemque dominae non baculum tincto. Fuit voce; **ab** cingentibus
 feraxque summaque nomen suo, spemque minor: quae Ceyx omnis tinctam.
 
-### What is ULID?
+#### What is ULID?
 
 Lorem markdownum tenebat. Quo et quis expellitur potes tenuitque impetus est
 Achilles, et gelidas, acutae. Enim non ceu fluentia Actaeon Numidasque turbae
@@ -279,11 +241,20 @@ Amnis per aede munus, colorem *semper*, non manu vera petita tamen. Lanigeris
 alium victo, novantur faciem Thetidis **raptore prodere flumine** sanguisque ad
 *claudit* cupidine, ut vitiorum coniungere quoque campo.
 
-# References
+### References
 
 * Crockford32
 * ULID
 
-# License 
+### License 
 
 This code is distributed under the MIT license. See the [LICENSE](https://github.com/brightdigit/ThirtyTo/LICENSE) file for more info.
+
+## Topics
+
+### Encoding and Decoding Data
+
+- ``Base32CrockfordEncoding``
+- ``Base32CrockfordEncodingOptions``
+- ``Base32CrockfordDecodingOptions``
+- ``Base32CrockfordDecodingError``
