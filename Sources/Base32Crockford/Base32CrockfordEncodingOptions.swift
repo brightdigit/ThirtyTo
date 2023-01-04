@@ -1,12 +1,26 @@
 import Foundation
 
-public struct Base32CrockfordEncodingOptions: OptionSet {
-  public static let withChecksum = Base32CrockfordEncodingOptions(rawValue: 1 << 0)
-  public static let none: Base32CrockfordEncodingOptions = []
+public struct Base32CrockfordEncodingOptions {
+  public struct GroupingOptions {
+    public init(maxLength: Int, separator: String = "-") {
+      self.maxLength = maxLength
+      self.separator = separator
+    }
 
-  public let rawValue: Int
+    public let maxLength: Int
+    public let separator: String
+  }
 
-  public init(rawValue: Int) {
-    self.rawValue = rawValue
+  public static let none = Base32CrockfordEncodingOptions(withChecksum: false)
+
+  public let withChecksum: Bool
+  public let groupingBy: GroupingOptions?
+
+  internal init(
+    withChecksum: Bool = false,
+    groupingBy: Base32CrockfordEncodingOptions.GroupingOptions? = nil
+  ) {
+    self.withChecksum = withChecksum
+    self.groupingBy = groupingBy
   }
 }
