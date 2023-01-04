@@ -1,4 +1,4 @@
-name: Base32Crockford
+name: ThirtyTo
 on:
   push:
     branches-ignore:
@@ -145,11 +145,11 @@ jobs:
           MAX_ATTEMPT=3
           ATTEMPT=0
           while [ -z $SUCCESS ] && [ "$ATTEMPT" -le "$MAX_ATTEMPT" ]; do
-            xcodebuild clean -scheme Base32Crockford -destination 'generic/platform=iOS' | grep -q "CLEAN SUCCEEDED" && SUCCESS=true
+            xcodebuild clean -scheme ThirtyTo -destination 'generic/platform=iOS' | grep -q "CLEAN SUCCEEDED" && SUCCESS=true
             ATTEMPT=$(($ATTEMPT+1))
           done
       - name: Run iOS target tests
-        run:  xcodebuild test -scheme Base32Crockford -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13,OS=${{ matrix.iOSVersion }}' -enableCodeCoverage YES build test
+        run:  xcodebuild test -scheme ThirtyTo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13,OS=${{ matrix.iOSVersion }}' -enableCodeCoverage YES build test
       - uses: sersoft-gmbh/swift-coverage-action@v3
         with:
           fail-on-empty-output: true        
@@ -160,7 +160,7 @@ jobs:
           flags: iOS,iOS-${{ matrix.iOSVersion }}
           token: ${{ secrets.CODECOV_TOKEN }}   
       - name: Run watchOS target tests
-        run: xcodebuild test -scheme Base32Crockford -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test 
+        run: xcodebuild test -scheme ThirtyTo -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test 
       - uses: sersoft-gmbh/swift-coverage-action@v3
         with:
           fail-on-empty-output: true

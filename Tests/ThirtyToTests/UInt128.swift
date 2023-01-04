@@ -19,14 +19,14 @@ public struct UInt128 {
 
   /// Counts up the significant bits in stored data.
   public var significantBits: UInt128 {
-    return UInt128(UInt128.bitWidth - leadingZeroBitCount)
+    UInt128(UInt128.bitWidth - leadingZeroBitCount)
   }
 
   /// Undocumented private variable required for passing this type
   /// to a BinaryFloatingPoint type. See FloatingPoint.swift.gyb in
   /// the Swift stdlib/public/core directory.
   internal var signBitIndex: Int {
-    return 127 - leadingZeroBitCount
+    127 - leadingZeroBitCount
   }
 
   // MARK: Initializers
@@ -62,7 +62,7 @@ extension UInt128: FixedWidthInteger {
   // MARK: Instance Properties
 
   public var nonzeroBitCount: Int {
-    return value.lowerBits.nonzeroBitCount + value.upperBits.nonzeroBitCount
+    value.lowerBits.nonzeroBitCount + value.upperBits.nonzeroBitCount
   }
 
   public var leadingZeroBitCount: Int {
@@ -92,8 +92,8 @@ extension UInt128: FixedWidthInteger {
 
   /// Returns the current integer with the byte order swapped.
   public var byteSwapped: UInt128 {
-    return UInt128(upperBits: value.lowerBits.byteSwapped,
-                   lowerBits: value.upperBits.byteSwapped)
+    UInt128(upperBits: value.lowerBits.byteSwapped,
+            lowerBits: value.upperBits.byteSwapped)
   }
 
   // MARK: Initializers
@@ -372,14 +372,14 @@ extension UInt128: FixedWidthInteger {
 extension UInt128 {
   // MARK: Instance Properties
 
-  public static var bitWidth: Int { return 128 }
+  public static var bitWidth: Int { 128 }
 }
 
 extension UInt128: BinaryInteger {
   // MARK: Instance Methods
 
   public var words: [UInt] {
-    return Array(value.lowerBits.words) + Array(value.upperBits.words)
+    Array(value.lowerBits.words) + Array(value.upperBits.words)
   }
 
   public var trailingZeroBitCount: Int {
@@ -573,7 +573,7 @@ extension UInt128: CustomStringConvertible {
   // MARK: Instance Properties
 
   public var description: String {
-    return _valueToString()
+    _valueToString()
   }
 
   // MARK: Instance Methods
@@ -615,7 +615,7 @@ extension UInt128: CustomStringConvertible {
 
 extension UInt128: CustomDebugStringConvertible {
   public var debugDescription: String {
-    return description
+    description
   }
 }
 

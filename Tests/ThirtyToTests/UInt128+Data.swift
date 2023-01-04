@@ -1,4 +1,3 @@
-@testable import Base32Crockford
 import XCTest
 
 extension UInt128 {

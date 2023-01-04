@@ -1,4 +1,4 @@
-import Base32Crockford
+import ThirtyTo
 import XCTest
 
 final class BinaryTests: XCTestCase {

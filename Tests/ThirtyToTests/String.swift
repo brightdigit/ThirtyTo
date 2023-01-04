@@ -1,4 +1,4 @@
-import Foundation
+import ThirtyTo
 
 extension String {
   func randomDashes() -> String {
