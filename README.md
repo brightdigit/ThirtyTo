@@ -31,12 +31,14 @@ Swift Package for using Base32Crockford Encoding for Data and Identifiers.
    * [Why use Base32Crockford](#why-use-base32crockford)
 * [Usage](#usage)
    * [Encoding and Decoding Data](#encoding-and-decoding-data)
+      * [How Checksum Works](#how-checksum-works)
       * [Using Group Separators](#using-group-separators)
-      * [Adding Checksums](#adding-checksums)
    * [Creating an Identifier](#creating-an-identifier)
       * [UUID](#uuid)
       * [What is ULID?](#what-is-ulid)
+* [References](#references)
 * [License](#license)
+
 
 # Introduction
 
@@ -276,6 +278,11 @@ fugio requievit corpora miseri primisque primo.
 Amnis per aede munus, colorem *semper*, non manu vera petita tamen. Lanigeris
 alium victo, novantur faciem Thetidis **raptore prodere flumine** sanguisque ad
 *claudit* cupidine, ut vitiorum coniungere quoque campo.
+
+# References
+
+* Crockford32
+* ULID
 
 # License 
 
