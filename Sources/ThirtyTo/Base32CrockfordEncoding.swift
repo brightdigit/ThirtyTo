@@ -102,13 +102,15 @@ public struct Base32CrockfordEncoding {
     return try decode(standardizedString: standardized, options: options)
   }
 
-  /// Standardizes a Base32Crockford encoded string by
-  /// * Converting O,I,L to their respective digits
-  /// * Removing all group separating hyphens
-  /// * Convert all alphabet characters to uppercase.
+  /// Standardizes a Base32Crockford encoded string.
   ///
-  /// - Parameter string: The String to standardize.
-  /// - Returns: The standardized String.
+  /// `standardize` does this by:
+  /// - Converting `O`, `I`, `L` to their respective digits (`0`, `1`, `1`)
+  /// - Removing all group separating hyphens (`-`)
+  /// - Convert all alphabet characters to uppercase.
+  ///
+  /// - Parameter string: The string to standardize.
+  /// - Returns: The standardized string.
   public func standardize(string: String) -> String {
     string
       .uppercased()

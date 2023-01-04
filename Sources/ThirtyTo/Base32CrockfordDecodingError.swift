@@ -4,10 +4,17 @@ import Foundation
 public struct Base32CrockfordDecodingError: Error {
   /// Type of error which occured
   public enum Details {
-    // invalid checksum
+    /// Mismatch checksum.
+    /// - Parameter checksum: Expected checksum value.
+    /// - Parameter mismatchValue: Actual checksum value.
     case checksum(Int, mismatchValue: Int?)
-    // unacceptable character
+    // swiftlint:disable line_length
+    /// Invalid character.
+    /// - Parameter invalidCharacter: The character which is invalid in a Base32Crockford string.
+    ///
+    /// For a list of valid symbols go to ``Base32CrockfordEncoding/CharacterSets/symbols``.
     case invalidCharacter(Character)
+    // swiftlint:enable line_length
   }
 
   /// The source string which triggered the error
