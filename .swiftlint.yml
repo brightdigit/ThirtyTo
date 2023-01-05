@@ -118,5 +118,6 @@ excluded:
   - Tests
   - DerivedData
   - .build
+  - _archive
 indentation_width:
   indentation_width: 2
