@@ -63,7 +63,7 @@ jobs:
         run: swift test --enable-code-coverage
       - uses: sersoft-gmbh/swift-coverage-action@v3
         with:
-          fail-on-empty-output: true   
+          fail-on-empty-output: true
       - name: Upload package coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
@@ -91,7 +91,7 @@ jobs:
             xcode: "/Applications/Xcode_14.1.app"
             iOSVersion: "16.1"
             watchOSVersion: "9.1"
-            watchName: "Apple Watch Ultra (49mm)"        
+            watchName: "Apple Watch Ultra (49mm)"
           - runs-on: macos-12
             xcode: "/Applications/Xcode_13.3.app"
             iOSVersion: 15.4
@@ -136,7 +136,7 @@ jobs:
       - name: Build
         run: swift build
       - name: Lint
-        run: ./scripts/lint.sh 
+        run: ./scripts/lint.sh
         if: ${{ github.event_name == 'pull_request' && github.base_ref == 'main' && matrix.xcode == '/Applications/Xcode_14.1.app' }}
       - name: Dump PIF
         if: startsWith(matrix.xcode,'/Applications/Xcode_14')
@@ -152,15 +152,15 @@ jobs:
         run:  xcodebuild test -scheme ThirtyTo -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 13,OS=${{ matrix.iOSVersion }}' -enableCodeCoverage YES build test
       - uses: sersoft-gmbh/swift-coverage-action@v3
         with:
-          fail-on-empty-output: true        
+          fail-on-empty-output: true
       - name: Upload iOS coverage to Codecov
-        uses: codecov/codecov-action@v3        
+        uses: codecov/codecov-action@v3
         with:
           fail_ci_if_error: true
           flags: iOS,iOS-${{ matrix.iOSVersion }}
-          token: ${{ secrets.CODECOV_TOKEN }}   
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Run watchOS target tests
-        run: xcodebuild test -scheme ThirtyTo -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test 
+        run: xcodebuild test -scheme ThirtyTo -sdk watchsimulator -destination 'platform=watchOS Simulator,name=${{ matrix.watchName }},OS=${{ matrix.watchOSVersion }}' -enableCodeCoverage YES build test
       - uses: sersoft-gmbh/swift-coverage-action@v3
         with:
           fail-on-empty-output: true
