@@ -85,10 +85,10 @@ public struct UDID: ComposableIdentifier {
 }
 
 public struct AnyIdentifierSpecifications {
-  internal init(size: SizeSpecification) {
+  public init(size: SizeSpecification) {
     self.init(size: size, randomDataGenerator: Data.defaultRandomGenerator())
   }
-  internal init(size: SizeSpecification, randomDataGenerator: @autoclosure @escaping () -> RandomDataGenerator ) {
+  public init(size: SizeSpecification, randomDataGenerator: @autoclosure @escaping () -> RandomDataGenerator ) {
     self.randomData = randomDataGenerator
     self.size = size
   }
@@ -99,20 +99,22 @@ public struct AnyIdentifierSpecifications {
 
 public enum SizeSpecification {
   case bytes(Int)
-  case minimumCount(Int, factorOf: Int?)
+  case minimumCount(Double, factorOf: Int?)
   
-  public static func base32Optimized(forUniqueCountOf count: Int) -> SizeSpecification {
+  public static func base32Optimized(forUniqueCountOf count: Double) -> SizeSpecification {
     return .minimumCount(count, factorOf: 5)
   }
 }
 
 extension SizeSpecification {
-  public static func bytesRequired(forUniqueCountOf count: Int, factorOf factor: Int?) -> Int {
-    var floatingCount = log(Double(count)) / log(256.0)
+  public static func bytesRequired(forUniqueCountOf count: Double, factorOf factor: Int?) -> Int {
+    var floatingCount = log(count) / log(256.0)
     
     if let factor = factor.map(Double.init) {
-      let remainder = floatingCount.remainder(dividingBy: factor)
-      floatingCount += (factor - remainder)
+      let remainder = floatingCount.truncatingRemainder(dividingBy: factor)
+      if remainder > 0 {
+        floatingCount += (factor - remainder)
+      }
     }
     
     return Int(ceil(floatingCount))
@@ -146,4 +148,9 @@ public extension IdentifierFactory {
     self.anyIdentifierWith(.init(size: size))
   }
   #endif
+  
+  
+  func createIdentifier<IdentifierType: ComposableIdentifier>(_ type: IdentifierType.Type) -> IdentifierType where IdentifierType.Specifications == Void {
+    return self.createIdentifier(with: ())
+  }
 }

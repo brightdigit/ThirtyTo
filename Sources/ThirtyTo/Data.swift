@@ -52,19 +52,19 @@ extension Data {
     return NumberedDataGenerator(generator: SystemRandomNumberGenerator())
     #endif
   }
-  @inlinable public static func random(count: Int, using generator: inout RandomDataGenerator) -> Data {
+  public static func random(count: Int, using generator: inout RandomDataGenerator) -> Data {
     return generator.generate(withCount: count)
    
   }
   
-  @inlinable public static func random<T>(count: Int, using numberGenerator: inout T) -> Data where T : RandomNumberGenerator {
+  public static func random<T>(count: Int, using numberGenerator: inout T) -> Data where T : RandomNumberGenerator {
     var dataGenerator : RandomDataGenerator = NumberedDataGenerator(generator: numberGenerator)
     return Self.random(count: count, using: &dataGenerator)
     
    
   }
   
-  @inlinable public static func random(count: Int) -> Data {
+  public static func random(count: Int) -> Data {
     #if canImport(Security)
     return SecRandomDataGenerator.shared.generate(withCount: count)
     #else
