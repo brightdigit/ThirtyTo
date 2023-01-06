@@ -44,9 +44,6 @@ public struct NumberedDataGenerator<RandomNumberGeneratorType : RandomNumberGene
   }
 }
 extension Data {
-  static let byteRange = ((UInt8.min)...(UInt8.max))
-  
-  
   @inlinable public static func random(count: Int, using generator: inout RandomDataGenerator) -> Data {
     return generator.generate(withCount: count)
    

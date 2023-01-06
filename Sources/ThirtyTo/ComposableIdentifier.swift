@@ -53,13 +53,26 @@ extension UUID: ComposableIdentifier {
 }
 
 public struct ULID: ComposableIdentifier {
-  public init(specifications: Void) {
+  public init(specifications: Specifications) {
     self.data = Data()
   }
   
   public let data: Data
-  public typealias Specifications = Void
+  
+  public enum Specifications {
+    case data(Data)
+    case parts(Date?, RandomPartSpecifications)
+    
+    public static let `default` : Specifications = .parts(nil, .random(nil))
+  }
+  
+  public enum RandomPartSpecifications {
+    case random(RandomDataGenerator?)
+    case specific(Data)
+  }
 }
+
+
 
 public struct UDID: ComposableIdentifier {
   public init(specifications: AnyIdentifierSpecifications) {
