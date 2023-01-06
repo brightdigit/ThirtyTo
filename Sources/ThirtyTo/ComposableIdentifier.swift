@@ -8,12 +8,31 @@ public enum Identifer {
       return IdentifierType(specifications: specification)
     }
     
+    
+  #if swift(>=5.7)
     func anyIdentifierWith(_ specifications: AnyIdentifierSpecifications) -> any ComposableIdentifier {
       return UDID(specifications: specifications)
     }
+    #else
+    func anyIdentifierWith(_ specifications: AnyIdentifierSpecifications) -> AnyComposableIdentifier {
+      return .init(wrapped: UDID(specifications: specifications))
+    }
+    #endif
   }
 }
 
+public struct AnyComposableIdentifier : ComposableIdentifier {
+  internal init<ComposableIdentifierType : ComposableIdentifier>(wrapped: ComposableIdentifierType) {
+    self.data = wrapped.data
+  }
+  public let data: Data
+  
+  public init(specifications: Never) {
+    fatalError()
+  }
+  
+  public typealias Specifications = Never
+}
 
 public protocol ComposableIdentifier {
   associatedtype Specifications
@@ -82,5 +101,9 @@ extension AnyIdentifierSpecifications {
 
 public protocol IdentifierFactory {
   func createIdentifier<IdentifierType: ComposableIdentifier>(with specification: IdentifierType.Specifications) -> IdentifierType
+#if swift(>=5.7)
   func anyIdentifierWith(_ specifications: AnyIdentifierSpecifications) -> any ComposableIdentifier
+  #else
+  func anyIdentifierWith(_ specifications: AnyIdentifierSpecifications) -> AnyComposableIdentifier
+  #endif
 }

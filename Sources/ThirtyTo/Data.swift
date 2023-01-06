@@ -5,6 +5,7 @@ public protocol RandomDataGenerator {
   mutating func generate(withCount count: Int) -> Data
 }
 
+#if canImport(Security)
 public struct SecRandomDataGenerator : RandomDataGenerator {
   private init () {
     
@@ -26,7 +27,7 @@ public struct SecRandomDataGenerator : RandomDataGenerator {
             return Data(bytes: bytes, count: count)
   }
 }
-
+#endif
 public struct NumberedDataGenerator<RandomNumberGeneratorType : RandomNumberGenerator> : RandomDataGenerator {
   public init(generator: RandomNumberGeneratorType) {
     self.generator = generator
@@ -59,7 +60,13 @@ extension Data {
   }
   
   @inlinable public static func random(count: Int) -> Data {
+    #if canImport(Security)
     return SecRandomDataGenerator.shared.generate(withCount: count)
+    #else
+    var numberGenerator = SystemRandomNumberGenerator()
+    return self.random(count: count, using: &numberGenerator)
+    #endif
+    
    
   }
   
