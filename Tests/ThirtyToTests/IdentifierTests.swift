@@ -11,10 +11,11 @@ import ThirtyTo
 final class IdentifierTests: XCTestCase {
 
   public func testFactory() {
-    let identifier = Identifer.factory.anyIdentifierWith(.bytes(12))
+    let identifier = Identifer.factory.anyIdentifier(withSize: .bytes(12))
     
     XCTAssertEqual(identifier.data.count, 12)
-    
   }
+  
+  
 
 }

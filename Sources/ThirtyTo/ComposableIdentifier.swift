@@ -27,11 +27,11 @@ public struct AnyComposableIdentifier : ComposableIdentifier {
   }
   public let data: Data
   
-  public init(specifications: Never) {
-    fatalError()
+  public init(specifications: () -> Never) {
+    specifications()
   }
   
-  public typealias Specifications = Never
+  public typealias Specifications = () -> Never
 }
 
 public protocol ComposableIdentifier {
@@ -76,23 +76,37 @@ public struct ULID: ComposableIdentifier {
 
 public struct UDID: ComposableIdentifier {
   public init(specifications: AnyIdentifierSpecifications) {
-    self.data = Data(repeating: 0, count: specifications.byteCount)
+    var randomDataGenerator = specifications.randomData()
+    self.data = Data.random(count: specifications.size.byteCount, using: &randomDataGenerator)
   }
   
   public let data: Data
   public typealias Specifications = AnyIdentifierSpecifications
 }
 
-public enum AnyIdentifierSpecifications {
+public struct AnyIdentifierSpecifications {
+  internal init(size: SizeSpecification) {
+    self.init(size: size, randomDataGenerator: Data.defaultRandomGenerator())
+  }
+  internal init(size: SizeSpecification, randomDataGenerator: @autoclosure @escaping () -> RandomDataGenerator ) {
+    self.randomData = randomDataGenerator
+    self.size = size
+  }
+  
+  let randomData : () -> RandomDataGenerator
+  let size: SizeSpecification
+}
+
+public enum SizeSpecification {
   case bytes(Int)
   case minimumCount(Int, factorOf: Int?)
   
-  public static func base32Optimized(forUniqueCountOf count: Int) -> AnyIdentifierSpecifications {
+  public static func base32Optimized(forUniqueCountOf count: Int) -> SizeSpecification {
     return .minimumCount(count, factorOf: 5)
   }
 }
 
-extension AnyIdentifierSpecifications {
+extension SizeSpecification {
   public static func bytesRequired(forUniqueCountOf count: Int, factorOf factor: Int?) -> Int {
     var floatingCount = log(Double(count)) / log(256.0)
     
@@ -118,5 +132,18 @@ public protocol IdentifierFactory {
   func anyIdentifierWith(_ specifications: AnyIdentifierSpecifications) -> any ComposableIdentifier
   #else
   func anyIdentifierWith(_ specifications: AnyIdentifierSpecifications) -> AnyComposableIdentifier
+  #endif
+}
+
+
+public extension IdentifierFactory {
+  #if swift(>=5.7)
+  func anyIdentifier(withSize size: SizeSpecification) -> any ComposableIdentifier {
+    self.anyIdentifierWith(.init(size: size))
+  }
+  #else
+  func anyIdentifier(withSize size: SizeSpecification) -> AnyComposableIdentifier {
+    self.anyIdentifierWith(.init(size: size))
+  }
   #endif
 }

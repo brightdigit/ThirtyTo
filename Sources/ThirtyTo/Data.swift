@@ -44,6 +44,14 @@ public struct NumberedDataGenerator<RandomNumberGeneratorType : RandomNumberGene
   }
 }
 extension Data {
+  
+  public static func defaultRandomGenerator () -> RandomDataGenerator{
+    #if canImport(Security)
+    return SecRandomDataGenerator.shared
+    #else
+    return NumberedDataGenerator(generator: SystemRandomNumberGenerator())
+    #endif
+  }
   @inlinable public static func random(count: Int, using generator: inout RandomDataGenerator) -> Data {
     return generator.generate(withCount: count)
    
