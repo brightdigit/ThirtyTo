@@ -13,7 +13,7 @@ class MockRandomGenerator: RandomDataGenerator {
 
 final class IdentifierTests: XCTestCase {
   public func testFactory() {
-    let identifier = Identifer.factory.anyIdentifier(withSize: .bytes(12))
+    let identifier = Identifier.factory.anyIdentifier(withSize: .bytes(12))
 
     XCTAssertEqual(identifier.data.count, 12)
   }
@@ -21,7 +21,7 @@ final class IdentifierTests: XCTestCase {
   public func testFactoryWithGenerator() {
     let generator = MockRandomGenerator()
     let identifierSpecs = AnyIdentifierSpecifications(size: .bytes(12), randomDataGenerator: generator)
-    let identifier = Identifer.factory.anyIdentifierWith(identifierSpecs)
+    let identifier = Identifier.factory.anyIdentifierWith(identifierSpecs)
 
     XCTAssertEqual(identifier.data.count, 12)
     XCTAssertEqual(generator.callCount, 1)
@@ -30,13 +30,13 @@ final class IdentifierTests: XCTestCase {
   public func testFactoryUsingNumberedDataGenerator() {
     let generator = NumberedDataGenerator(generator: SystemRandomNumberGenerator())
     let identifierSpecs = AnyIdentifierSpecifications(size: .bytes(102), randomDataGenerator: generator)
-    let identifier = Identifer.factory.anyIdentifierWith(identifierSpecs)
+    let identifier = Identifier.factory.anyIdentifierWith(identifierSpecs)
 
     XCTAssertEqual(identifier.data.count, 102)
   }
 
   func testUUID() {
-    let identifier = Identifer.factory.createIdentifier(UUID.self)
+    let identifier = Identifier.factory.createIdentifier(UUID.self)
     XCTAssertEqual(identifier.data.count, 16)
   }
 
@@ -44,7 +44,7 @@ final class IdentifierTests: XCTestCase {
     let generator = MockRandomGenerator()
     func runTestOn(_ minimumUniqueCount: Double, _ factor: Int?, _ expectedByteSize: Int) {
       let specs = AnyIdentifierSpecifications(size: SizeSpecification.minimumCount(minimumUniqueCount, factorOf: factor), randomDataGenerator: generator)
-      let identifier: UDID = Identifer.factory.createIdentifier(with: specs)
+      let identifier: UDID = Identifier.factory.createIdentifier(with: specs)
       XCTAssertEqual(identifier.data.count, expectedByteSize)
     }
 

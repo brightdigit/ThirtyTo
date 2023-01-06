@@ -1,4 +1,4 @@
-public enum Identifer {
+public enum Identifier {
   public static let factory: IdentifierFactory = ComposableIdentifierFactory()
 
   struct ComposableIdentifierFactory: IdentifierFactory {
