@@ -3,7 +3,7 @@ import XCTest
 
 final class ULIDTests: XCTestCase {
   func testExample() throws {
-    let ulid = ULID()
+    _ = ULID()
   }
 
   func testData() {

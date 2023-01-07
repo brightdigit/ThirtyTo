@@ -6,6 +6,7 @@ public struct AnyComposableIdentifier: ComposableIdentifier {
 
   public let data: Data
 
+  // periphery:ignore
   internal init<IdentifierType: ComposableIdentifier>(
     wrapped: IdentifierType
   ) {
