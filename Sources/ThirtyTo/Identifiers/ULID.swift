@@ -28,6 +28,7 @@ public struct ULID: ComposableIdentifier {
     case let .data(data):
       assert(data.count == 16)
       self.data = data
+
     case let .parts(date, randomSpec):
       let date = date ?? Date()
       let randomPart: Data
