@@ -20,6 +20,6 @@ public enum Identifier {
       }
     #endif
   }
-  
+
   public static let factory: IdentifierFactory = ComposableIdentifierFactory()
 }
