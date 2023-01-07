@@ -1,11 +1,10 @@
 import Foundation
 
 public struct ULID: ComposableIdentifier {
-  public init(specifications _: Specifications) {
-    data = Data()
+  public enum RandomPartSpecifications {
+    case random(RandomDataGenerator?)
+    case specific(Data)
   }
-
-  public let data: Data
 
   public enum Specifications {
     case data(Data)
@@ -14,8 +13,9 @@ public struct ULID: ComposableIdentifier {
     public static let `default`: Specifications = .parts(nil, .random(nil))
   }
 
-  public enum RandomPartSpecifications {
-    case random(RandomDataGenerator?)
-    case specific(Data)
+  public let data: Data
+
+  public init(specifications _: Specifications) {
+    data = Data()
   }
 }

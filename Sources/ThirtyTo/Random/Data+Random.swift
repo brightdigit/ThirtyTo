@@ -9,12 +9,19 @@ extension Data {
     #endif
   }
 
-  public static func random(count: Int, using generator: inout RandomDataGenerator) -> Data {
+  public static func random(
+    count: Int,
+    using generator: inout RandomDataGenerator
+  ) -> Data {
     generator.generate(withCount: count)
   }
 
-  public static func random<T>(count: Int, using numberGenerator: inout T) -> Data where T: RandomNumberGenerator {
-    var dataGenerator: RandomDataGenerator = NumberedDataGenerator(generator: numberGenerator)
+  public static func random<T>(
+    count: Int,
+    using numberGenerator: inout T
+  ) -> Data where T: RandomNumberGenerator {
+    let numberGenerator = NumberedDataGenerator(generator: numberGenerator)
+    var dataGenerator: RandomDataGenerator = numberGenerator
     return Self.random(count: count, using: &dataGenerator)
   }
 

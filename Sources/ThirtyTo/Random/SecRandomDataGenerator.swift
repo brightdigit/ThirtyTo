@@ -3,9 +3,10 @@
   import Security
 
   public struct SecRandomDataGenerator: RandomDataGenerator {
+    public static let shared = SecRandomDataGenerator()
+
     private init() {}
 
-    public static let shared = SecRandomDataGenerator()
     public func generate(withCount count: Int) -> Data {
       var bytes = [Int8](repeating: 0, count: count)
 
