@@ -23,7 +23,7 @@ public struct ULID: ComposableIdentifier {
     Date(timestampData: data.prefix(6))
   }
 
-  public init(specifications: Specifications) {
+  public init(specifications: Specifications = .default) {
     switch specifications {
     case let .data(data):
       assert(data.count == 16)

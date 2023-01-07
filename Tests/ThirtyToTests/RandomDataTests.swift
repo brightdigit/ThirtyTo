@@ -17,4 +17,15 @@ final class RandomDataTests: XCTestCase {
     let data = Data.random(count: count)
     XCTAssertEqual(count, data.count)
   }
+  
+  
+  func testNumberGenerator() {
+    let count: Int = .random(in: 100 ... 200)
+    var mockGenerator = MockNumberGenerator()
+    
+
+    let data = Data.random(count: count, using: &mockGenerator)
+    XCTAssertEqual(mockGenerator.callCount, count)
+    XCTAssertEqual(count, data.count)
+  }
 }
