@@ -2,7 +2,6 @@
 import XCTest
 
 class MockNumberGenerator: RandomNumberGenerator {
-  
   var callCount = 0
   func next() -> UInt64 {
     defer {
@@ -11,6 +10,7 @@ class MockNumberGenerator: RandomNumberGenerator {
     return 12
   }
 }
+
 class MockRandomGenerator: RandomDataGenerator {
   var callCount = 0
   func generate(withCount count: Int) -> Data {

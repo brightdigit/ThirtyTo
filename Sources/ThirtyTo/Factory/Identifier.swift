@@ -1,3 +1,4 @@
+/// Contains the factory to create `ComposableIdentifier` objects.
 public enum Identifier {
   private struct ComposableIdentifierFactory: IdentifierFactory {
     func createIdentifier<IdentifierType>(
@@ -21,5 +22,6 @@ public enum Identifier {
     #endif
   }
 
+  /// Object for creating different types of identiifiers.
   public static let factory: IdentifierFactory = ComposableIdentifierFactory()
 }

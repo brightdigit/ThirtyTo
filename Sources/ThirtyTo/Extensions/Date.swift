@@ -1,6 +1,8 @@
 import Foundation
 
 extension Date {
+  /// Creates a Date object based on the data object.
+  /// - Parameter timestampData: Data based on the unix timestamp.
   public init(timestampData: Data) {
     var data = timestampData
     data.append(contentsOf: .init(repeating: 0, count: max(0, 8 - data.count)))
@@ -9,6 +11,9 @@ extension Date {
     self.init(timeIntervalSince1970: timeInterval)
   }
 
+  /// Create a Data object based on the number bytes specified.
+  /// - Parameter byteCount: The number of bytes to create the timestamp from.
+  /// - Returns: Data object with precision based on the  number of bytes requested.
   public func data(withMaximumByteCount byteCount: Int?) -> Data {
     var timestamp = UInt64(timeIntervalSince1970 * 1_000).bigEndian
     let data = withUnsafeBytes(of: &timestamp) { Data($0) }

@@ -1,9 +1,16 @@
 import Foundation
 
+/// Specifies the size of the identifier to use.
 public enum SizeSpecification {
+  /// The exact number of bytes
   case bytes(Int)
+  /// Based on the number of unique values and a whether it needs to be a factor.
   case minimumCount(Double, factorOf: Int?)
 
+  /// Creates a `SizeSpecification` based on the number of unique values
+  /// which is optimized the Base32.
+  /// - Parameter count: The minimum number of unique values
+  /// - Returns: The `SizeSpecification`
   public static func base32Optimized(
     forUniqueCountOf count: Double
   ) -> SizeSpecification {

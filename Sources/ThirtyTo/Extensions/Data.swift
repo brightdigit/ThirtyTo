@@ -12,10 +12,10 @@ extension Data {
     return remainder
   }
 
-  internal func trim(to count: Int, andPadWith fill: UInt8 = 0) -> Data {
-    let fillSize = Swift.max(count - self.count, 0)
-    let fillData = Data(repeating: fill, count: fillSize)
-    let bytes = (fillData + self).suffix(count)
-    return Data(bytes)
-  }
+//  internal func trim(to count: Int, andPadWith fill: UInt8 = 0) -> Data {
+//    let fillSize = Swift.max(count - self.count, 0)
+//    let fillData = Data(repeating: fill, count: fillSize)
+//    let bytes = (fillData + self).suffix(count)
+//    return Data(bytes)
+//  }
 }
