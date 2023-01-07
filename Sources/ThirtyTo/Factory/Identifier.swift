@@ -1,6 +1,4 @@
 public enum Identifier {
-  public static let factory: IdentifierFactory = ComposableIdentifierFactory()
-
   private struct ComposableIdentifierFactory: IdentifierFactory {
     func createIdentifier<IdentifierType>(
       with specification: IdentifierType.Specifications
@@ -22,4 +20,6 @@ public enum Identifier {
       }
     #endif
   }
+  
+  public static let factory: IdentifierFactory = ComposableIdentifierFactory()
 }
