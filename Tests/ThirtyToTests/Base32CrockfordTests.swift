@@ -119,7 +119,7 @@ final class Base32CrockfordTests: XCTestCase {
   }
 
   func testInvalidCharacter() {
-    let invalidCharacters = "!@#$%^&*()_-+{}[]:;<>,./?"
+    let invalidCharacters = "!@#$%^&*()_+{}[]:;<>,./?"
     let expectedCharacter = invalidCharacters.randomElement()!
     let badString = String("0123456789ABCDEFGHJKMNPQRSTVWXYZ".shuffled() + [expectedCharacter])
     XCTAssertEqual(badString.count, 33)

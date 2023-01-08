@@ -34,11 +34,9 @@ Swift Package for using Base32Crockford Encoding for Data and Identifiers.
       * [How Checksum Works](#how-checksum-works)
       * [Using Group Separators](#using-group-separators)
    * [Creating an Identifier](#creating-an-identifier)
-      * [UUID](#uuid)
       * [What is ULID?](#what-is-ulid)
 * [References](#references)
 * [License](#license)
-
 
 # Introduction
 
@@ -59,7 +57,13 @@ Swift Package for using Base32Crockford Encoding for Data and Identifiers.
 
 ## Installation
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In dictum non consectetur a erat nam at lectus urna. Maecenas accumsan lacus vel facilisis volutpat est velit.
+Use the Swift Package Manager to install this library via the repository url:
+
+```
+https://github.com/brightdigit/ThirtyTo.git
+```
+
+Use version up to `1.0`.
 
 ## Why use Base32Crockford
 
@@ -219,70 +223,58 @@ assert(dataGroupedBy3 == dataGroupedBy9) // true
 
 ## Creating an Identifier
 
-Lorem markdownum duas, qui data superare trisulcis rex haec unius! Rupe quo aut,
-cum per, pius attactu. Repperit canenda deiectuque coepit vertitur violentus
-quoque! Siccoque corpus. Illa intima Bacchum nativum.
 
-Verque aves ab verba. Hoc auris sed formosissimus malorum virum: cum locoque
-genuit, lumina velamina, huc. Materiam cetera, forte, deus tibi hiberna vates
-revocamina. Tenebat validisne quod post longe parvis, sic superari!
+**ThirtyTo** offers the ability to create identifiers of different types in a universal factory. 
+While `UUID` has been available to developers, this library provides a interface for creating two other types. To do this you can call `IdentifierFactory/createIdentifier(with:)` on the `Identifier/factory` to create any of the three types provided:
 
-- Atque et volvitur corpora
-- Est ab protinus cornua renuente medii dum
-- Modo suo convertit temporis Lapithas numenque coronat
+- `UUID` - standard universal identifier
+- `ULID` - [Universally Unique Lexicographically Sortable Identifier](https://github.com/ulid)
+- `UDID` - dynamicly sized random identifier
 
-### UUID
+Each type has corresponding `ComposableIdentifier/Specifications`:
 
-Lorem markdownum adire sui erit suis, esse. Iuvenem merentem negare ingentia et
-vitta, Oeagrius sic turpe colonos opertos quaerit aquas ira parsque parenti
-pericula. Vestra omni amans illius tactuque de ille tuo ipso excipit meque
-quoque hosti abstulit; aurum [nato corpora
-velare](http://retexitur-notata.org/spretoret). Partem cincta.
+- `UUID` takes no specifications and be created with `IdentifierFactory.createIdentifier(_:)`
+- `ULID` takes `ULID/Specifications`
+- `UDID` takes `AnyIdentifierSpecifications`
 
-    var oop_rj_rate = prompt(nui_web);
-    website -= app.modifier(leopardWebmail.subnet_jpeg_native(print_mbr_boot,
-            lun_oop), address_printer_boot);
-    var superscalar = classFirewireHard;
-    ipad_browser = widgetSecondary.standby_xp_sku(rosetta_igp + 79, 1,
-            key_soap_network) - fullBittorrentMail;
+Here's an example with `UDID`:
 
-Gratissime iunxit, neque *praebere*, cum et nec axes, vara otia. Nantemque est;
-iterum quid mortemque dominae non baculum tincto. Fuit voce; **ab** cingentibus
-feraxque summaque nomen suo, spemque minor: quae Ceyx omnis tinctam.
+```
+// create an identifier for 1 million unique IDs that is a factor of 5.
+let specs = AnyIdentifierSpecifications(
+  size: .minimumCount(1_000_000, factorOf: 5)
+)
+let identifier: UDID = Identifier.factory.createIdentifier(with: specs)
+```
 
 ### What is ULID?
 
-Lorem markdownum tenebat. Quo et quis expellitur potes tenuitque impetus est
-Achilles, et gelidas, acutae. Enim non ceu fluentia Actaeon Numidasque turbae
-expugnare flebile pedes, vultus, danda. Thetis in medio est cornu comitante
-fugio requievit corpora miseri primisque primo.
+`ULID` serves the purpose of solving several issues with `UUID` while being compatibile:
 
-    if (bridge_keystroke_architecture.white(riscRipcording, jfs,
-            optical_operation_soft) >= softwarePad(in_model, dynamic)) {
-        ram(flatbed);
-        isa(vpi.heat_disk_permalink(socket_nic_optical), 3);
-    } else {
-        hard = bar_ddr_modem + 4 + cybersquatter;
-    }
-    pack(nodeCgi);
-    if (fileSoftwareInput(storageRawUp + restoreSyncNull, dot_secondary) !=
-            click_windows_text) {
-        flash(engineDocumentWins, cpaBounce.web.errorUat(34, 4));
-        bps_graphics_syntax.dpi_truncate_panel(netbios_dv(-4, hostHttps,
-                surgeRemote));
-        ups_flowchart_plug.copy = seoTrashMatrix(unit_cache, 130102, 5);
-    }
-    matrixFile += tunneling_dram_graphic;
-    var alertParse = -2;
+- 1.21e+24 unique ULIDs per millisecond
+- Lexicographically sortable!
+- Monotonic sort order (correctly detects and handles the same millisecond)
 
-Amnis per aede munus, colorem *semper*, non manu vera petita tamen. Lanigeris
-alium victo, novantur faciem Thetidis **raptore prodere flumine** sanguisque ad
-*claudit* cupidine, ut vitiorum coniungere quoque campo.
+Most importantly it Uses Base32Crockford for better efficiency and readability.
+
+To create a ULID you can either use `IdentifierFactory.createIdentifier(with:)` on `Identifier.factory`:
+
+```
+let ulid : ULID = Identifier.factory.createIdentifier(with: .parts(nil, .random(nil)))
+```
+
+or a constructor:
+
+```
+let ulid = ULID(specifications: .parts(nil, .random(nil)))
+```
+
+For most cases the default `ULID.Specifications.default` specification is sufficient. The follows the canonical spec which uses the first 6 bytes for a the timestamp and the last 10 bytes are random. Otherwise you can specify all 16 bytes with `ULID.Specifications.data(_:)` or specify which `Date` to use for the timestamp and the `RandomDataGenerator` to use for the `ULID.randomPart` of the data. 
 
 # References
 
-* Crockford32
-* ULID
+* [Base32 Specifications from crockford.com](https://www.crockford.com/base32.html)
+* [ULID Specifications](https://github.com/ulid/spec)
 
 # License 
 

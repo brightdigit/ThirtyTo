@@ -1,5 +1,3 @@
-import ThirtyTo
-
 extension String {
   func randomDashes() -> String {
     var result = self
