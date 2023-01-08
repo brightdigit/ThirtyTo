@@ -63,6 +63,8 @@ Use the Swift Package Manager to install this library via the repository url:
 https://github.com/brightdigit/ThirtyTo.git
 ```
 
+Use version up to `1.0`.
+
 ## Why use Base32Crockford
 
 Base32Crockford offers the most reasonable compromise when it comes to encoding data. Being a super set of Base16, it uses all ten digits and 22 of the 26 Latin upper case characters.
