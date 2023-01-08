@@ -1,26 +1,6 @@
 @testable import ThirtyTo
 import XCTest
 
-class MockNumberGenerator: RandomNumberGenerator {
-  var callCount = 0
-  func next() -> UInt64 {
-    defer {
-      callCount += 1
-    }
-    return 12
-  }
-}
-
-class MockRandomGenerator: RandomDataGenerator {
-  var callCount = 0
-  func generate(withCount count: Int) -> Data {
-    defer {
-      callCount += 1
-    }
-    return Data(count: count)
-  }
-}
-
 final class IdentifierTests: XCTestCase {
   public func testFactory() {
     let identifier = Identifier.factory.anyIdentifier(withSize: .bytes(12))

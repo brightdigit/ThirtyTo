@@ -2,7 +2,7 @@ import ThirtyTo
 import XCTest
 
 final class ULIDTests: XCTestCase {
-  func testExample() throws {
+  func testBasic() throws {
     _ = ULID()
   }
 

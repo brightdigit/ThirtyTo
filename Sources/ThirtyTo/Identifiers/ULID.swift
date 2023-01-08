@@ -21,7 +21,8 @@ public struct ULID: ComposableIdentifier {
     /// Use the date, (_now_ if nil) and the specifications for the _random part_.
     case parts(Date?, RandomPartSpecifications)
 
-    /// The default specifications which use now and the ``Identifier/defaultRandomGenerator``.
+    /// The default specifications which use the current time
+    /// and the ``Identifier/defaultRandomGenerator``.
     public static let `default`: Specifications = .parts(nil, .random(nil))
   }
 

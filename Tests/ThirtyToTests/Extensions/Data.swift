@@ -1,4 +1,3 @@
-@testable import ThirtyTo
 import XCTest
 
 extension Data {

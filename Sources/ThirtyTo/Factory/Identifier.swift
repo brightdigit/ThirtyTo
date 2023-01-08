@@ -25,7 +25,7 @@ public enum Identifier {
 
   /// Object for creating different types of identiifiers.
   public static let factory: IdentifierFactory = ComposableIdentifierFactory()
-  
+
   /// Creates the default `RandomDataGenerator` based on the operating system.
   /// - Returns: For Apple OSes, this uses `SecRandomCopyBytes`
   ///    otherwise it uses `SystemRandomNumberGenerator`.
