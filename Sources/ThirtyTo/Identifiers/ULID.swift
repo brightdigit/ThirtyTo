@@ -8,7 +8,7 @@ public struct ULID: ComposableIdentifier {
   /// or based on a ``RandomDataGenerator``.
   public enum RandomPartSpecifications {
     /// Randomly generate the data based on the ``RandomDataGenerator``.
-    /// - Note: If none is provided ``Data/defaultRandomGenerator`` is used.
+    /// - Note: If none is provided ``Identifier/defaultRandomGenerator`` is used.
     case random(RandomDataGenerator?)
     /// Use the specific data.
     case specific(Data)
@@ -21,7 +21,7 @@ public struct ULID: ComposableIdentifier {
     /// Use the date, (_now_ if nil) and the specifications for the _random part_.
     case parts(Date?, RandomPartSpecifications)
 
-    /// The default specifications which use now and the ``Data/defaultRandomGenerator``.
+    /// The default specifications which use now and the ``Identifier/defaultRandomGenerator``.
     public static let `default`: Specifications = .parts(nil, .random(nil))
   }
 

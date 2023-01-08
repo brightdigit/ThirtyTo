@@ -21,7 +21,13 @@ Swift Package for using Base32Crockford Encoding for Data and Identifiers.
 
 ### Installation
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. In dictum non consectetur a erat nam at lectus urna. Maecenas accumsan lacus vel facilisis volutpat est velit.
+Use the Swift Package Manager to install this library via the repository url:
+
+```
+https://github.com/brightdigit/ThirtyTo.git
+```
+
+Use version up to `1.0`.
 
 ### Why use Base32Crockford
 
@@ -226,10 +232,12 @@ or a constructor:
 let ulid = ULID(specifications: .parts(nil, .random(nil)))
 ```
 
+For most cases the default ``ULID/Specifications/default`` specification is sufficient. The follows the canonical spec which uses the first 6 bytes for a the timestamp and the last 10 bytes are random. Otherwise you can specify all 16 bytes with ``ULID/Specifications/data(_:)`` or specify which `Date` to use for the timestamp and the ``RandomDataGenerator`` to use for the ``ULID/randomPart`` of the data. 
+
 ### References
 
-* Crockford32
-* ULID
+* [Base32 Specifications from crockford.com](https://www.crockford.com/base32.html)
+* [ULID Specifications](https://github.com/ulid/spec)
 
 ### License 
 
