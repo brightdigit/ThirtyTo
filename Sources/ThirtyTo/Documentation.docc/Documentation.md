@@ -181,65 +181,50 @@ assert(dataGroupedBy3 == dataGroupedBy9) // true
 
 ### Creating an Identifier
 
-Lorem markdownum duas, qui data superare trisulcis rex haec unius! Rupe quo aut,
-cum per, pius attactu. Repperit canenda deiectuque coepit vertitur violentus
-quoque! Siccoque corpus. Illa intima Bacchum nativum.
+**ThirtyTo** offers the ability to create identifiers of different types in a universal factory. 
+While `UUID` has been available to developers, this library provides a interface for creating two other types. To do this you can call ``IdentifierFactory/createIdentifier(with:)`` on the ``Identifier/factory`` to create any of the three types provided:
 
-Verque aves ab verba. Hoc auris sed formosissimus malorum virum: cum locoque
-genuit, lumina velamina, huc. Materiam cetera, forte, deus tibi hiberna vates
-revocamina. Tenebat validisne quod post longe parvis, sic superari!
+- `UUID` - standard universal identifier
+- ``ULID`` - [Universally Unique Lexicographically Sortable Identifier](https://github.com/ulid)
+- ``UDID`` - dynamicly sized random identifier
 
-- Atque et volvitur corpora
-- Est ab protinus cornua renuente medii dum
-- Modo suo convertit temporis Lapithas numenque coronat
+Each type has corresponding ``ComposableIdentifier/Specifications``:
 
-#### UUID
+- `UUID` takes no specifications and be created with ``IdentifierFactory/createIdentifier(_:)``
+- ``ULID`` takes ``ULID/Specifications``
+- ``UDID`` takes ``AnyIdentifierSpecifications``
 
-Lorem markdownum adire sui erit suis, esse. Iuvenem merentem negare ingentia et
-vitta, Oeagrius sic turpe colonos opertos quaerit aquas ira parsque parenti
-pericula. Vestra omni amans illius tactuque de ille tuo ipso excipit meque
-quoque hosti abstulit; aurum [nato corpora
-velare](http://retexitur-notata.org/spretoret). Partem cincta.
+Here's an example with ``UDID``:
 
-    var oop_rj_rate = prompt(nui_web);
-    website -= app.modifier(leopardWebmail.subnet_jpeg_native(print_mbr_boot,
-            lun_oop), address_printer_boot);
-    var superscalar = classFirewireHard;
-    ipad_browser = widgetSecondary.standby_xp_sku(rosetta_igp + 79, 1,
-            key_soap_network) - fullBittorrentMail;
-
-Gratissime iunxit, neque *praebere*, cum et nec axes, vara otia. Nantemque est;
-iterum quid mortemque dominae non baculum tincto. Fuit voce; **ab** cingentibus
-feraxque summaque nomen suo, spemque minor: quae Ceyx omnis tinctam.
+```
+// create an identifier for 1 million unique IDs that is a factor of 5.
+let specs = AnyIdentifierSpecifications(
+  size: .minimumCount(1_000_000, factorOf: 5)
+)
+let identifier: UDID = Identifier.factory.createIdentifier(with: specs)
+```
 
 #### What is ULID?
 
-Lorem markdownum tenebat. Quo et quis expellitur potes tenuitque impetus est
-Achilles, et gelidas, acutae. Enim non ceu fluentia Actaeon Numidasque turbae
-expugnare flebile pedes, vultus, danda. Thetis in medio est cornu comitante
-fugio requievit corpora miseri primisque primo.
+``ULID`` serves the purpose of solving several issues with `UUID` while being compatibile:
 
-    if (bridge_keystroke_architecture.white(riscRipcording, jfs,
-            optical_operation_soft) >= softwarePad(in_model, dynamic)) {
-        ram(flatbed);
-        isa(vpi.heat_disk_permalink(socket_nic_optical), 3);
-    } else {
-        hard = bar_ddr_modem + 4 + cybersquatter;
-    }
-    pack(nodeCgi);
-    if (fileSoftwareInput(storageRawUp + restoreSyncNull, dot_secondary) !=
-            click_windows_text) {
-        flash(engineDocumentWins, cpaBounce.web.errorUat(34, 4));
-        bps_graphics_syntax.dpi_truncate_panel(netbios_dv(-4, hostHttps,
-                surgeRemote));
-        ups_flowchart_plug.copy = seoTrashMatrix(unit_cache, 130102, 5);
-    }
-    matrixFile += tunneling_dram_graphic;
-    var alertParse = -2;
+- 1.21e+24 unique ULIDs per millisecond
+- Lexicographically sortable!
+- Monotonic sort order (correctly detects and handles the same millisecond)
 
-Amnis per aede munus, colorem *semper*, non manu vera petita tamen. Lanigeris
-alium victo, novantur faciem Thetidis **raptore prodere flumine** sanguisque ad
-*claudit* cupidine, ut vitiorum coniungere quoque campo.
+Most importantly it Uses Base32Crockford for better efficiency and readability.
+
+To create a ULID you can either use ``IdentifierFactory/createIdentifier(with:)`` on ``Identifier/factory``:
+
+```
+let ulid : ULID = Identifier.factory.createIdentifier(with: .parts(nil, .random(nil)))
+```
+
+or a constructor:
+
+```
+let ulid = ULID(specifications: .parts(nil, .random(nil)))
+```
 
 ### References
 
