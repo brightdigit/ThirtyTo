@@ -10,7 +10,6 @@ final class TimestampDataTests: XCTestCase {
       let data = date.data(withMaximumByteCount: size)
       let actualDate = Date(timestampData: data)
       let difference = abs(actualDate.timeIntervalSince(date))
-      print(difference, expectedDifference)
       XCTAssertLessThan(difference, expectedDifference)
       size -= 1
       expectedDifference *= 256

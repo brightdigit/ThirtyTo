@@ -17,7 +17,7 @@ public enum Identifier {
       func anyIdentifierWith(
         _ specifications: AnyIdentifierSpecifications
       ) -> AnyComposableIdentifier {
-        .init(wrapped: UDID(specifications: specifications))
+        _AnyComposableIdentifier(wrapped: UDID(specifications: specifications))
       }
     #endif
   }

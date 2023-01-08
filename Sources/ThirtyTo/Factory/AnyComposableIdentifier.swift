@@ -1,7 +1,9 @@
 import Foundation
 
+/// Type erased identifier object.
 @available(swift, obsoleted: 5.7)
-public struct AnyComposableIdentifier: ComposableIdentifier {
+// swiftlint:disable:next type_name
+public struct _AnyComposableIdentifier: ComposableIdentifier {
   public typealias Specifications = () -> Never
 
   public let data: Data
@@ -17,3 +19,8 @@ public struct AnyComposableIdentifier: ComposableIdentifier {
     specifications()
   }
 }
+
+#if swift(<5.7)
+  /// Deprecated type erased identifier object.
+  public typealias AnyComposableIdentifier = _AnyComposableIdentifier
+#endif

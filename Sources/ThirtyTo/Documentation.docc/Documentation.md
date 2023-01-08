@@ -258,3 +258,23 @@ This code is distributed under the MIT license. See the [LICENSE](https://github
 - ``Base32CrockfordEncodingOptions``
 - ``Base32CrockfordDecodingOptions``
 - ``Base32CrockfordDecodingError``
+
+### Generating Identifiers
+
+- ``RandomDataGenerator``
+- ``SecRandomDataGenerator``
+- ``NumberedDataGenerator``
+
+### Generating Identifiers
+
+- ``Identifier``
+- ``IdentifierFactory``
+- ``ComposableIdentifier``
+- ``AnyIdentifierSpecifications``
+- ``SizeSpecification``
+
+### Identifier Types
+
+- ``ULID``
+- ``UDID``
+
