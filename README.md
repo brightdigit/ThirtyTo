@@ -249,7 +249,7 @@ let identifier: UDID = Identifier.factory.createIdentifier(with: specs)
 
 ### What is ULID?
 
-`ULID` serves the purpose of solving several issues with `UUID` while being compatibile:
+`ULID` serves the purpose of solving several issues with `UUID` while being compatible:
 
 - 1.21e+24 unique ULIDs per millisecond
 - Lexicographically sortable!
